@@ -1,11 +1,11 @@
 {
   "root": true,
   "api": {
-    "projectId": "yb6s8gw4",
+    "projectId": "0noy67p8",
     "dataset": "production"
   },
   "project": {
-    "name": "Site Builder V1"
+    "name": "City Painters V1"
   },
   "plugins": [
     "@sanity/base",

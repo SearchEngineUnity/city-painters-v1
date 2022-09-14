@@ -2,7 +2,7 @@
   "name": "web",
   "version": "1.0.0",
   "private": true,
-  "description": "web frontend for site builder",
+  "description": "web frontend for city-painters-v1",
   "author": "SEU Dev",
   "keywords": [
     "gatsby"
