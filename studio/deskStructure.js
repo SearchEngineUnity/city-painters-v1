@@ -11,7 +11,7 @@ import FormDesignPreview from './preview/FormDesignPreview';
 
 export default () =>
   S.list()
-    .title('Site Builder V1')
+    .title('City Painters V1')
     .items([
       S.documentTypeListItem('page').title('Structured Pages'),
       S.documentTypeListItem('soloGuidePage').title('Solo Guide Pages'),

@@ -6,6 +6,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const {
   NODE_ENV,
+  // update this
   URL: NETLIFY_SITE_URL = 'https://sitebuilderv1.netlify.app', // update to new netlify URL
   DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
   CONTEXT: NETLIFY_ENV = NODE_ENV,
@@ -53,7 +54,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-sanity',
       options: {
-        projectId: 'yb6s8gw4',
+        projectId: '0noy67p8',
         dataset: 'production',
         token: process.env.SANITY_TOKEN,
         overlayDrafts: process.env.SANITY_OVERLAY_DRAFTS || !isProd,

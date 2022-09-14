@@ -1,5 +1,5 @@
 {
-  "name": "siteBuilderV1",
+  "name": "city-painters-v1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -23,20 +23,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SearchEngineUnity/siteBuilderV1.git"
+    "url": "git+https://github.com/SearchEngineUnity/city-painters-v1.git"
   },
-  "keywords": [
-    "demo",
-    "MUI",
-    "site",
-    "builder"
-  ],
   "author": "SEU Dev",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SearchEngineUnity/siteBuilderV1/issues"
+    "url": "https://github.com/SearchEngineUnity/city-painters-v1/issues"
   },
-  "homepage": "https://github.com/SearchEngineUnity/siteBuilderV1#readme",
+  "homepage": "https://github.com/SearchEngineUnity/city-painters-v1-v1#readme",
   "devDependencies": {
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.2.1",
