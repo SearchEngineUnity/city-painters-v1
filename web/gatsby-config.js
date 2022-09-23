@@ -46,6 +46,10 @@ module.exports = {
               {
                 family: `Material+Icons`,
               },
+              {
+                family: `Roboto`,
+                variants: [`100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900`],
+              },
             ],
           },
         },

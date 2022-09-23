@@ -3,6 +3,7 @@ import React from 'react';
 import { Typography, Box } from '@material-ui/core';
 import styled from 'styled-components';
 import Illustration from '../insertable/Illustration';
+import SmartUnorderedList from '../insertable/SmartUnorderedList';
 import JumpLink from '../../link/JumpLink';
 import ExternalLink from '../../link/LinkExternal';
 import AffiliateLink from '../../link/LinkAffiliate';
@@ -17,25 +18,6 @@ import ClickableImage from '../insertable/ClickableImage';
 import InsertableWrapper from '../insertable/InsertableWrapper';
 import InsertableBtnWrapper from '../insertable/InsertableBtnWrapper';
 import { mapMuiBtnToProps } from '../../../lib/mapToProps';
-
-const NoIndentUl = styled.ul`
-  margin-left: 1.4rem;
-  padding-left: 0;
-
-  & > li {
-    position: relative;
-  }
-`;
-
-const NoIndentOl = styled.ol`
-  list-style-type: decimal;
-  margin-left: 1.4rem;
-  padding-left: 0;
-
-  & > li {
-    position: relative;
-  }
-`;
 
 const StyledTypography = styled(Typography)`
   margin-top: 1.35em;
@@ -132,6 +114,9 @@ const serializers = {
         </InsertableWrapper>
       );
     },
+    smartUnorderedList({ node }) {
+      return <SmartUnorderedList {...node} />;
+    },
     btnBlockMui({ node }) {
       switch (node.link[0]._type) {
         case 'jumpLink':
@@ -220,14 +205,6 @@ const serializers = {
         </JumpLink>
       );
     },
-  },
-  list: ({ children }) => {
-    switch (children[0].props.node.listItem) {
-      case 'bullet':
-        return <NoIndentUl>{children}</NoIndentUl>;
-      default:
-        return <NoIndentOl>{children}</NoIndentOl>;
-    }
   },
   listItem: ({ children }) => (
     <Typography variant="body1" component="li">

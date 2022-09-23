@@ -352,6 +352,8 @@ export const query = graphql`
           layout
           reverseOrder
           designSettings {
+            innerPadding: _rawInnerPadding
+            borderRadius
             caption {
               color {
                 hex
@@ -802,6 +804,8 @@ export const query = graphql`
           layout
           reverseOrder
           designSettings {
+            innerPadding: _rawInnerPadding
+            borderRadius
             caption {
               color {
                 hex
@@ -1236,6 +1240,8 @@ export const query = graphql`
             }
           }
           designSettings {
+            innerPadding: _rawInnerPadding
+            borderRadius
             caption {
               color {
                 hex
@@ -1675,6 +1681,8 @@ export const query = graphql`
             }
           }
           designSettings {
+            innerPadding: _rawInnerPadding
+            borderRadius
             caption {
               color {
                 hex
@@ -1800,6 +1808,8 @@ export const query = graphql`
           headerAlignment
           idTag
           designSettings {
+            innerPadding: _rawInnerPadding
+            borderRadius
             caption {
               color {
                 hex
@@ -1936,7 +1946,7 @@ export const query = graphql`
   }
 `;
 
-const StructuredPage = ({ data, location, pageContext }) => {
+const FlexListingPage = ({ data, location, pageContext }) => {
   let allListItems;
   const spGuides = useSpGuides();
 
@@ -1993,4 +2003,4 @@ const StructuredPage = ({ data, location, pageContext }) => {
   );
 };
 
-export default StructuredPage;
+export default FlexListingPage;

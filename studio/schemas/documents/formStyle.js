@@ -32,7 +32,7 @@ export default {
     },
     {
       name: 'borderRadius',
-      title: 'Border radius',
+      title: 'Border Radius',
       type: 'string',
       initialValue: '4px',
       validation: (Rule) => [Rule.required().error('Field is required')],
@@ -114,9 +114,13 @@ export default {
       variant: 'fieldVariant',
     },
     prepare({ name, variant }) {
+      let normalizedVariant = variant;
+      if (variant === 'standard') {
+        normalizedVariant = 'underlined';
+      }
       return {
         title: name,
-        subtitle: `Variant: ${variant}`,
+        subtitle: `Variant: ${normalizedVariant}`,
       };
     },
   },

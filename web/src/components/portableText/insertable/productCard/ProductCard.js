@@ -12,9 +12,10 @@ import ProductCardDividerSegment from './ProductCardDividerSegment';
 import ProductInfoList from './ProductInfoList';
 import ProductCardRating from './ProductCardRating';
 import ButtonAffiliate from '../../../buttons/ButtonAffiliate';
-import { mapMuiBtnToProps } from '../../../../lib/mapToProps';
-import sanityConfig from '../../../../../sanityConfig';
 import Caption from '../../serializer/CaptionSerializer';
+import { mapMuiBtnToProps } from '../../../../lib/mapToProps';
+import { determineColor } from '../../../../lib/helperFunctions';
+import sanityConfig from '../../../../../sanityConfig';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -26,10 +27,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '50vw',
     height: '50vh',
+    [theme.breakpoints.down('xs')]: {
+      width: '80vw',
+      height: '80vh',
+    },
     backgroundColor: theme.palette.background.paper,
     border: 'none',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    padding: theme.spacing(2),
     justifyContent: 'center',
   },
   imageBackdrop: {
@@ -61,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
   focusVisible: {},
   tag: {
-    backgroundColor: (props) => props.tagColor.color.hex,
+    backgroundColor: (props) => determineColor(props?.tagColor?.color) || 'black',
     color: '#fff',
     position: 'absolute',
     top: '-20px',
@@ -79,7 +84,9 @@ const useStyles = makeStyles((theme) => ({
       bottom: '-7px',
       borderWidth: '0 10px 7px',
       borderColor: (props) =>
-        `rgba(0, 0, 0, 0) ${props.tagColor.color.hex} rgba(0, 0, 0, 0) rgba(0, 0, 0, 0)`,
+        `rgba(0, 0, 0, 0) ${
+          determineColor(props?.tagColor?.color) || 'black'
+        } rgba(0, 0, 0, 0) rgba(0, 0, 0, 0)`,
       borderStyle: 'inset solid inset inset',
       filter: ' brightness(50%)',
     },
@@ -186,12 +193,14 @@ function ProductCard({
 
   return (
     <>
-      <br />
+      {tagText && <br />}
       <div className={classes.wrapper}>
         <Card>
-          <Paper elevation={3} className={classes.tag} square>
-            {tagText}
-          </Paper>
+          {tagText && (
+            <Paper elevation={3} className={classes.tag} square>
+              {tagText}
+            </Paper>
+          )}
           <Box margin={3}>
             <div className={classes.container}>
               <div className={classes.imageItem}>

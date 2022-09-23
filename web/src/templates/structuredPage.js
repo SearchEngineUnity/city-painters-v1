@@ -351,6 +351,8 @@ export const query = graphql`
           layout
           reverseOrder
           designSettings {
+            innerPadding: _rawInnerPadding
+            borderRadius
             caption {
               color {
                 hex
@@ -767,6 +769,8 @@ export const query = graphql`
           layout
           reverseOrder
           designSettings {
+            innerPadding: _rawInnerPadding
+            borderRadius
             caption {
               color {
                 hex
@@ -1166,6 +1170,8 @@ export const query = graphql`
             }
           }
           designSettings {
+            innerPadding: _rawInnerPadding
+            borderRadius
             caption {
               color {
                 hex
@@ -1607,6 +1613,8 @@ export const query = graphql`
             }
           }
           designSettings {
+            innerPadding: _rawInnerPadding
+            borderRadius
             caption {
               color {
                 hex

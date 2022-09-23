@@ -3,7 +3,7 @@ import React from 'react';
 import S from '@sanity/desk-tool/structure-builder';
 import { FaPalette } from 'react-icons/fa';
 import { MdSettings, MdBusiness } from 'react-icons/md';
-import { BsType } from 'react-icons/bs';
+import { BsType, BsViewList } from 'react-icons/bs';
 import { HiOutlineOfficeBuilding, HiOutlineColorSwatch } from 'react-icons/hi';
 import SectionColorPreview from './preview/SectionColorPreview';
 import ButtonMuiPreview from './preview/ButtonMuiPreview';
@@ -98,6 +98,10 @@ export default () =>
                 .title('Theme - Typography')
                 .icon(BsType)
                 .child(S.document().schemaType('typography').documentId('typography')),
+              S.listItem()
+                .title('Theme - Spacing')
+                .icon(BsViewList)
+                .child(S.document().schemaType('customSpacing').documentId('customSpacing')),
               S.listItem()
                 .title('Solo Guide Page Hero Layout')
                 .icon(MdSettings)

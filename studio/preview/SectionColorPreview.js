@@ -43,6 +43,10 @@ const SectionColorPreview = ({ document }) => {
           ? determineColor(result?.documents[0]?.footer?.color)
           : 'inherit';
 
+        const captionColor = result?.documents[0]?.caption?.color?.hex
+          ? determineColor(result?.documents[0]?.caption?.color)
+          : '#757575';
+
         return loading ? (
           <Box display="flex" height="100%" justifyContent="center" alignItems="center">
             <CircularProgress />
@@ -85,6 +89,22 @@ const SectionColorPreview = ({ document }) => {
                 </Typography>
                 <br />
                 <p style={{ color: footerColor }}>This is the section footer.</p>
+                <br />
+                <Typography
+                  variant="caption"
+                  component="p"
+                  style={{ color: captionColor }}
+                  gutterBottom
+                >
+                  <i>
+                    This is the caption text of an image with a{' '}
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <a href="#" style={{ color: captionColor }}>
+                      link
+                    </a>
+                    .
+                  </i>
+                </Typography>
               </div>
             </div>
           )

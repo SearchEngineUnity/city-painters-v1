@@ -6,7 +6,11 @@ import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { determineColor } from '../../lib/helperFunctions';
 
 const ThemeProvider = ({ children, data }) => {
-  const { sanityPalette: palette, sanityTypography: typography } = data;
+  const {
+    sanityPalette: palette,
+    sanityTypography: typography,
+    sanityCustomSpacing: spacing,
+  } = data;
 
   let theme = createTheme({
     overrides: {
@@ -57,11 +61,11 @@ const ThemeProvider = ({ children, data }) => {
           borderColor: determineColor(palette?.definition?.borderColor?.color) || '#c6c8ca',
           iconColor:
             determineColor(palette?.definition?.iconColor?.color) ||
-            palette?.primaryText?.hex ||
+            determineColor(palette?.primaryText?.color) ||
             'rgba(0, 0, 0, 0.87)',
           textColor:
             determineColor(palette?.definition?.textColor?.color) ||
-            palette?.primaryText?.hex ||
+            determineColor(palette?.primaryText?.color) ||
             'rgba(0, 0, 0, 0.87)',
           linkColor: determineColor(palette?.definition?.linkColor?.color) || '#0000FF',
         },
@@ -70,11 +74,11 @@ const ThemeProvider = ({ children, data }) => {
           borderColor: determineColor(palette?.dyk?.borderColor?.color) || '#c3e6cb',
           iconColor:
             determineColor(palette?.dyk?.iconColor?.color) ||
-            palette?.primaryText?.hex ||
+            determineColor(palette?.primaryText?.color) ||
             'rgba(0, 0, 0, 0.87)',
           textColor:
             determineColor(palette?.dyk?.textColor?.color) ||
-            palette?.primaryText?.hex ||
+            determineColor(palette?.primaryText?.color) ||
             'rgba(0, 0, 0, 0.87)',
           linkColor: determineColor(palette?.definition?.linkColor?.color) || '#007030',
         },
@@ -83,11 +87,11 @@ const ThemeProvider = ({ children, data }) => {
           borderColor: determineColor(palette?.important?.borderColor?.color) || '#ffeeba',
           iconColor:
             determineColor(palette?.important?.iconColor?.color) ||
-            palette?.primaryText?.hex ||
+            determineColor(palette?.primaryText?.color) ||
             'rgba(0, 0, 0, 0.87)',
           textColor:
             determineColor(palette?.important?.textColor?.color) ||
-            palette?.primaryText?.hex ||
+            determineColor(palette?.primaryText?.color) ||
             'rgba(0, 0, 0, 0.87)',
           linkColor: determineColor(palette?.definition?.linkColor?.color) || '#935f00',
         },
@@ -96,11 +100,11 @@ const ThemeProvider = ({ children, data }) => {
           borderColor: determineColor(palette?.proTip?.borderColor?.color) || '#b8baff',
           iconColor:
             determineColor(palette?.proTip?.iconColor?.color) ||
-            palette?.primaryText?.hex ||
+            determineColor(palette?.primaryText?.color) ||
             'rgba(0, 0, 0, 0.87)',
           textColor:
             determineColor(palette?.proTip?.textColor?.color) ||
-            palette?.primaryText?.hex ||
+            determineColor(palette?.primaryText?.color) ||
             'rgba(0, 0, 0, 0.87)',
           linkColor: determineColor(palette?.definition?.linkColor?.color) || '#0056cb',
         },
@@ -109,11 +113,11 @@ const ThemeProvider = ({ children, data }) => {
           borderColor: determineColor(palette?.warning?.borderColor?.color) || '#f5c6cb',
           iconColor:
             determineColor(palette?.warning?.iconColor?.color) ||
-            palette?.primaryText?.hex ||
+            determineColor(palette?.primaryText?.color) ||
             'rgba(0, 0, 0, 0.87)',
           textColor:
             determineColor(palette?.warning?.textColor?.color) ||
-            palette?.primaryText?.hex ||
+            determineColor(palette?.primaryText?.color) ||
             'rgba(0, 0, 0, 0.87)',
           linkColor: determineColor(palette?.definition?.linkColor?.color) || '#bd0032',
         },
@@ -201,6 +205,26 @@ const ThemeProvider = ({ children, data }) => {
         textTransform: 'none',
       },
     },
+    customSpacing: {
+      sectionOuter: {
+        padding: {
+          desktop: spacing?.sectionOuter?.desktopPadding || '32px 0px',
+          desktopTablet: spacing?.sectionOuter?.desktopTabletPadding || '32px 0px',
+          tablet: spacing?.sectionOuter?.tabletPadding || '24px 0px',
+          tabletMobile: spacing?.sectionOuter?.tabletMobilePadding || '24px 0px',
+          mobile: spacing?.sectionOuter?.mobilePadding || '16px 0px',
+        },
+      },
+      sectionInner: {
+        padding: {
+          desktop: spacing?.sectionInner?.desktopPadding || '24px',
+          desktopTablet: spacing?.sectionInner?.desktopTabletPadding || '24px',
+          tablet: spacing?.sectionInner?.tabletPadding || '16px',
+          tabletMobile: spacing?.sectionInner?.tabletMobilePadding || '16px',
+          mobile: spacing?.sectionInner?.mobilePadding || '16px',
+        },
+      },
+    },
   });
 
   theme = responsiveFontSizes(theme);
@@ -213,6 +237,10 @@ export default function TopLayout({ children }) {
     <StaticQuery
       query={graphql`
         {
+          sanityCustomSpacing {
+            sectionInner: _rawSectionInner
+            sectionOuter: _rawSectionOuter
+          }
           sanityPalette {
             proTip {
               bgColor {

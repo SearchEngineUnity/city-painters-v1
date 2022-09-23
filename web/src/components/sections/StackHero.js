@@ -51,21 +51,22 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   section: {
-    paddingTop: (props) => (props.bleed ? '64px' : '40px'),
-    paddingBottom: (props) => (props.bleed ? '64px' : '40px'),
     backgroundColor: (props) => props.bleed && props.backgroundColor,
     backgroundImage: (props) => props.bleed && props.bgImage && `url(${props.bgImage})`,
     backgroundPosition: 'center center',
     backgroundRepeat: (props) => (props.repeat ? 'repeat' : 'no-repeat'),
+    padding: theme.customSpacing.sectionOuter.padding.desktop,
+    [theme.breakpoints.down('lg')]: {
+      padding: theme.customSpacing.sectionOuter.padding.desktopTablet,
+    },
     [theme.breakpoints.down('md')]: {
-      paddingTop: (props) => (props.bleed ? '64px' : '0px'),
-      paddingBottom: (props) => (props.bleed ? '64px' : '0px'),
+      padding: theme.customSpacing.sectionOuter.padding.tablet,
     },
     [theme.breakpoints.down('sm')]: {
-      paddingLeft: (props) => (props.bleed ? 16 : 0),
-      paddingRight: (props) => (props.bleed ? 16 : 0),
-      paddingTop: (props) => (props.bleed ? 16 : 0),
-      paddingBottom: (props) => (props.bleed ? 16 : 0),
+      padding: theme.customSpacing.sectionOuter.padding.tabletMobile,
+    },
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.customSpacing.sectionOuter.padding.mobile,
     },
     '& .pt-link': {
       color: (props) => props.linkColor,
@@ -78,21 +79,25 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   column: {
-    paddingTop: (props) => !props.bleed && '24px',
-    paddingBottom: (props) => !props.bleed && '24px',
+    borderRadius: (props) => props.borderRadius,
     backgroundColor: (props) => !props.bleed && props.backgroundColor,
     backgroundImage: (props) => !props.bleed && props.bgImage && `url(${props.bgImage})`,
     backgroundPosition: 'center center',
     backgroundRepeat: (props) => (props.repeat ? 'repeat' : 'no-repeat'),
+    padding: (props) => props.desktopPadding || theme.customSpacing.sectionInner.padding.desktop,
+    [theme.breakpoints.down('lg')]: {
+      padding: (props) =>
+        props.desktopTabletPadding || theme.customSpacing.sectionInner.padding.desktopTablet,
+    },
     [theme.breakpoints.down('md')]: {
-      paddingTop: (props) => (!props.bleed ? '64px' : '0px'),
-      paddingBottom: (props) => (!props.bleed ? '64px' : '0px'),
+      padding: (props) => props.tabletPadding || theme.customSpacing.sectionInner.padding.tablet,
     },
     [theme.breakpoints.down('sm')]: {
-      paddingLeft: (props) => (!props.bleed ? 16 : 0),
-      paddingRight: (props) => (!props.bleed ? 16 : 0),
-      paddingTop: (props) => (!props.bleed ? 16 : 0),
-      paddingBottom: (props) => (!props.bleed ? 16 : 0),
+      padding: (props) =>
+        props.tabletMobilePadding || theme.customSpacing.sectionInner.padding.tabletMobile,
+    },
+    [theme.breakpoints.down('xs')]: {
+      padding: (props) => props.mobilePadding || theme.customSpacing.sectionInner.padding.mobile,
     },
   },
 }));
@@ -177,8 +182,27 @@ function StructuredLrFlex({
   const subtitleColor = determineColor(designSettings?.subtitle?.color) || 'inherit';
   const footerColor = determineColor(designSettings?.footer?.color) || 'inherit';
   const captionColor = determineColor(designSettings?.caption?.color) || '#757575';
+  const desktopPadding = designSettings?.innerPadding?.desktopPadding;
+  const desktopTabletPadding = designSettings?.innerPadding?.desktopTabletPadding;
+  const tabletPadding = designSettings?.innerPadding?.tabletPadding;
+  const tabletMobilePadding = designSettings?.innerPadding?.tabletMobilePadding;
+  const mobilePadding = designSettings?.innerPadding?.mobilePadding;
+  const borderRadius = designSettings?.borderRadius || '0px';
 
-  const classes = useStyles({ linkColor, bleed, bgImage, backgroundColor, captionColor, repeat });
+  const classes = useStyles({
+    linkColor,
+    bleed,
+    bgImage,
+    backgroundColor,
+    captionColor,
+    repeat,
+    desktopPadding,
+    desktopTabletPadding,
+    tabletPadding,
+    tabletMobilePadding,
+    mobilePadding,
+    borderRadius,
+  });
 
   return (
     <Box id={idTag} component="section" color={foregroundColor} className={classes.section}>

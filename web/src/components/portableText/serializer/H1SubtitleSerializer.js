@@ -1,21 +1,11 @@
 import BaseBlockContent from '@sanity/block-content-to-react';
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import styled from 'styled-components';
 import JumpLink from '../../link/JumpLink';
 import ExternalLink from '../../link/LinkExternal';
 import InternalGlobal from '../../link/LinkInternalGlobal';
 import InternalLocal from '../../link/LinkInternalLocal';
 import AffiliateLink from '../../link/LinkAffiliate';
-
-const NoIndentUl = styled.ul`
-  margin-left: 1.4rem;
-  padding-left: 0;
-
-  & > li {
-    position: relative;
-  }
-`;
 
 const serializers = {
   // This is to render the whole block of content without the <div> tag as wrapping container (https://github.com/sanity-io/block-content-to-react)
@@ -77,7 +67,6 @@ const serializers = {
       );
     },
   },
-  list: ({ children }) => <NoIndentUl>{children}</NoIndentUl>,
   listItem: ({ children }) => (
     <Typography variant="body1" component="li">
       {children}

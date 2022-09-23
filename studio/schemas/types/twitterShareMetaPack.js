@@ -12,6 +12,7 @@ export default {
       title: 'Twitter Share Description',
       name: 'twitterShareDescription',
       type: 'text',
+      rows: 3,
     },
     {
       title: 'Twitter Share Image',

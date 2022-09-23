@@ -42,7 +42,7 @@ export default {
     },
     {
       name: 'borderRadius',
-      title: 'Button border radius',
+      title: 'Button Border Radius',
       type: 'string',
       description: (
         <>
