@@ -13,5 +13,13 @@ export const useSpGuideHero = () => {
     `,
   );
 
+  if (!layout.heroImgAlignment) {
+    layout.heroImgAlignment = 'center';
+  }
+
+  if (!layout.heroLrAlignment) {
+    layout.heroLrAlignment = 'center';
+  }
+
   return layout;
 };

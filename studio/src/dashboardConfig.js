@@ -15,12 +15,12 @@ export default {
     //     ],
     //   },
     // },
-    // {
-    //   name: 'gatsby',
-    //   options: {
-    //     title: 'Gatsby Preview Site',
-    //     sites: [{ siteUrl: 'https://preview-sitebuilderv1.gtsb.io/' }],
-    //   },
-    // },
+    {
+      name: 'gatsby',
+      options: {
+        title: 'Gatsby Preview Site',
+        sites: [{ siteUrl: 'preview-citypaintersv1.gtsb.io' }],
+      },
+    },
   ],
 };

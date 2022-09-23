@@ -22,6 +22,7 @@ export { default as navItem } from './navItem';
 export { default as navJumpLink } from './navJumpLink';
 export { default as navPhone } from './navPhone';
 export { default as navSet } from './navSet';
+export { default as paddingSet } from './paddingSet';
 export { default as smartOrderedListItem } from './smartOrderedListItem';
 export { default as smartUnorderedListItem } from './smartUnorderedListItem';
 export { default as tileImage } from './tileImage';

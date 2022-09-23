@@ -72,6 +72,7 @@ export default {
       name: 'metaDescription',
       title: 'Meta Description',
       type: 'text',
+      rows: 3,
       fieldset: 'general',
       validation: (Rule) => [Rule.required().error('Field is required.')],
     },

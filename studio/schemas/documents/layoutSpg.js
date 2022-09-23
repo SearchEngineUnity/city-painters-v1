@@ -10,7 +10,8 @@ export default {
       name: 'heroLrAlignment',
       title: 'Hero LR Block Alignment',
       type: 'string',
-      description: 'This determines how the L and R blocks align vertically to each other.',
+      description:
+        'This determines how the L and R blocks align vertically to each other. Center is recommended.',
       options: {
         list: [
           { title: 'Top', value: 'flex-start' },
@@ -26,7 +27,8 @@ export default {
       name: 'heroImgAlignment',
       title: 'Hero Image Alignment within block',
       type: 'string',
-      description: 'This determines how the image aligns horizontally within the right block.',
+      description:
+        'This determines how the image aligns horizontally within the right block. Center is recommended',
       options: {
         list: [
           { title: 'Left', value: 'flex-start' },
@@ -35,9 +37,9 @@ export default {
         ],
         layout: 'radio',
         direction: 'horizontal',
-        validation: (Rule) => [Rule.required().error('Field is required')],
       },
       initialValue: 'center',
+      validation: (Rule) => [Rule.required().error('Field is required')],
     },
   ],
   preview: {

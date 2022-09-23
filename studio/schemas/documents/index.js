@@ -2,6 +2,7 @@ export { default as btnDesignMui } from './btnDesignMui';
 export { default as colorOption } from './colorOption';
 export { default as companyLogo } from './companyLogo';
 export { default as contactInfo } from './contactInfo';
+export { default as customSpacing } from './customSpacing';
 export { default as flexListingPage } from './flexListingPage';
 export { default as formNetlify } from './formNetlify';
 export { default as formStyle } from './formStyle';

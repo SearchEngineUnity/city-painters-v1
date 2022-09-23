@@ -12,6 +12,7 @@ export default {
       title: 'Facebook Share Description',
       name: 'fbShareDescription',
       type: 'text',
+      rows: 3,
     },
     {
       title: 'Facebook Share Image',

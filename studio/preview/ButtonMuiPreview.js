@@ -116,6 +116,10 @@ const ButtonMuiPreview = ({ document }) => {
                   onChange={(e) => setText(e.target.value)}
                   value={text}
                 />
+                <br />
+                <Box color="red" component="p">
+                  Warning: Font style is not true to design.
+                </Box>
               </Box>
               <Divider />
               <Box p={3}>

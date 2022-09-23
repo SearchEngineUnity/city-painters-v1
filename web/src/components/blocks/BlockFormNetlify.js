@@ -17,6 +17,7 @@ import {
 } from '@material-ui/core';
 import ButtonSubmit from '../buttons/ButtonSubmit';
 import { mapMuiBtnSubmitToProps } from '../../lib/mapToProps';
+import { determineColor } from '../../lib/helperFunctions';
 
 function encode(data) {
   return Object.keys(data)
@@ -26,7 +27,13 @@ function encode(data) {
 
 const useStyles = makeStyles((theme) => ({
   control: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(4),
+  },
+  label: {
+    marginBottom: theme.spacing(1),
+  },
+  input: {
+    padding: '14px',
   },
 }));
 
@@ -51,14 +58,14 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
   const theme = createTheme({
     palette: {
       primary: {
-        main: focusedColor.color.hex, // mui-focused class color (applies to border and checkbox, select, radio label color)
+        main: determineColor(focusedColor.color), // mui-focused class color (applies to border and checkbox, select, radio label color)
       },
       secondary: {
-        main: selectorColor.color.hex, // selector color (checkbox icon and radio icon)
+        main: determineColor(selectorColor.color), // selector color (checkbox icon and radio icon)
       },
       text: {
-        primary: inputColor.color.hex, // controls input text and placeholder text and hover border color
-        secondary: labelColor.color.hex, // control label text, helper text, and the border of checkbox and radio icons
+        primary: determineColor(inputColor.color), // controls input text and placeholder text and hover border color
+        secondary: determineColor(labelColor.color), // control label text, helper text, and the border of checkbox and radio icons
       },
     },
     typography: prevTheme.typography,
@@ -66,29 +73,35 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
       MuiOutlinedInput: {
         root: {
           borderRadius: fieldBorderRadius, // border radius change for outlined variant
-          backgroundColor: fieldBgColor.color.hex, // background color change for outlined variant
+          backgroundColor: determineColor(fieldBgColor.color), // background color change for outlined variant
+        },
+        input: {
+          padding: '14px',
+        },
+        multiline: {
+          padding: '14px',
         },
       },
       MuiFilledInput: {
         root: {
-          backgroundColor: fieldBgColor.color.hex, // background color for filled variant
+          backgroundColor: determineColor(fieldBgColor.color), // background color for filled variant
           '&:hover': {
-            backgroundColor: fieldBgHoverColor.color.hex, // background color on hover for filled variant
+            backgroundColor: determineColor(fieldBgHoverColor.color), // background color on hover for filled variant
           },
           '@media (hover: none)': {
-            backgroundColor: fieldBgColor.color.hex, // background color for filled variant when media has no hover
+            backgroundColor: determineColor(fieldBgColor.color), // background color for filled variant when media has no hover
             '&:hover': {
-              backgroundColor: fieldBgColor.color.hex, // background color on hover for filled variant when media has no hover
+              backgroundColor: determineColor(fieldBgColor.color), // background color on hover for filled variant when media has no hover
             },
           },
           '&.Mui-focused': {
-            backgroundColor: fieldBgColor.color.hex, // background color when clicked into the field
+            backgroundColor: determineColor(fieldBgColor.color), // background color when clicked into the field
           },
         },
       },
       MuiFormControlLabel: {
         root: {
-          color: labelColor.color.hex,
+          color: determineColor(labelColor.color),
         },
       },
     },
@@ -227,9 +240,9 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box boxShadow={5} p={6} bgcolor="background.paper">
-        <Box textAlign={titleAlignment} color={labelColor.color.hex}>
-          <Typography variant={headingLevel} gutterBottom>
+      <Box boxShadow={5} p={4} bgcolor="background.paper">
+        <Box textAlign={titleAlignment} color={determineColor(labelColor.color)}>
+          <Typography variant={headingLevel} className={classes.control}>
             {heading}
           </Typography>
         </Box>
@@ -238,6 +251,7 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
           name={name}
           method="POST"
           data-netlify="true"
+          // eslint-disable-next-line react/no-unknown-property
           netlify-honeypot="bot-field"
           noValidate
           onSubmit={handleSubmit}
@@ -269,7 +283,10 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
                     error={!!errorMsgs[input.id]}
                     id={input.id}
                   >
-                    <FormLabel component={input.options.length > 1 ? 'legend' : 'label'}>
+                    <FormLabel
+                      className={classes.label}
+                      component={input.options.length > 1 ? 'legend' : 'label'}
+                    >
                       {input.label}
                     </FormLabel>
                     <FormGroup>
@@ -297,18 +314,20 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
                     <FormHelperText error={!!errorMsgs[input.id]}>
                       {errorMsgs[input.id] ? errorMsgs[input.id] : input.helperText}
                     </FormHelperText>
-                    <br />
                   </FormControl>
                 );
               case 'radio':
                 return (
                   <FormControl
+                    className={classes.control}
                     component="fieldset"
                     fullWidth
                     key={_key}
                     error={!!errorMsgs[input.id]}
                   >
-                    <FormLabel component="legend">{input.label}</FormLabel>
+                    <FormLabel className={classes.label} component="legend">
+                      {input.label}
+                    </FormLabel>
                     <RadioGroup
                       id={input.id}
                       aria-label={input.label}
@@ -328,13 +347,19 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
                     <FormHelperText error={!!errorMsgs[input.id]}>
                       {errorMsgs[input.id] ? errorMsgs[input.id] : input.helperText}
                     </FormHelperText>
-                    <br />
                   </FormControl>
                 );
               case 'select':
                 return (
-                  <FormControl fullWidth key={_key} error={!!errorMsgs[input.id]}>
-                    <FormLabel htmlFor={input.id}>{input.label}</FormLabel>
+                  <FormControl
+                    fullWidth
+                    key={_key}
+                    error={!!errorMsgs[input.id]}
+                    className={classes.control}
+                  >
+                    <FormLabel className={classes.label} htmlFor={input.id}>
+                      {input.label}
+                    </FormLabel>
                     <Select
                       native
                       error={!!errorMsgs[input.id]}
@@ -357,13 +382,19 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
                     <FormHelperText error={!!errorMsgs[input.id]}>
                       {errorMsgs[input.id] ? errorMsgs[input.id] : input.helperText}
                     </FormHelperText>
-                    <br />
                   </FormControl>
                 );
               case 'textarea':
                 return (
-                  <FormControl fullWidth key={_key} error={!!errorMsgs[input.id]}>
-                    <FormLabel htmlFor={input.id}>{input.label}</FormLabel>
+                  <FormControl
+                    fullWidth
+                    key={_key}
+                    error={!!errorMsgs[input.id]}
+                    className={classes.control}
+                  >
+                    <FormLabel className={classes.label} htmlFor={input.id}>
+                      {input.label}
+                    </FormLabel>
                     <TextField
                       id={input.id}
                       aria-describedby={`${input.id}-helper-text`}
@@ -380,13 +411,19 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
                     <FormHelperText error={!!errorMsgs[input.id]} id={`${input.id}-helper-text`}>
                       {errorMsgs[input.id] ? errorMsgs[input.id] : input.helperText}
                     </FormHelperText>
-                    <br />
                   </FormControl>
                 );
               case 'textInput':
                 return (
-                  <FormControl fullWidth key={_key} error={!!errorMsgs[input.id]}>
-                    <FormLabel htmlFor={input.id}>{input.label}</FormLabel>
+                  <FormControl
+                    fullWidth
+                    key={_key}
+                    error={!!errorMsgs[input.id]}
+                    className={classes.control}
+                  >
+                    <FormLabel className={classes.label} htmlFor={input.id}>
+                      {input.label}
+                    </FormLabel>
                     <TextField
                       error={!!errorMsgs[input.id]}
                       id={input.id}
@@ -403,7 +440,6 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
                     <FormHelperText error={!!errorMsgs[input.id]} id={`${input.id}-helper-text`}>
                       {errorMsgs[input.id] ? errorMsgs[input.id] : input.helperText}
                     </FormHelperText>
-                    <br />
                   </FormControl>
                 );
               default:

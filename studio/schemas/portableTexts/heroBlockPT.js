@@ -165,6 +165,7 @@ export default {
       },
     },
     { type: 'illustration' },
+    { type: 'smartUnorderedList' },
     { type: 'btnBlockMui' },
     { type: 'clickableImage' },
   ],

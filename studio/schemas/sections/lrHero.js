@@ -57,7 +57,6 @@ export default {
       fieldset: 'presentation',
       options: {
         list: [
-          { title: '5:1', value: '10:2' },
           { title: '3:1', value: '9:3' },
           { title: '2:1', value: '8:4' },
           { title: '7:5', value: '7:5' },
@@ -65,7 +64,6 @@ export default {
           { title: '5:7', value: '5:7' },
           { title: '1:2', value: '4:8' },
           { title: '1:3', value: '3:9' },
-          { title: '1:5', value: '2:10' },
         ],
         layout: 'radio',
         direction: 'horizontal',

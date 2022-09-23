@@ -36,14 +36,14 @@ const FormDesignPreview = ({ document }) => {
         let selectorColor;
 
         if (result) {
-          fieldBgColor = result?.documents[0]?.fieldBgColor?.hex;
-          fieldBgHoverColor = result?.documents[0]?.fieldBgHoverColor?.hex;
-          focusedColor = result?.documents[0]?.focusedColor?.hex;
+          fieldBgColor = determineColor(result?.documents[0]?.fieldBgColor);
+          fieldBgHoverColor = determineColor(result?.documents[0]?.fieldBgHoverColor);
+          focusedColor = determineColor(result?.documents[0]?.focusedColor);
           fieldBorderRadius = result?.documents[0]?.fieldBorderRadius;
           variant = result?.documents[0]?.variant || 'outlined';
-          labelColor = result?.documents[0]?.labelColor?.hex;
-          inputColor = result?.documents[0]?.inputColor?.hex;
-          selectorColor = result?.documents[0]?.selectorColor?.hex;
+          labelColor = determineColor(result?.documents[0]?.labelColor);
+          inputColor = determineColor(result?.documents[0]?.inputColor);
+          selectorColor = determineColor(result?.documents[0]?.selectorColor);
         }
 
         const theme = createTheme({

@@ -77,7 +77,7 @@ function ButtonSubmit({
 
   return (
     <ThemeProvider theme={theme}>
-      <Box display="flex" justifyContent={btnAlignment} py={3}>
+      <Box display="flex" justifyContent={btnAlignment}>
         <Button
           color="primary"
           variant={variant}

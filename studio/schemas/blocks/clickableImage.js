@@ -57,7 +57,7 @@ export default {
     },
     {
       name: 'borderRadius',
-      title: 'Border radius',
+      title: 'Border Radius',
       type: 'string',
       fieldset: 'presentation',
       initialValue: '0px',
