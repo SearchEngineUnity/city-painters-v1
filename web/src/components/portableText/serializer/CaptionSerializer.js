@@ -13,7 +13,7 @@ const StyledTypography = styled(Typography)`
 
 const serializers = {
   // This is to render the whole block of content without the <div> tag as wrapping container (https://github.com/sanity-io/block-content-to-react)
-  container: (props) => <figcaption>{props.children}</figcaption>,
+  container: (props) => <figcaption style={{ textAlign: 'center' }}>{props.children}</figcaption>,
   types: {
     block(props) {
       return props.children[0] ? (
