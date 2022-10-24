@@ -2,11 +2,14 @@ import BaseBlockContent from '@sanity/block-content-to-react';
 import React from 'react';
 import { Typography, Box } from '@material-ui/core';
 import styled from 'styled-components';
+import VideoEmbed from '../insertable/VideoEmbed';
+import BasicTable from '../insertable/BasicTable';
 import Illustration from '../insertable/Illustration';
-import SmartUnorderedList from '../insertable/SmartUnorderedList';
+import HighlightBox from '../insertable/highlightBox/HighlightBox';
+import SmartTable from '../insertable/SmartTable';
 import JumpLink from '../../link/JumpLink';
-import ExternalLink from '../../link/LinkExternal';
 import AffiliateLink from '../../link/LinkAffiliate';
+import ExternalLink from '../../link/LinkExternal';
 import InternalGlobal from '../../link/LinkInternalGlobal';
 import InternalLocal from '../../link/LinkInternalLocal';
 import ButtonAffiliate from '../../buttons/ButtonAffiliate';
@@ -15,7 +18,8 @@ import ButtonInternalGlobal from '../../buttons/ButtonInternalGlobal';
 import ButtonInternalLocal from '../../buttons/ButtonInternalLocal';
 import ButtonJumpLink from '../../buttons/ButtonJumpLink';
 import ClickableImage from '../insertable/ClickableImage';
-import InsertableStructuredPageWrapper from '../insertable/InsertableStructuredPageWrapper';
+import InsertableWrapper from '../insertable/InsertableWrapper';
+import InsertableBtnWrapper from '../insertable/InsertableBtnWrapper';
 import { mapMuiBtnToProps } from '../../../lib/mapToProps';
 
 const StyledTypography = styled(Typography)`
@@ -27,126 +31,90 @@ const serializers = {
   container: (props) => <>{props.children}</>,
   types: {
     block(props) {
-      switch (props.node.style) {
-        case 'h2':
-          return props.children[0] ? (
-            <StyledTypography
-              gutterBottom
-              variant="h2"
-              id={
-                props.node.markDefs.length !== 0
-                  ? props.node.markDefs.filter((x) => x._type === 'hashId')[0]?.idTag
-                  : undefined
-              }
-            >
-              {props.children}
-            </StyledTypography>
-          ) : (
-            <br />
-          );
-
-        case 'h3':
-          return props.children[0] ? (
-            <StyledTypography
-              gutterBottom
-              variant="h3"
-              id={
-                props.node.markDefs.length !== 0
-                  ? props.node.markDefs.filter((x) => x._type === 'hashId')[0]?.idTag
-                  : undefined
-              }
-            >
-              {props.children}
-            </StyledTypography>
-          ) : (
-            <br />
-          );
-
-        case 'h4':
-          return props.children[0] ? (
-            <StyledTypography
-              gutterBottom
-              variant="h4"
-              id={
-                props.node.markDefs.length !== 0
-                  ? props.node.markDefs.filter((x) => x._type === 'hashId')[0]?.idTag
-                  : undefined
-              }
-            >
-              {props.children}
-            </StyledTypography>
-          ) : (
-            <br />
-          );
-
-        case 'blockquote':
-          return props.children[0] ? (
-            <Box
-              component="blockquote"
-              fontSize="h3.fontSize"
-              fontWeight={100}
-              borderColor="primary.main"
-              pl={4}
-              py={1}
-              borderLeft={4}
-            >
-              &#8220; {props.children} &#8221;
-            </Box>
-          ) : (
-            <br />
-          );
-
-        default:
-          return props.children[0] ? (
-            <Typography gutterBottom variant="body1">
-              {props.children}
-            </Typography>
-          ) : (
-            <br />
-          );
-      }
+      return props.children[0] ? (
+        <Box
+          fontSize="20px"
+          fontWeight="500"
+          component="p"
+          margin="0"
+          lineHeight="40px"
+          color="#999999"
+        >
+          {props.children}
+        </Box>
+      ) : (
+        <br />
+      );
     },
     illustration({ node }) {
       return (
-        <InsertableStructuredPageWrapper>
+        <InsertableWrapper>
           <Illustration illustration={node} />
-        </InsertableStructuredPageWrapper>
+        </InsertableWrapper>
       );
     },
-    smartUnorderedList({ node }) {
-      return <SmartUnorderedList {...node} />;
+    basicTable({ node }) {
+      return (
+        <InsertableWrapper>
+          <BasicTable basicTable={node} />
+        </InsertableWrapper>
+      );
+    },
+    highlightBox({ node }) {
+      return (
+        <InsertableWrapper>
+          <HighlightBox box={node} />
+        </InsertableWrapper>
+      );
+    },
+    smartTable({ node }) {
+      return (
+        <InsertableWrapper>
+          <SmartTable smartTable={node} />
+        </InsertableWrapper>
+      );
+    },
+    instagram() {
+      return <p>Work in progress</p>;
+    },
+    videoEmbed({ node }) {
+      return (
+        <InsertableWrapper>
+          <VideoEmbed url={node.url} ratio={node.ratio} />
+        </InsertableWrapper>
+      );
     },
     btnBlockMui({ node }) {
       switch (node.link[0]._type) {
         case 'jumpLink':
           return (
-            <InsertableStructuredPageWrapper>
+            <InsertableBtnWrapper>
               <ButtonJumpLink {...mapMuiBtnToProps(node)} />
-            </InsertableStructuredPageWrapper>
+            </InsertableBtnWrapper>
           );
         case 'internalLocal':
           return (
-            <InsertableStructuredPageWrapper>
+            <InsertableBtnWrapper>
               <ButtonInternalLocal {...mapMuiBtnToProps(node)} />
-            </InsertableStructuredPageWrapper>
+            </InsertableBtnWrapper>
           );
         case 'internalGlobal':
           return (
-            <InsertableStructuredPageWrapper>
+            <InsertableBtnWrapper>
               <ButtonInternalGlobal {...mapMuiBtnToProps(node)} />
-            </InsertableStructuredPageWrapper>
+            </InsertableBtnWrapper>
           );
         case 'externalLink':
           return (
-            <InsertableStructuredPageWrapper>
+            <InsertableBtnWrapper>
               <ButtonExternal {...mapMuiBtnToProps(node)} />
-            </InsertableStructuredPageWrapper>
+            </InsertableBtnWrapper>
           );
         case 'affiliateLink':
           return (
-            <InsertableStructuredPageWrapper>
+            <InsertableBtnWrapper>
               <ButtonAffiliate {...mapMuiBtnToProps(node)} />
-            </InsertableStructuredPageWrapper>
+            </InsertableBtnWrapper>
           );
         default:
           return <p>under development</p>;
@@ -154,13 +122,14 @@ const serializers = {
     },
     clickableImage({ node }) {
       return (
-        <InsertableStructuredPageWrapper>
+        <InsertableWrapper>
           <ClickableImage {...node} />
-        </InsertableStructuredPageWrapper>
+        </InsertableWrapper>
       );
     },
   },
   marks: {
+    hashId: ({ children }) => children,
     internalLocal: ({ mark, children }) => {
       const { slug = {} } = mark.reference;
       const { newTab, hashId, parameter } = mark;
@@ -205,11 +174,6 @@ const serializers = {
       );
     },
   },
-  listItem: ({ children }) => (
-    <Typography variant="body1" component="li">
-      {children}
-    </Typography>
-  ),
 };
 
 const BlockContent = ({ blocks }) => <BaseBlockContent blocks={blocks} serializers={serializers} />;

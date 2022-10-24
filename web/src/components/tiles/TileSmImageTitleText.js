@@ -14,7 +14,13 @@ import sanityConfig from '../../../sanityConfig';
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    paddingBottom: '0px',
+    padding: '0px',
+  },
+  content: {
+    padding: '13px 0px 0px 0px',
+    '&:last-child': {
+      padding: '13px 0px 0px 0px',
+    },
   },
 }));
 
@@ -47,15 +53,15 @@ export default function TileSmImageTitleText({ image, alt, link, title, text }) 
             />
           }
           title={
-            <Box fontSize="h4.fontSize" fontWeight="fontWeightBold">
+            <Box fontSize="20px" fontWeight="800" lineHeight="24px" color="black">
               {title}
             </Box>
           }
         />
-        <CardContent>
-          <Typography variant="body1" color="textSecondary" component="p">
+        <CardContent className={classes.content}>
+          <Box fontSize="14px" fontWeight="500" lineHeight="22.75px" color="text">
             {text}
-          </Typography>
+          </Box>
         </CardContent>
       </ConditionalCardActionArea>
     </Card>
