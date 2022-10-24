@@ -101,6 +101,7 @@ function SmartTable({ smartTable }) {
                     </TableCell>
                   );
                 }
+                // was updated from tableBlock
                 if (cell._type === 'tablePtCell') {
                   return (
                     // eslint-disable-next-line

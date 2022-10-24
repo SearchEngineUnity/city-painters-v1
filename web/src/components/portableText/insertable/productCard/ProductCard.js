@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import ZoomInIcon from '@material-ui/icons/ZoomIn';
-import { Card, Paper, Box, Typography } from '@material-ui/core';
+import { Card, Paper, Box, Typography, Grid } from '@material-ui/core';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -202,8 +202,8 @@ function ProductCard({
             </Paper>
           )}
           <Box margin={3}>
-            <div className={classes.container}>
-              <div className={classes.imageItem}>
+            <Grid container spacing={2} alignItems="center">
+              <Grid item xs={12} sm={4}>
                 <ButtonBase
                   type="button"
                   onClick={handleOpen}
@@ -213,7 +213,7 @@ function ProductCard({
                   <GatsbyImage
                     image={imageData}
                     alt={image?.alt}
-                    style={{ display: 'block', maxWidth: '100%', maxHeight: '300px' }}
+                    style={{ display: 'block', maxWidth: '100%', maxHeight: '240px' }}
                     objectFit="contain"
                   />
                   <span className={classes.imageBackdrop}>
@@ -237,24 +237,18 @@ function ProductCard({
                     />
                   </div>
                 </Modal>
-              </div>
-              <div className={classes.titleItem}>
-                <div className={classes.titleContainer}>
-                  <div className={classes.nameItem}>
-                    <Typography component={headingLevel} variant="h4">
-                      {name}
-                    </Typography>
-                    <ProductCardRating rating={rating} />
-                  </div>
-                  <div className={classes.topButton}>
-                    <ButtonAffiliate {...mapMuiBtnToProps(topBtn)} />
-                  </div>
-                </div>
-              </div>
-              <div className={classes.infoItem}>
+                <br />
+                <ButtonAffiliate {...mapMuiBtnToProps(topBtn)} />
+                <br />
+              </Grid>
+              <Grid item xs={12} sm={8}>
+                <Typography component={headingLevel} variant="h4">
+                  {name}
+                </Typography>
+                <ProductCardRating rating={rating} />
                 <ProductInfoList infoList={infoList} />
-              </div>
-            </div>
+              </Grid>
+            </Grid>
           </Box>
           {segments.map((segment) => {
             const { _type, _key } = segment;
