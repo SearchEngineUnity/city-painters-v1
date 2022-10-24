@@ -84,20 +84,32 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: (props) => !props.bleed && props.bgImage && `url(${props.bgImage})`,
     backgroundPosition: 'center center',
     backgroundRepeat: (props) => (props.repeat ? 'repeat' : 'no-repeat'),
+    width: '100%',
+    maxWidth: '1200px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     padding: (props) => props.desktopPadding || theme.customSpacing.sectionInner.padding.desktop,
     [theme.breakpoints.down('lg')]: {
       padding: (props) =>
         props.desktopTabletPadding || theme.customSpacing.sectionInner.padding.desktopTablet,
     },
     [theme.breakpoints.down('md')]: {
+      maxWidth: '1000px',
       padding: (props) => props.tabletPadding || theme.customSpacing.sectionInner.padding.tablet,
     },
     [theme.breakpoints.down('sm')]: {
+      maxWidth: '780px',
       padding: (props) =>
         props.tabletMobilePadding || theme.customSpacing.sectionInner.padding.tabletMobile,
     },
     [theme.breakpoints.down('xs')]: {
       padding: (props) => props.mobilePadding || theme.customSpacing.sectionInner.padding.mobile,
+    },
+  },
+  block: {
+    marginTop: '13px',
+    '&:first-child': {
+      marginTop: '0px',
     },
   },
 }));
@@ -205,8 +217,15 @@ function StackFlex({
   });
 
   return (
-    <Box id={idTag} component="section" color={foregroundColor} className={classes.section}>
-      <Container maxWidth="lg" className={classes.column}>
+    <Box
+      id={idTag}
+      component="section"
+      color={foregroundColor}
+      className={classes.section}
+      mb="30px"
+      mt="46px"
+    >
+      <div className={classes.column}>
         <StructuredSectionHeader
           heading={heading}
           subheading={subheading}
@@ -216,6 +235,7 @@ function StackFlex({
           subtitleColor={subtitleColor}
           align={headerAlignment}
         />
+        {(!!heading || !!subheading) && blocks.length > 0 ? <Box mt="16px" /> : null}
         {blocks.map((block) => {
           const { _type, _key } = block;
           const col = colCalculator(parseInt(blockWidth, 10));
@@ -307,12 +327,12 @@ function StackFlex({
             <Grid
               container
               justifyContent="center"
-              spacing={6}
+              spacing={4}
               className={classes.mobileGrid}
               key={_key}
             >
               <Grid item {...col}>
-                {blockSelector(_type)}
+                <div className={classes.block}>{blockSelector(_type)}</div>
               </Grid>
             </Grid>
           );
@@ -322,7 +342,7 @@ function StackFlex({
           footerColor={footerColor}
           align={footerAlignment}
         />
-      </Container>
+      </div>
     </Box>
   );
 }

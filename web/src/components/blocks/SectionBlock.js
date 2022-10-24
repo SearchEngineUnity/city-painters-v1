@@ -36,6 +36,12 @@ function SectionBlock({
         subheadingColor={subheadingColor}
         subtitleColor={subtitleColor}
       />
+      {sectionText.length > 0 &&
+      !hasSectionHeading &&
+      !hasSectionSubheading &&
+      (!!heading || !!subheading || !!subtitle) ? (
+        <Box mt="16px" />
+      ) : null}
       <Box textAlign={textAlignment}>
         <SectionTextBlock blocks={sectionText} />
       </Box>

@@ -126,7 +126,14 @@ function PaginatedListingSection({
   });
 
   return (
-    <Box id={idTag} component="section" color={foregroundColor} className={classes.section}>
+    <Box
+      id={idTag}
+      component="section"
+      color={foregroundColor}
+      className={classes.section}
+      mb="10px"
+      mt="24px"
+    >
       <Container maxWidth="lg" className={classes.column}>
         <StructuredSectionHeader
           heading={heading}
@@ -137,7 +144,8 @@ function PaginatedListingSection({
           subtitleColor={subtitleColor}
           align={headerAlignment}
         />
-        <Grid container spacing={6}>
+        <Box mt={{ xs: 2, sm: 4 }} />
+        <Grid container spacing={4}>
           {listingItems.map((item) => (
             <Grid item key={item._key} {...col}>
               <TileImageLeft {...item} />

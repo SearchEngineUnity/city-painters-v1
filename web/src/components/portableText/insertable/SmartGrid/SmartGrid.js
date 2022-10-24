@@ -31,7 +31,7 @@ function SmartGrid({ layout, tiles }) {
   const col = colCalculate(layout);
 
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={4}>
       {tiles &&
         tiles.map((tile) => {
           const { _key, _type } = tile;

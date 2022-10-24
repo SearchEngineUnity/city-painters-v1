@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Box } from '@material-ui/core';
 import Tile1 from '../tiles/TileImageRecSqr';
 import Tile2 from '../tiles/TileImageCircle';
 import Tile3 from '../tiles/TileImageTitleBorder';
@@ -58,7 +58,13 @@ function GridFlex({
         subheadingColor={subheadingColor}
         subtitleColor={subtitleColor}
       />
-      <Grid container spacing={3}>
+      {tiles.length > 0 &&
+      !hasSectionHeading &&
+      !hasSectionSubheading &&
+      (!!heading || !!subheading || !!subtitle) ? (
+        <Box mt="16px" />
+      ) : null}
+      <Grid container spacing={4}>
         {tiles.map((tile) => {
           const tileSelector = (key) => {
             switch (key) {

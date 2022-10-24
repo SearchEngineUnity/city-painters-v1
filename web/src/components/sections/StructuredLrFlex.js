@@ -84,20 +84,32 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: (props) => !props.bleed && props.bgImage && `url(${props.bgImage})`,
     backgroundPosition: 'center center',
     backgroundRepeat: (props) => (props.repeat ? 'repeat' : 'no-repeat'),
+    width: '100%',
+    maxWidth: '1200px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     padding: (props) => props.desktopPadding || theme.customSpacing.sectionInner.padding.desktop,
     [theme.breakpoints.down('lg')]: {
       padding: (props) =>
         props.desktopTabletPadding || theme.customSpacing.sectionInner.padding.desktopTablet,
     },
     [theme.breakpoints.down('md')]: {
+      maxWidth: '1000px',
       padding: (props) => props.tabletPadding || theme.customSpacing.sectionInner.padding.tablet,
     },
     [theme.breakpoints.down('sm')]: {
+      maxWidth: '780px',
       padding: (props) =>
         props.tabletMobilePadding || theme.customSpacing.sectionInner.padding.tabletMobile,
     },
     [theme.breakpoints.down('xs')]: {
       padding: (props) => props.mobilePadding || theme.customSpacing.sectionInner.padding.mobile,
+    },
+  },
+  block: {
+    marginTop: '13px',
+    '&:first-child': {
+      marginTop: '0px',
     },
   },
 }));
@@ -201,8 +213,15 @@ function StructuredLrFlex({
   });
 
   return (
-    <Box id={idTag} component="section" color={foregroundColor} className={classes.section}>
-      <Container maxWidth="lg" className={classes.column}>
+    <Box
+      id={idTag}
+      component="section"
+      color={foregroundColor}
+      className={classes.section}
+      mb="30px"
+      mt="36px"
+    >
+      <div className={classes.column}>
         <StructuredSectionHeader
           heading={heading}
           subheading={subheading}
@@ -212,11 +231,12 @@ function StructuredLrFlex({
           subtitleColor={subtitleColor}
           align={headerAlignment}
         />
+        {(!!heading || !!subheading) && blocks.length > 0 ? <Box mt="16px" /> : null}
         <Grid
           container
           justifyContent="center"
           alignItems={blockAlignment}
-          spacing={6}
+          spacing={4}
           className={classes.mobileGrid}
         >
           {blocks.map((block, index) => {
@@ -316,7 +336,7 @@ function StructuredLrFlex({
                   index === 1 && reverseOrder ? classes.blockTwoReverse : null
                 }`}
               >
-                {blockSelector(_type)}
+                <div className={classes.block}>{blockSelector(_type)}</div>
               </Grid>
             );
           })}
@@ -326,7 +346,7 @@ function StructuredLrFlex({
           footerColor={footerColor}
           align={footerAlignment}
         />
-      </Container>
+      </div>
     </Box>
   );
 }

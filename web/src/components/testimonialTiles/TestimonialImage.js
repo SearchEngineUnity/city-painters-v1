@@ -7,7 +7,7 @@ import sanityConfig from '../../../sanityConfig';
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    borderLeft: `4px solid ${theme.palette.primary.main}`,
+    borderLeft: `4px solid #8BC44A`,
     height: '100%',
   },
   bold: {
@@ -49,7 +49,7 @@ function TestimonialImage({ image, alt, name, text, role, company }) {
   return (
     <Card elevation={0} classes={{ root: classes.card }} square>
       <CardContent className={classes.cardContent}>
-        <Grid container spacing={2}>
+        <Grid container spacing={4}>
           <Grid item xs={12} sm>
             <Typography variant="body1" className={`${classes.italic} ${classes.space}`}>
               {text}
