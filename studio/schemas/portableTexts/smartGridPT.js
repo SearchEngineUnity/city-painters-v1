@@ -1,10 +1,12 @@
 import { FaExternalLinkAlt, FaLink } from 'react-icons/fa';
 import { GiLinkedRings } from 'react-icons/gi';
+import { MdLink } from 'react-icons/md';
 import { TbFileDollar } from 'react-icons/tb';
 import AffiliateLinkRenderer from '../components/previews/AffiliateLinkRenderer';
 import ExternalLinkRenderer from '../components/previews/ExternalLinkRenderer';
 import InternalLocalRenderer from '../components/previews/InternalLocalRenderer';
 import InternalGlobalRenderer from '../components/previews/InternalGlobalRenderer';
+import JumpLinkRenderer from '../components/previews/JumpLinkRenderer';
 
 export default {
   title: 'Block Content',
@@ -21,6 +23,11 @@ export default {
         { title: 'Quote', value: 'blockquote' },
       ],
       marks: {
+        decorators: [
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
+          { title: 'Underline', value: 'underline' },
+        ],
         annotations: [
           {
             name: 'internalLocal',
@@ -143,6 +150,24 @@ export default {
               },
             ],
           },
+          {
+            name: 'jumpLink',
+            type: 'object',
+            title: 'Page Jump Link',
+            blockEditor: {
+              icon: MdLink,
+              render: JumpLinkRenderer,
+            },
+            fields: [
+              {
+                name: 'hashId',
+                title: 'Hash ID',
+                type: 'string',
+                description:
+                  'Please enter the ID you would like to jump to. Do not include the # symbol.',
+              },
+            ],
+          },
         ],
       },
     },
@@ -150,9 +175,9 @@ export default {
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
     { type: 'illustration' },
-    { type: 'smartUnorderedList' },
-    { type: 'videoEmbed' },
-    { type: 'btnBlockMui' },
     { type: 'clickableImage' },
+    { type: 'btnBlockMui' },
+    { type: 'videoEmbed' },
+    { type: 'smartUnorderedList' },
   ],
 };

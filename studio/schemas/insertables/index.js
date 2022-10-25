@@ -6,15 +6,7 @@ export {
   productCardFlexSegment,
 } from './productCard';
 export { productCardGridPtTile, smartGrid, smartGridPtTile } from './smartGrid';
-export {
-  rowPlus,
-  smartTable,
-  tablePtCell,
-  tableBlockContent,
-  tablePlus,
-  emptyCell,
-  splitCell,
-} from './smartTable';
+export { rowPlus, smartTable, tablePtCell, tablePlus, emptyCell, splitCell } from './smartTable';
 export { default as basicTable } from './basicTable';
 export { default as highlightBox } from './highlightBox';
 export { default as illustration } from './illustration';

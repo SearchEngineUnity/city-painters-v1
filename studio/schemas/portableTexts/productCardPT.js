@@ -21,6 +21,11 @@ export default {
         { title: 'Quote', value: 'blockquote' },
       ],
       marks: {
+        decorators: [
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
+          { title: 'Underline', value: 'underline' },
+        ],
         annotations: [
           {
             name: 'internalLocal',
@@ -150,10 +155,10 @@ export default {
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
     { type: 'illustration' },
-    { type: 'smartUnorderedList' },
-    { type: 'videoEmbed' },
-    { type: 'btnBlockMui' },
     { type: 'clickableImage' },
+    { type: 'btnBlockMui' },
+    { type: 'videoEmbed' },
     { type: 'smartGrid' },
+    { type: 'smartUnorderedList' },
   ],
 };

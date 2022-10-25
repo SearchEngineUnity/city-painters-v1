@@ -12,7 +12,7 @@ export default {
   of: [
     {
       type: 'block',
-      styles: [],
+      styles: [], // if left empty this will be normal text as default.
       lists: [],
       marks: {
         decorators: [],

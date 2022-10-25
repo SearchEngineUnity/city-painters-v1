@@ -25,43 +25,12 @@ export default {
         { title: 'Quote', value: 'blockquote' },
       ],
       marks: {
+        decorators: [
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
+          { title: 'Underline', value: 'underline' },
+        ],
         annotations: [
-          {
-            title: 'Hash ID',
-            name: 'hashId',
-            type: 'object',
-            blockEditor: {
-              icon: FaHashtag,
-              render: HashIdRenderer,
-            },
-            fields: [
-              {
-                title: 'ID',
-                name: 'idTag',
-                type: 'string',
-                description:
-                  'Add ID to the selected string. Please only use alphanumeric characters and hypen.',
-              },
-            ],
-          },
-          {
-            name: 'jumpLink',
-            type: 'object',
-            title: 'Page Jump Link',
-            blockEditor: {
-              icon: MdLink,
-              render: JumpLinkRenderer,
-            },
-            fields: [
-              {
-                name: 'hashId',
-                title: 'Hash ID',
-                type: 'string',
-                description:
-                  'Please enter the ID you would like to jump to. Do not include the # symbol.',
-              },
-            ],
-          },
           {
             name: 'internalLocal',
             type: 'object',
@@ -183,6 +152,42 @@ export default {
               },
             ],
           },
+          {
+            title: 'Hash ID',
+            name: 'hashId',
+            type: 'object',
+            blockEditor: {
+              icon: FaHashtag,
+              render: HashIdRenderer,
+            },
+            fields: [
+              {
+                title: 'ID',
+                name: 'idTag',
+                type: 'string',
+                description:
+                  'Add ID to the selected string. Please only use alphanumeric characters and hypen.',
+              },
+            ],
+          },
+          {
+            name: 'jumpLink',
+            type: 'object',
+            title: 'Page Jump Link',
+            blockEditor: {
+              icon: MdLink,
+              render: JumpLinkRenderer,
+            },
+            fields: [
+              {
+                name: 'hashId',
+                title: 'Hash ID',
+                type: 'string',
+                description:
+                  'Please enter the ID you would like to jump to. Do not include the # symbol.',
+              },
+            ],
+          },
           // {
           //   title: 'Inline Image',
           //   name: 'inlineImage',
@@ -215,15 +220,15 @@ export default {
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
     { type: 'illustration' },
-    { type: 'smartOrderedList' },
-    { type: 'smartUnorderedList' },
-    { type: 'basicTable' },
-    { type: 'smartTable' },
+    { type: 'clickableImage' },
+    { type: 'btnBlockMui' },
     { type: 'highlightBox' },
     { type: 'videoEmbed' },
-    { type: 'btnBlockMui' },
-    { type: 'clickableImage' },
-    { type: 'productCard' },
+    { type: 'basicTable' },
+    { type: 'smartTable' },
     { type: 'smartGrid' },
+    { type: 'smartOrderedList' },
+    { type: 'smartUnorderedList' },
+    { type: 'productCard' },
   ],
 };

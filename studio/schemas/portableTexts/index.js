@@ -11,5 +11,5 @@ export { default as sectionBlockPT } from './sectionBlockPT';
 export { default as sectionSubtitleFooterPT } from './sectionSubtitleFooterPT';
 export { default as smartGridProductCardPT } from './smartGridProductCardPT';
 export { default as smartGridPT } from './smartGridPT';
-export { default as testPT } from './testPT'; // new PT to test paste handling
+export { default as smartTablePT } from './smartTablePT';
 export { default as unorderedListPT } from './unorderedListPT';
