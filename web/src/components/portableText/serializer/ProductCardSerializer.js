@@ -2,11 +2,7 @@ import BaseBlockContent from '@sanity/block-content-to-react';
 import React from 'react';
 import { Typography, Box } from '@material-ui/core';
 import VideoEmbed from '../insertable/VideoEmbed';
-import BasicTable from '../insertable/BasicTable';
 import Illustration from '../insertable/Illustration';
-import HighlightBox from '../insertable/highlightBox/HighlightBox';
-import SmartTable from '../insertable/SmartTable';
-import JumpLink from '../../link/JumpLink';
 import AffiliateLink from '../../link/LinkAffiliate';
 import ExternalLink from '../../link/LinkExternal';
 import InternalGlobal from '../../link/LinkInternalGlobal';
@@ -16,7 +12,6 @@ import ButtonExternal from '../../buttons/ButtonExternal';
 import ButtonInternalGlobal from '../../buttons/ButtonInternalGlobal';
 import ButtonInternalLocal from '../../buttons/ButtonInternalLocal';
 import ButtonJumpLink from '../../buttons/ButtonJumpLink';
-import SmartOrderedList from '../insertable/SmartOrderedList';
 import SmartUnorderedList from '../insertable/SmartUnorderedList';
 import SmartGrid from '../insertable/SmartGrid/SmartGrid';
 import ClickableImage from '../insertable/ClickableImage';
@@ -71,30 +66,6 @@ const serializers = {
         </InsertableWrapper>
       );
     },
-    basicTable({ node }) {
-      return (
-        <InsertableWrapper>
-          <BasicTable basicTable={node} />
-        </InsertableWrapper>
-      );
-    },
-    highlightBox({ node }) {
-      return (
-        <InsertableWrapper>
-          <HighlightBox box={node} />
-        </InsertableWrapper>
-      );
-    },
-    smartTable({ node }) {
-      return (
-        <InsertableWrapper>
-          <SmartTable smartTable={node} />
-        </InsertableWrapper>
-      );
-    },
-    instagram() {
-      return <p>Work in progress</p>;
-    },
     videoEmbed({ node }) {
       return (
         <InsertableWrapper>
@@ -138,9 +109,6 @@ const serializers = {
           return <p>under development</p>;
       }
     },
-    smartOrderedList({ node }) {
-      return <SmartOrderedList {...node} />;
-    },
     smartUnorderedList({ node }) {
       return <SmartUnorderedList {...node} />;
     },
@@ -183,14 +151,6 @@ const serializers = {
         <AffiliateLink href={href} className="pt-link">
           {children}
         </AffiliateLink>
-      );
-    },
-    jumpLink: ({ mark, children }) => {
-      const { hashId } = mark;
-      return (
-        <JumpLink hash={hashId} className="pt-link">
-          {children}
-        </JumpLink>
       );
     },
   },

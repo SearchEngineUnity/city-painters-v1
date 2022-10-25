@@ -7,7 +7,10 @@ import BasicTable from '../insertable/BasicTable';
 import Illustration from '../insertable/Illustration';
 import HighlightBox from '../insertable/highlightBox/HighlightBox';
 import SmartTable from '../insertable/SmartTable';
+import SmartGrid from '../insertable/SmartGrid/SmartGrid';
 import SmartUnorderedList from '../insertable/StructuredPageSmartUnorderedList';
+import SmartOrderedList from '../insertable/SmartOrderedList';
+import ProductCard from '../insertable/productCard/ProductCard';
 import AffiliateLink from '../../link/LinkAffiliate';
 import JumpLink from '../../link/JumpLink';
 import ExternalLink from '../../link/LinkExternal';
@@ -20,6 +23,7 @@ import ButtonInternalLocal from '../../buttons/ButtonInternalLocal';
 import ButtonJumpLink from '../../buttons/ButtonJumpLink';
 import ClickableImage from '../insertable/ClickableImage';
 import InsertableStructuredPageWrapper from '../insertable/InsertableStructuredPageWrapper';
+import InsertableBtnWrapper from '../insertable/InsertableBtnWrapper';
 import { mapMuiBtnToProps } from '../../../lib/mapToProps';
 
 const StyledTypography = styled(Typography)`
@@ -121,9 +125,6 @@ const serializers = {
         </InsertableStructuredPageWrapper>
       );
     },
-    smartUnorderedList({ node }) {
-      return <SmartUnorderedList {...node} />;
-    },
     videoEmbed({ node }) {
       return (
         <InsertableStructuredPageWrapper>
@@ -135,42 +136,62 @@ const serializers = {
       switch (node.link[0]._type) {
         case 'jumpLink':
           return (
-            <InsertableStructuredPageWrapper>
+            <InsertableBtnWrapper>
               <ButtonJumpLink {...mapMuiBtnToProps(node)} />
-            </InsertableStructuredPageWrapper>
+            </InsertableBtnWrapper>
           );
         case 'internalLocal':
           return (
-            <InsertableStructuredPageWrapper>
+            <InsertableBtnWrapper>
               <ButtonInternalLocal {...mapMuiBtnToProps(node)} />
-            </InsertableStructuredPageWrapper>
+            </InsertableBtnWrapper>
           );
         case 'internalGlobal':
           return (
-            <InsertableStructuredPageWrapper>
+            <InsertableBtnWrapper>
               <ButtonInternalGlobal {...mapMuiBtnToProps(node)} />
-            </InsertableStructuredPageWrapper>
+            </InsertableBtnWrapper>
           );
         case 'externalLink':
           return (
-            <InsertableStructuredPageWrapper>
+            <InsertableBtnWrapper>
               <ButtonExternal {...mapMuiBtnToProps(node)} />
-            </InsertableStructuredPageWrapper>
+            </InsertableBtnWrapper>
           );
         case 'affiliateLink':
           return (
-            <InsertableStructuredPageWrapper>
+            <InsertableBtnWrapper>
               <ButtonAffiliate {...mapMuiBtnToProps(node)} />
-            </InsertableStructuredPageWrapper>
+            </InsertableBtnWrapper>
           );
         default:
           return <p>under development</p>;
       }
     },
+    smartOrderedList({ node }) {
+      return <SmartOrderedList {...node} />; // check this later may need wrapper
+    },
+    smartUnorderedList({ node }) {
+      return <SmartUnorderedList {...node} />; // check this later may need wrapper
+    },
+    productCard({ node }) {
+      return (
+        <InsertableStructuredPageWrapper>
+          <ProductCard {...node} />
+        </InsertableStructuredPageWrapper>
+      );
+    },
     clickableImage({ node }) {
       return (
         <InsertableStructuredPageWrapper>
           <ClickableImage {...node} />
+        </InsertableStructuredPageWrapper>
+      );
+    },
+    smartGrid({ node }) {
+      return (
+        <InsertableStructuredPageWrapper>
+          <SmartGrid {...node} />;
         </InsertableStructuredPageWrapper>
       );
     },

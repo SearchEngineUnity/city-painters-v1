@@ -1,3 +1,4 @@
+// THIS FILE SHOULD NOT GO INTO V1! It's CP specific!
 import BaseBlockContent from '@sanity/block-content-to-react';
 import React from 'react';
 import { Typography, Box } from '@material-ui/core';

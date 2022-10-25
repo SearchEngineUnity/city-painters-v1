@@ -1,29 +1,70 @@
-import { FaExternalLinkAlt, FaLink } from 'react-icons/fa';
+// new PT to test paste handling
+
+import { FaExternalLinkAlt, FaLink, FaHashtag } from 'react-icons/fa';
 import { GiLinkedRings } from 'react-icons/gi';
-import { TbFileDollar } from 'react-icons/tb';
-import AffiliateLinkRenderer from '../components/previews/AffiliateLinkRenderer';
+import { MdLink } from 'react-icons/md';
+// import InlineImageRenderer from '../components/previews/InlineImageRenderer';
+import HashIdRenderer from '../components/previews/HashIdRenderer';
 import ExternalLinkRenderer from '../components/previews/ExternalLinkRenderer';
 import InternalLocalRenderer from '../components/previews/InternalLocalRenderer';
 import InternalGlobalRenderer from '../components/previews/InternalGlobalRenderer';
+import JumpLinkRenderer from '../components/previews/JumpLinkRenderer';
+
+import CustomEditor from '../components/customEditor';
 
 export default {
   title: 'Block Content',
-  name: 'productCardPT',
+  name: 'testPT',
   type: 'array',
+  inputComponent: CustomEditor,
   of: [
     {
       type: 'block',
       styles: [
         { title: 'Normal', value: 'normal' },
+        { title: 'H2', value: 'h2' },
+        { title: 'H3', value: 'h3' },
+        { title: 'H4', value: 'h4' },
         { title: 'Quote', value: 'blockquote' },
       ],
       marks: {
-        decorators: [
-          { title: 'Strong', value: 'strong' },
-          { title: 'Emphasis', value: 'em' },
-          { title: 'Underline', value: 'underline' },
-        ],
         annotations: [
+          {
+            title: 'Hash ID',
+            name: 'hashId',
+            type: 'object',
+            blockEditor: {
+              icon: FaHashtag,
+              render: HashIdRenderer,
+            },
+            fields: [
+              {
+                title: 'ID',
+                name: 'idTag',
+                type: 'string',
+                description:
+                  'Add ID to the selected string. Please only use alphanumeric characters and hypen.',
+              },
+            ],
+          },
+          {
+            name: 'jumpLink',
+            type: 'object',
+            title: 'Page Jump Link',
+            blockEditor: {
+              icon: MdLink,
+              render: JumpLinkRenderer,
+            },
+            fields: [
+              {
+                name: 'hashId',
+                title: 'Hash ID',
+                type: 'string',
+                description:
+                  'Please enter the ID you would like to jump to. Do not include the # symbol.',
+              },
+            ],
+          },
           {
             name: 'internalLocal',
             type: 'object',
@@ -129,38 +170,8 @@ export default {
               },
             ],
           },
-          {
-            title: 'Affiliate Link',
-            name: 'affiliateLink',
-            type: 'object',
-            blockEditor: {
-              icon: TbFileDollar,
-              render: AffiliateLinkRenderer,
-            },
-            fields: [
-              {
-                title: 'URL',
-                name: 'href',
-                type: 'url',
-                validation: (Rule) =>
-                  Rule.uri({
-                    allowRelative: false,
-                    scheme: ['https', 'http', 'mailto', 'tel'],
-                  }),
-              },
-            ],
-          },
         ],
       },
     },
-    // You can add additional types here. Note that you can't use
-    // primitive types such as 'string' and 'number' in the same array
-    // as a block type.
-    { type: 'illustration' },
-    { type: 'clickableImage' },
-    { type: 'btnBlockMui' },
-    { type: 'videoEmbed' },
-    { type: 'smartGrid' },
-    { type: 'smartUnorderedList' },
   ],
 };
