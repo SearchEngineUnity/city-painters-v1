@@ -1,5 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import {
+  createTheme,
+  ThemeProvider,
+  useTheme,
+  responsiveFontSizes,
+} from '@material-ui/core/styles';
 import Layout from '../containers/layout';
 import Seo from '../components/Seo';
 import LrHero from '../components/sections/LrFlexHero';
@@ -1723,31 +1729,48 @@ export const query = graphql`
 const StructuredPage = ({ data, location }) => {
   const type = 'page';
 
+  const prevTheme = useTheme();
+
+  const theme = createTheme({
+    ...prevTheme,
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 768,
+        md: 992,
+        lg: 1200,
+        xl: 1201,
+      },
+    },
+  });
+
   return (
-    <Layout location={location}>
-      <Seo {...mapSeoToProps(data.page, type)} />
-      <main>
-        {data.page.sections.map((section) => {
-          const { _type } = section;
-          switch (_type) {
-            case 'lrHero':
-              return <LrHero key={section._key} {...mapLrHeroToProps(section)} />;
+    <ThemeProvider theme={theme}>
+      <Layout location={location}>
+        <Seo {...mapSeoToProps(data.page, type)} />
+        <main>
+          {data.page.sections.map((section) => {
+            const { _type } = section;
+            switch (_type) {
+              case 'lrHero':
+                return <LrHero key={section._key} {...mapLrHeroToProps(section)} />;
 
-            case 'lrFlex':
-              return <LrFlex key={section._key} {...mapLrFlexToProps(section)} />;
+              case 'lrFlex':
+                return <LrFlex key={section._key} {...mapLrFlexToProps(section)} />;
 
-            case 'stackFlex':
-              return <StackFlex key={section._key} {...mapStackSectionToProps(section)} />;
+              case 'stackFlex':
+                return <StackFlex key={section._key} {...mapStackSectionToProps(section)} />;
 
-            case 'stackHero':
-              return <StackHero key={section._key} {...mapStackSectionToProps(section)} />;
+              case 'stackHero':
+                return <StackHero key={section._key} {...mapStackSectionToProps(section)} />;
 
-            default:
-              return <div>Still under development</div>;
-          }
-        })}
-      </main>
-    </Layout>
+              default:
+                return <div>Still under development</div>;
+            }
+          })}
+        </main>
+      </Layout>
+    </ThemeProvider>
   );
 };
 

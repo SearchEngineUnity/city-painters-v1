@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Box } from '@material-ui/core';
 import StructuredSectionHeader from '../sections/StructuredSectionHeader';
 import StructuredSectionFooter from '../sections/StructuredSectionFooter';
 import Tile1 from '../testimonialTiles/TestimonialImage';
@@ -41,6 +41,12 @@ function TestimonialGrid({
 
   const col = colCalculate(layout);
 
+  console.log(
+    testimonialList.length > 0 &&
+      !hasSectionHeading &&
+      !hasSectionSubheading &&
+      (!!heading || !!subheading || !!subtitle),
+  );
   return (
     <>
       <StructuredSectionHeader
@@ -55,7 +61,13 @@ function TestimonialGrid({
         subheadingColor={subheadingColor}
         subtitleColor={subtitleColor}
       />
-      <Grid container spacing={3}>
+      {testimonialList.length > 0 &&
+      !hasSectionHeading &&
+      !hasSectionSubheading &&
+      (!!heading || !!subheading || !!subtitle) ? (
+        <Box mt="16px" />
+      ) : null}
+      <Grid container spacing={4}>
         {testimonialList.map((testimonial) => {
           const tileSelector = (key) => {
             switch (key) {

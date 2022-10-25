@@ -29,7 +29,7 @@ function TileImageRecSqr({ image, alt, url, title, text, date }) {
     <Card elevation={8} classes={{ root: classes.card }} square>
       {/* the link probably cannot be spread in the same way as from regular tiles */}
       <CardActionArea to={`/${url}`}>
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           <Grid item md={4} sm={3} xs={12}>
             <GatsbyImage
               image={imageData}

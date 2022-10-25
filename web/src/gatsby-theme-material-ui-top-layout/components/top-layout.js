@@ -12,7 +12,9 @@ const ThemeProvider = ({ children, data }) => {
     sanityCustomSpacing: spacing,
   } = data;
 
-  let theme = createTheme({
+  console.log(typography.h1.fontSize);
+
+  const theme = createTheme({
     overrides: {
       // Style sheet name ⚛️
       MuiIcon: {
@@ -25,6 +27,14 @@ const ThemeProvider = ({ children, data }) => {
       MuiTableCell: {
         head: {
           fontWeight: 600,
+        },
+      },
+      MuiTypography: {
+        gutterBottom: {
+          marginBottom: '0.8125em',
+          '&:last-child': {
+            marginBottom: '0px',
+          },
         },
       },
     },
@@ -226,8 +236,6 @@ const ThemeProvider = ({ children, data }) => {
       },
     },
   });
-
-  theme = responsiveFontSizes(theme);
 
   return <ThemeTopLayout theme={theme}>{children}</ThemeTopLayout>;
 };
