@@ -3,7 +3,6 @@ import React from 'react';
 import { Typography, Box } from '@material-ui/core';
 import styled from 'styled-components';
 import Illustration from '../insertable/Illustration';
-import SmartUnorderedList from '../insertable/SmartUnorderedList';
 import JumpLink from '../../link/JumpLink';
 import ExternalLink from '../../link/LinkExternal';
 import AffiliateLink from '../../link/LinkAffiliate';
@@ -112,9 +111,6 @@ const serializers = {
           <Illustration illustration={node} />
         </InsertableStructuredPageWrapper>
       );
-    },
-    smartUnorderedList({ node }) {
-      return <SmartUnorderedList {...node} />;
     },
     btnBlockMui({ node }) {
       switch (node.link[0]._type) {

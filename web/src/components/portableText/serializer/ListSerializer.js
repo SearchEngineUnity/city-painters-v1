@@ -1,6 +1,6 @@
 import BaseBlockContent from '@sanity/block-content-to-react';
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, Box } from '@material-ui/core';
 import styled from 'styled-components';
 import VideoEmbed from '../insertable/VideoEmbed';
 import BasicTable from '../insertable/BasicTable';
@@ -100,6 +100,23 @@ const serializers = {
             <br />
           );
 
+        case 'blockquote':
+          return props.children[0] ? (
+            <Box
+              component="blockquote"
+              fontSize="h3.fontSize"
+              fontWeight={100}
+              borderColor="primary.main"
+              pl={4}
+              py={1}
+              borderLeft={4}
+            >
+              &#8220; {props.children} &#8221;
+            </Box>
+          ) : (
+            <br />
+          );
+
         default:
           return props.children[0] ? (
             <Typography gutterBottom variant="body1">
@@ -137,9 +154,6 @@ const serializers = {
           <SmartTable smartTable={node} />
         </InsertableWrapper>
       );
-    },
-    instagram() {
-      return <p>Work in progress</p>;
     },
     videoEmbed({ node }) {
       return (
@@ -238,6 +252,8 @@ const serializers = {
       );
     },
   },
+  list: ({ children }) => null,
+  listItem: ({ children }) => null,
 };
 
 const BlockContent = ({ blocks }) => <BaseBlockContent blocks={blocks} serializers={serializers} />;

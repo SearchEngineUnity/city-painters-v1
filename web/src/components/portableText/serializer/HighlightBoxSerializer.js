@@ -11,10 +11,12 @@ import ButtonExternal from '../../buttons/ButtonExternal';
 import ButtonInternalGlobal from '../../buttons/ButtonInternalGlobal';
 import ButtonInternalLocal from '../../buttons/ButtonInternalLocal';
 import ButtonJumpLink from '../../buttons/ButtonJumpLink';
+import Illustration from '../insertable/Illustration';
 import ClickableImage from '../insertable/ClickableImage';
 import { mapMuiBtnToProps } from '../../../lib/mapToProps';
 import InsertableWrapper from '../insertable/InsertableWrapper';
 import InsertableBtnWrapper from '../insertable/InsertableBtnWrapper';
+import InsertableStructuredPageWrapper from '../insertable/InsertableStructuredPageWrapper';
 
 const serializers = {
   // This is to render the whole block of content without the <div> tag as wrapping container (https://github.com/sanity-io/block-content-to-react)
@@ -28,6 +30,13 @@ const serializers = {
         </Typography>
       ) : (
         <br />
+      );
+    },
+    illustration({ node }) {
+      return (
+        <InsertableStructuredPageWrapper>
+          <Illustration illustration={node} />
+        </InsertableStructuredPageWrapper>
       );
     },
     btnBlockMui({ node }) {

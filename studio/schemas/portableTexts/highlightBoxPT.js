@@ -16,25 +16,12 @@ export default {
       type: 'block',
       styles: [],
       marks: {
+        decorators: [
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
+          { title: 'Underline', value: 'underline' },
+        ],
         annotations: [
-          {
-            name: 'jumpLink',
-            type: 'object',
-            title: 'Page Jump Link',
-            blockEditor: {
-              icon: MdLink,
-              render: JumpLinkRenderer,
-            },
-            fields: [
-              {
-                name: 'hashId',
-                title: 'Hash ID',
-                type: 'string',
-                description:
-                  'Please enter the ID you would like to jump to. Do not include the # symbol.',
-              },
-            ],
-          },
           {
             name: 'internalLocal',
             type: 'object',
@@ -161,10 +148,29 @@ export default {
               },
             ],
           },
+          {
+            name: 'jumpLink',
+            type: 'object',
+            title: 'Page Jump Link',
+            blockEditor: {
+              icon: MdLink,
+              render: JumpLinkRenderer,
+            },
+            fields: [
+              {
+                name: 'hashId',
+                title: 'Hash ID',
+                type: 'string',
+                description:
+                  'Please enter the ID you would like to jump to. Do not include the # symbol.',
+              },
+            ],
+          },
         ],
       },
     },
-    { type: 'btnBlockMui' },
+    { type: 'illustration' },
     { type: 'clickableImage' },
+    { type: 'btnBlockMui' },
   ],
 };

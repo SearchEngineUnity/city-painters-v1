@@ -186,9 +186,6 @@ const serializers = {
         </InsertableWrapper>
       );
     },
-    instagram() {
-      return <p>Work in progress</p>;
-    },
     videoEmbed({ node }) {
       return (
         <InsertableWrapper>

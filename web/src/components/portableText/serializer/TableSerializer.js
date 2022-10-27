@@ -8,7 +8,14 @@ import InternalGlobal from '../../link/LinkInternalGlobal';
 import InternalLocal from '../../link/LinkInternalLocal';
 import AffiliateLink from '../../link/LinkAffiliate';
 import Illustration from '../insertable/Illustration';
+import ClickableImage from '../insertable/ClickableImage';
+import ButtonJumpLink from '../../buttons/ButtonJumpLink';
+import ButtonAffiliate from '../../buttons/ButtonAffiliate';
+import ButtonExternal from '../../buttons/ButtonExternal';
+import ButtonInternalGlobal from '../../buttons/ButtonInternalGlobal';
+import ButtonInternalLocal from '../../buttons/ButtonInternalLocal';
 import InsertableBtnWrapper from '../insertable/InsertableBtnWrapper';
+import { mapMuiBtnToProps } from '../../../lib/mapToProps';
 
 const NoIndentUl = styled.ul`
   list-style-type: disc;
@@ -37,8 +44,13 @@ const serializers = {
   container: (props) => <>{props.children}</>,
   types: {
     block(props) {
-      const { children } = props;
-      return children[0] ? <div>{children}</div> : <br />;
+      return props.children[0] ? (
+        <Typography gutterBottom variant="body1">
+          {props.children}
+        </Typography>
+      ) : (
+        <br />
+      );
     },
     illustration({ node }) {
       return (
@@ -47,9 +59,47 @@ const serializers = {
         </InsertableBtnWrapper>
       );
     },
+    clickableImage({ node }) {
+      return <ClickableImage {...node} />;
+    },
+    btnBlockMui({ node }) {
+      switch (node.link[0]._type) {
+        case 'jumpLink':
+          return (
+            <InsertableBtnWrapper>
+              <ButtonJumpLink {...mapMuiBtnToProps(node)} />
+            </InsertableBtnWrapper>
+          );
+        case 'internalLocal':
+          return (
+            <InsertableBtnWrapper>
+              <ButtonInternalLocal {...mapMuiBtnToProps(node)} />
+            </InsertableBtnWrapper>
+          );
+        case 'internalGlobal':
+          return (
+            <InsertableBtnWrapper>
+              <ButtonInternalGlobal {...mapMuiBtnToProps(node)} />
+            </InsertableBtnWrapper>
+          );
+        case 'externalLink':
+          return (
+            <InsertableBtnWrapper>
+              <ButtonExternal {...mapMuiBtnToProps(node)} />
+            </InsertableBtnWrapper>
+          );
+        case 'affiliateLink':
+          return (
+            <InsertableBtnWrapper>
+              <ButtonAffiliate {...mapMuiBtnToProps(node)} />
+            </InsertableBtnWrapper>
+          );
+        default:
+          return <p>under development</p>;
+      }
+    },
   },
   marks: {
-    hashId: ({ children }) => children,
     internalLocal: ({ mark, children }) => {
       const { slug = {} } = mark.reference;
       const { newTab, hashId, parameter } = mark;
