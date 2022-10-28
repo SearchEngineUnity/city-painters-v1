@@ -191,7 +191,7 @@ const serializers = {
     smartGrid({ node }) {
       return (
         <InsertableStructuredPageWrapper>
-          <SmartGrid {...node} />;
+          <SmartGrid {...node} />
         </InsertableStructuredPageWrapper>
       );
     },

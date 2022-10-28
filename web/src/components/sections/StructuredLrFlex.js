@@ -41,15 +41,6 @@ const useStyles = makeStyles((theme) => ({
       order: 1,
     },
   },
-  mobileGrid: {
-    [theme.breakpoints.down('xs')]: {
-      margin: -8,
-      width: `calc(100% + 16px)`,
-      '& > .MuiGrid-item': {
-        padding: 8,
-      },
-    },
-  },
   section: {
     backgroundColor: (props) => props.bleed && props.backgroundColor,
     backgroundImage: (props) => props.bleed && props.bgImage && `url(${props.bgImage})`,
@@ -232,13 +223,7 @@ function StructuredLrFlex({
           align={headerAlignment}
         />
         {(!!heading || !!subheading) && blocks.length > 0 ? <Box mt="16px" /> : null}
-        <Grid
-          container
-          justifyContent="center"
-          alignItems={blockAlignment}
-          spacing={4}
-          className={classes.mobileGrid}
-        >
+        <Grid container justifyContent="center" alignItems={blockAlignment} spacing={4}>
           {blocks.map((block, index) => {
             const { _type, _key } = block;
             const col = colCalculator(colArr[index]);

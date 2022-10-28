@@ -41,15 +41,6 @@ const useStyles = makeStyles((theme) => ({
       order: 1,
     },
   },
-  mobileGrid: {
-    [theme.breakpoints.down('sm')]: {
-      margin: -8,
-      width: `calc(100% + 16px)`,
-      '& > .MuiGrid-item': {
-        padding: 8,
-      },
-    },
-  },
   section: {
     backgroundColor: (props) => props.bleed && props.backgroundColor,
     backgroundImage: (props) => props.bleed && props.bgImage && `url(${props.bgImage})`,
@@ -324,13 +315,7 @@ function StackFlex({
             }
           };
           return (
-            <Grid
-              container
-              justifyContent="center"
-              spacing={4}
-              className={classes.mobileGrid}
-              key={_key}
-            >
+            <Grid container justifyContent="center" spacing={4} key={_key}>
               <Grid item {...col}>
                 <div className={classes.block}>{blockSelector(_type)}</div>
               </Grid>
