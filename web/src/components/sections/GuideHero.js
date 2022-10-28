@@ -80,14 +80,14 @@ function GuideHero({ h1, subtitle, date, image, includeDisclaimer }) {
               {includeDisclaimer && <Subtitle blocks={disclaimerText} />}
             </Grid>
             <Grid item md={6} xs={12}>
-              <div justify={heroAlignment.heroImgAlignment}>
+              <Box display="flex" justifyContent={heroAlignment.heroImgAlignment}>
                 <ImgBlock
                   {...mapFluidImgBlockToProps(image)}
                   loading="eager"
                   height={400}
                   style={{ color: 'white' }}
                 />
-              </div>
+              </Box>
             </Grid>
           </Grid>
         </Container>

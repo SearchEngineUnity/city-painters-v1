@@ -16,6 +16,7 @@ export default {
         list: [
           { title: 'Top', value: 'flex-start' },
           { title: 'Center', value: 'center' },
+          { title: 'Bottom', value: 'flex-end' },
         ],
         layout: 'radio',
         direction: 'horizontal',

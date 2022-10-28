@@ -331,6 +331,8 @@ export const query = graphql`
                 _rawSubtitle(resolveReferences: { maxDepth: 10 })
               }
               headerAlignment
+              textAlignment
+              footerAlignment
             }
             ... on SanityVideoBlock {
               _key
@@ -599,6 +601,7 @@ export const query = graphql`
               }
               _rawFooter(resolveReferences: { maxDepth: 10 })
               headerAlignment
+              textAlignment
               footerAlignment
             }
             ... on SanityVideoBlock {
@@ -1221,6 +1224,7 @@ export const query = graphql`
               }
               _rawFooter(resolveReferences: { maxDepth: 10 })
               headerAlignment
+              textAlignment
               footerAlignment
             }
             ... on SanityVideoBlock {
@@ -1662,6 +1666,7 @@ export const query = graphql`
               }
               _rawFooter(resolveReferences: { maxDepth: 10 })
               headerAlignment
+              textAlignment
               footerAlignment
             }
             ... on SanityVideoBlock {

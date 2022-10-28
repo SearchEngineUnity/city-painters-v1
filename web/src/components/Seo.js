@@ -53,7 +53,7 @@ const Seo = ({
   return (
     <Helmet>
       <title>{pageTitle}</title>
-      <meta name="description" content={metaDescription} />
+      {metaDescription && <meta name="description" content={metaDescription} />}
       <meta property="og:locale" content="en_CA" />
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={metaURL} />
