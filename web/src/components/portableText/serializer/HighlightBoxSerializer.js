@@ -29,7 +29,7 @@ const serializers = {
           {children}
         </Typography>
       ) : (
-        <br style={{ marginBottom: '39px' }} />
+        <br />
       );
     },
     illustration({ node }) {
