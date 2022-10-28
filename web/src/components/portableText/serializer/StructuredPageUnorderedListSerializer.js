@@ -39,7 +39,7 @@ const serializers = {
           {props.children}
         </Box>
       ) : (
-        <br style={{ marginBottom: '39px' }} />
+        <br />
       );
     },
     illustration({ node }) {
