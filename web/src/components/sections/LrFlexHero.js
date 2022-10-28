@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Box } from '@material-ui/core';
+import { Grid, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ImgBlock from '../blocks/FluidImgBlock';
 import VideoBlock from '../blocks/VideoBlock';
@@ -39,15 +39,6 @@ const useStyles = makeStyles((theme) => ({
     order: 2,
     [theme.breakpoints.down('xs')]: {
       order: 1,
-    },
-  },
-  mobileGrid: {
-    [theme.breakpoints.down('xs')]: {
-      margin: -8,
-      width: `calc(100% + 16px)`,
-      '& > .MuiGrid-item': {
-        padding: 8,
-      },
     },
   },
   section: {
@@ -231,13 +222,7 @@ function LrFlexHero({
           align={headerAlignment}
         />
         {(!!heading || !!subheading) && blocks.length > 0 ? <Box mt="16px" /> : null}
-        <Grid
-          container
-          justifyContent="center"
-          alignItems={blockAlignment}
-          spacing={4}
-          className={classes.mobileGrid}
-        >
+        <Grid container justifyContent="center" alignItems={blockAlignment} spacing={4}>
           {blocks.map((block, index) => {
             const { _type, _key } = block;
             const col = colCalculator(colArr[index]);

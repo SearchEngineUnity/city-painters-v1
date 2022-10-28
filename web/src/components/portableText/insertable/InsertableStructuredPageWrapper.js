@@ -1,6 +1,23 @@
 import React from 'react';
-import { Box } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-const InsertableStructuredPageWrapper = ({ children }) => <Box mt="13px">{children}</Box>;
+const useStyles = makeStyles({
+  block: {
+    marginTop: '13px',
+    '&:first-child': {
+      marginTop: '0px',
+    },
+    marginBottom: '13px',
+    '&:last-child': {
+      marginBottom: '0px',
+    },
+  },
+});
+
+const InsertableStructuredPageWrapper = ({ children }) => {
+  const classes = useStyles();
+
+  return <div className={classes.block}>{children}</div>;
+};
 
 export default InsertableStructuredPageWrapper;

@@ -1,8 +1,7 @@
 // THIS FILE SHOULD NOT GO INTO V1! It's CP specific!
 import BaseBlockContent from '@sanity/block-content-to-react';
 import React from 'react';
-import { Typography, Box } from '@material-ui/core';
-import styled from 'styled-components';
+import { Box } from '@material-ui/core';
 import VideoEmbed from '../insertable/VideoEmbed';
 import BasicTable from '../insertable/BasicTable';
 import Illustration from '../insertable/Illustration';
@@ -22,10 +21,6 @@ import ClickableImage from '../insertable/ClickableImage';
 import InsertableWrapper from '../insertable/InsertableWrapper';
 import InsertableBtnWrapper from '../insertable/InsertableBtnWrapper';
 import { mapMuiBtnToProps } from '../../../lib/mapToProps';
-
-const StyledTypography = styled(Typography)`
-  margin-top: 1.35em;
-`;
 
 const serializers = {
   // This is to render the whole block of content without the <div> tag as wrapping container (https://github.com/sanity-io/block-content-to-react)

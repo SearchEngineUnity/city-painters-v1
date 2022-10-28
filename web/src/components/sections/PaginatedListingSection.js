@@ -8,15 +8,6 @@ import TileImageLeft from '../listingTile/TileSpgImageLeft';
 import Pagination from '../ListingPagination';
 
 const useStyles = makeStyles((theme) => ({
-  mobileGrid: {
-    [theme.breakpoints.down('sm')]: {
-      margin: -8,
-      width: `calc(100% + 16px)`,
-      '& > .MuiGrid-item': {
-        padding: 8,
-      },
-    },
-  },
   section: {
     backgroundColor: (props) => props.bleed && props.backgroundColor,
     backgroundImage: (props) => props.bleed && props.bgImage && `url(${props.bgImage})`,
