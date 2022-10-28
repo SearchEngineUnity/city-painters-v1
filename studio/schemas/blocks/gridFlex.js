@@ -2,7 +2,7 @@ import { FiGrid } from 'react-icons/fi';
 
 export default {
   name: 'gridFlex',
-  title: 'Grid - Flex',
+  title: 'Flex Grid',
   type: 'object',
   icon: FiGrid,
   fieldsets: [
