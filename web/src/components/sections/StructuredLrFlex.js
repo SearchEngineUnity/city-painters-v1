@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Box } from '@material-ui/core';
+import { Grid, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ImgBlock from '../blocks/FluidImgBlock';
 import VideoBlock from '../blocks/VideoBlock';
@@ -46,18 +46,19 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: (props) => props.bleed && props.bgImage && `url(${props.bgImage})`,
     backgroundPosition: 'center center',
     backgroundRepeat: (props) => (props.repeat ? 'repeat' : 'no-repeat'),
-    padding: theme.customSpacing.sectionOuter.padding.desktop,
-    [theme.breakpoints.down('lg')]: {
-      padding: theme.customSpacing.sectionOuter.padding.desktopTablet,
-    },
+    padding: (props) =>
+      props.desktopOuterPadding || theme.customSpacing.sectionOuter.padding.desktop,
     [theme.breakpoints.down('md')]: {
-      padding: theme.customSpacing.sectionOuter.padding.tablet,
+      padding: (props) =>
+        props.tabletOuterPadding || theme.customSpacing.sectionOuter.padding.tablet,
     },
     [theme.breakpoints.down('sm')]: {
-      padding: theme.customSpacing.sectionOuter.padding.tabletMobile,
+      padding: (props) =>
+        props.tabletMobileOuterPadding || theme.customSpacing.sectionOuter.padding.tabletMobile,
     },
     [theme.breakpoints.down('xs')]: {
-      padding: theme.customSpacing.sectionOuter.padding.mobile,
+      padding: (props) =>
+        props.mobileOuterPadding || theme.customSpacing.sectionOuter.padding.mobile,
     },
     '& .pt-link': {
       color: (props) => props.linkColor,
@@ -79,22 +80,19 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '1200px',
     marginLeft: 'auto',
     marginRight: 'auto',
-    padding: (props) => props.desktopPadding || theme.customSpacing.sectionInner.padding.desktop,
-    [theme.breakpoints.down('lg')]: {
-      padding: (props) =>
-        props.desktopTabletPadding || theme.customSpacing.sectionInner.padding.desktopTablet,
-    },
+    padding: (props) =>
+      props.desktopInnerPadding || theme.customSpacing.sectionInner.padding.desktop,
     [theme.breakpoints.down('md')]: {
-      maxWidth: '1000px',
-      padding: (props) => props.tabletPadding || theme.customSpacing.sectionInner.padding.tablet,
+      padding: (props) =>
+        props.tabletInnerPadding || theme.customSpacing.sectionInner.padding.tablet,
     },
     [theme.breakpoints.down('sm')]: {
-      maxWidth: '780px',
       padding: (props) =>
-        props.tabletMobilePadding || theme.customSpacing.sectionInner.padding.tabletMobile,
+        props.tabletMobileInnerPadding || theme.customSpacing.sectionInner.padding.tabletMobile,
     },
     [theme.breakpoints.down('xs')]: {
-      padding: (props) => props.mobilePadding || theme.customSpacing.sectionInner.padding.mobile,
+      padding: (props) =>
+        props.mobileInnerPadding || theme.customSpacing.sectionInner.padding.mobile,
     },
   },
   block: {
@@ -181,11 +179,14 @@ function StructuredLrFlex({
   const subtitleColor = determineColor(designSettings?.subtitle?.color) || 'inherit';
   const footerColor = determineColor(designSettings?.footer?.color) || 'inherit';
   const captionColor = determineColor(designSettings?.caption?.color) || '#757575';
-  const desktopPadding = designSettings?.innerPadding?.desktopPadding;
-  const desktopTabletPadding = designSettings?.innerPadding?.desktopTabletPadding;
-  const tabletPadding = designSettings?.innerPadding?.tabletPadding;
-  const tabletMobilePadding = designSettings?.innerPadding?.tabletMobilePadding;
-  const mobilePadding = designSettings?.innerPadding?.mobilePadding;
+  const desktopOuterPadding = designSettings?.outerPadding?.desktopPadding;
+  const tabletOuterPadding = designSettings?.outerPadding?.tabletPadding;
+  const tabletMobileOuterPadding = designSettings?.outerPadding?.tabletMobilePadding;
+  const mobileOuterPadding = designSettings?.outerPadding?.mobilePadding;
+  const desktopInnerPadding = designSettings?.innerPadding?.desktopPadding;
+  const tabletInnerPadding = designSettings?.innerPadding?.tabletPadding;
+  const tabletMobileInnerPadding = designSettings?.innerPadding?.tabletMobilePadding;
+  const mobileInnerPadding = designSettings?.innerPadding?.mobilePadding;
   const borderRadius = designSettings?.borderRadius || '0px';
 
   const classes = useStyles({
@@ -195,11 +196,14 @@ function StructuredLrFlex({
     backgroundColor,
     captionColor,
     repeat,
-    desktopPadding,
-    desktopTabletPadding,
-    tabletPadding,
-    tabletMobilePadding,
-    mobilePadding,
+    desktopOuterPadding,
+    tabletOuterPadding,
+    tabletMobileOuterPadding,
+    mobileOuterPadding,
+    desktopInnerPadding,
+    tabletInnerPadding,
+    tabletMobileInnerPadding,
+    mobileInnerPadding,
     borderRadius,
   });
 

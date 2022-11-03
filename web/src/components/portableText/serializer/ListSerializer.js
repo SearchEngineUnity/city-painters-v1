@@ -18,8 +18,8 @@ import ButtonInternalGlobal from '../../buttons/ButtonInternalGlobal';
 import ButtonInternalLocal from '../../buttons/ButtonInternalLocal';
 import ButtonJumpLink from '../../buttons/ButtonJumpLink';
 import ClickableImage from '../insertable/ClickableImage';
-import InsertableWrapper from '../insertable/InsertableWrapper';
-import InsertableBtnWrapper from '../insertable/InsertableBtnWrapper';
+import IndentFullWrapper from '../insertable/IndentFullWrapper';
+import VerticalSpacingWrapper from '../insertable/VerticalSpacingWrapper';
 import { mapMuiBtnToProps } from '../../../lib/mapToProps';
 
 const StyledTypography = styled(Typography)`
@@ -129,70 +129,80 @@ const serializers = {
     },
     illustration({ node }) {
       return (
-        <InsertableWrapper>
-          <Illustration illustration={node} />
-        </InsertableWrapper>
+        <VerticalSpacingWrapper>
+          <IndentFullWrapper>
+            <Illustration illustration={node} />
+          </IndentFullWrapper>
+        </VerticalSpacingWrapper>
       );
     },
     basicTable({ node }) {
       return (
-        <InsertableWrapper>
-          <BasicTable basicTable={node} />
-        </InsertableWrapper>
+        <VerticalSpacingWrapper>
+          <IndentFullWrapper>
+            <BasicTable basicTable={node} />
+          </IndentFullWrapper>
+        </VerticalSpacingWrapper>
       );
     },
     highlightBox({ node }) {
       return (
-        <InsertableWrapper>
-          <HighlightBox box={node} />
-        </InsertableWrapper>
+        <VerticalSpacingWrapper>
+          <IndentFullWrapper>
+            <HighlightBox box={node} />
+          </IndentFullWrapper>
+        </VerticalSpacingWrapper>
       );
     },
     smartTable({ node }) {
       return (
-        <InsertableWrapper>
-          <SmartTable smartTable={node} />
-        </InsertableWrapper>
+        <VerticalSpacingWrapper>
+          <IndentFullWrapper>
+            <SmartTable smartTable={node} />
+          </IndentFullWrapper>
+        </VerticalSpacingWrapper>
       );
     },
     videoEmbed({ node }) {
       return (
-        <InsertableWrapper>
-          <VideoEmbed url={node.url} ratio={node.ratio} />
-        </InsertableWrapper>
+        <VerticalSpacingWrapper>
+          <IndentFullWrapper>
+            <VideoEmbed url={node.url} ratio={node.ratio} />
+          </IndentFullWrapper>
+        </VerticalSpacingWrapper>
       );
     },
     btnBlockMui({ node }) {
       switch (node.link[0]._type) {
         case 'jumpLink':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonJumpLink {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         case 'internalLocal':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonInternalLocal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         case 'internalGlobal':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonInternalGlobal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         case 'externalLink':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonExternal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         case 'affiliateLink':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonAffiliate {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         default:
           return <p>under development</p>;
@@ -200,9 +210,11 @@ const serializers = {
     },
     clickableImage({ node }) {
       return (
-        <InsertableWrapper>
-          <ClickableImage {...node} />
-        </InsertableWrapper>
+        <VerticalSpacingWrapper>
+          <IndentFullWrapper>
+            <ClickableImage {...node} />
+          </IndentFullWrapper>
+        </VerticalSpacingWrapper>
       );
     },
   },

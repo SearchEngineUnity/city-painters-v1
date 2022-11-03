@@ -9,11 +9,6 @@ export default {
       type: 'string',
     },
     {
-      name: 'desktopTabletPadding',
-      title: 'Desktop-Tablet Padding',
-      type: 'string',
-    },
-    {
       name: 'tabletPadding',
       title: 'Tablet Padding',
       type: 'string',

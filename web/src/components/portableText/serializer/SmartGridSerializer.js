@@ -15,8 +15,8 @@ import ButtonInternalLocal from '../../buttons/ButtonInternalLocal';
 import ButtonJumpLink from '../../buttons/ButtonJumpLink';
 import SmartUnorderedList from '../insertable/SmartUnorderedList';
 import ClickableImage from '../insertable/ClickableImage';
-import InsertableWrapper from '../insertable/InsertableWrapper';
-import InsertableBtnWrapper from '../insertable/InsertableBtnWrapper';
+import IndentHalfWrapper from '../insertable/IndentHalfWrapper';
+import VerticalSpacingWrapper from '../insertable/VerticalSpacingWrapper';
 import { mapMuiBtnToProps } from '../../../lib/mapToProps';
 
 const serializers = {
@@ -139,56 +139,62 @@ const serializers = {
     },
     illustration({ node }) {
       return (
-        <InsertableWrapper>
-          <Illustration illustration={node} />
-        </InsertableWrapper>
+        <VerticalSpacingWrapper>
+          <IndentHalfWrapper>
+            <Illustration illustration={node} />
+          </IndentHalfWrapper>
+        </VerticalSpacingWrapper>
       );
     },
     clickableImage({ node }) {
       return (
-        <InsertableWrapper>
-          <ClickableImage {...node} />
-        </InsertableWrapper>
+        <VerticalSpacingWrapper>
+          <IndentHalfWrapper>
+            <ClickableImage {...node} />
+          </IndentHalfWrapper>
+        </VerticalSpacingWrapper>
       );
     },
     videoEmbed({ node }) {
       return (
-        <InsertableWrapper>
-          <VideoEmbed url={node.url} ratio={node.ratio} />
-        </InsertableWrapper>
+        <VerticalSpacingWrapper>
+          <IndentHalfWrapper>
+            <VideoEmbed url={node.url} ratio={node.ratio} />
+          </IndentHalfWrapper>
+        </VerticalSpacingWrapper>
       );
     },
     btnBlockMui({ node }) {
       switch (node.link[0]._type) {
         case 'jumpLink':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonJumpLink {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         case 'internalLocal':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonInternalLocal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         case 'internalGlobal':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonInternalGlobal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         case 'externalLink':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonExternal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         case 'affiliateLink':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonAffiliate {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         default:
           return <p>under development</p>;

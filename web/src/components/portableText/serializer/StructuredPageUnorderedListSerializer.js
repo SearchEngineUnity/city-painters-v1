@@ -18,8 +18,7 @@ import ButtonInternalGlobal from '../../buttons/ButtonInternalGlobal';
 import ButtonInternalLocal from '../../buttons/ButtonInternalLocal';
 import ButtonJumpLink from '../../buttons/ButtonJumpLink';
 import ClickableImage from '../insertable/ClickableImage';
-import InsertableWrapper from '../insertable/InsertableWrapper';
-import InsertableBtnWrapper from '../insertable/InsertableBtnWrapper';
+import InsertableStructuredPageWrapper from '../insertable/InsertableStructuredPageWrapper';
 import { mapMuiBtnToProps } from '../../../lib/mapToProps';
 
 const serializers = {
@@ -44,30 +43,30 @@ const serializers = {
     },
     illustration({ node }) {
       return (
-        <InsertableWrapper>
+        <InsertableStructuredPageWrapper>
           <Illustration illustration={node} />
-        </InsertableWrapper>
+        </InsertableStructuredPageWrapper>
       );
     },
     basicTable({ node }) {
       return (
-        <InsertableWrapper>
+        <InsertableStructuredPageWrapper>
           <BasicTable basicTable={node} />
-        </InsertableWrapper>
+        </InsertableStructuredPageWrapper>
       );
     },
     highlightBox({ node }) {
       return (
-        <InsertableWrapper>
+        <InsertableStructuredPageWrapper>
           <HighlightBox box={node} />
-        </InsertableWrapper>
+        </InsertableStructuredPageWrapper>
       );
     },
     smartTable({ node }) {
       return (
-        <InsertableWrapper>
+        <InsertableStructuredPageWrapper>
           <SmartTable smartTable={node} />
-        </InsertableWrapper>
+        </InsertableStructuredPageWrapper>
       );
     },
     instagram() {
@@ -75,42 +74,42 @@ const serializers = {
     },
     videoEmbed({ node }) {
       return (
-        <InsertableWrapper>
+        <InsertableStructuredPageWrapper>
           <VideoEmbed url={node.url} ratio={node.ratio} />
-        </InsertableWrapper>
+        </InsertableStructuredPageWrapper>
       );
     },
     btnBlockMui({ node }) {
       switch (node.link[0]._type) {
         case 'jumpLink':
           return (
-            <InsertableBtnWrapper>
+            <InsertableStructuredPageWrapper>
               <ButtonJumpLink {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </InsertableStructuredPageWrapper>
           );
         case 'internalLocal':
           return (
-            <InsertableBtnWrapper>
+            <InsertableStructuredPageWrapper>
               <ButtonInternalLocal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </InsertableStructuredPageWrapper>
           );
         case 'internalGlobal':
           return (
-            <InsertableBtnWrapper>
+            <InsertableStructuredPageWrapper>
               <ButtonInternalGlobal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </InsertableStructuredPageWrapper>
           );
         case 'externalLink':
           return (
-            <InsertableBtnWrapper>
+            <InsertableStructuredPageWrapper>
               <ButtonExternal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </InsertableStructuredPageWrapper>
           );
         case 'affiliateLink':
           return (
-            <InsertableBtnWrapper>
+            <InsertableStructuredPageWrapper>
               <ButtonAffiliate {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </InsertableStructuredPageWrapper>
           );
         default:
           return <p>under development</p>;
@@ -118,9 +117,9 @@ const serializers = {
     },
     clickableImage({ node }) {
       return (
-        <InsertableWrapper>
+        <InsertableStructuredPageWrapper>
           <ClickableImage {...node} />
-        </InsertableWrapper>
+        </InsertableStructuredPageWrapper>
       );
     },
   },

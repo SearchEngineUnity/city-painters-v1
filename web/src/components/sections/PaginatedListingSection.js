@@ -13,18 +13,19 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: (props) => props.bleed && props.bgImage && `url(${props.bgImage})`,
     backgroundPosition: 'center center',
     backgroundRepeat: (props) => (props.repeat ? 'repeat' : 'no-repeat'),
-    padding: theme.customSpacing.sectionOuter.padding.desktop,
-    [theme.breakpoints.down('lg')]: {
-      padding: theme.customSpacing.sectionOuter.padding.desktopTablet,
-    },
+    padding: (props) =>
+      props.desktopOuterPadding || theme.customSpacing.sectionOuter.padding.desktop,
     [theme.breakpoints.down('md')]: {
-      padding: theme.customSpacing.sectionOuter.padding.tablet,
+      padding: (props) =>
+        props.tabletOuterPadding || theme.customSpacing.sectionOuter.padding.tablet,
     },
     [theme.breakpoints.down('sm')]: {
-      padding: theme.customSpacing.sectionOuter.padding.tabletMobile,
+      padding: (props) =>
+        props.tabletMobileOuterPadding || theme.customSpacing.sectionOuter.padding.tabletMobile,
     },
     [theme.breakpoints.down('xs')]: {
-      padding: theme.customSpacing.sectionOuter.padding.mobile,
+      padding: (props) =>
+        props.mobileOuterPadding || theme.customSpacing.sectionOuter.padding.mobile,
     },
     '& .pt-link': {
       color: (props) => props.linkColor,
@@ -69,16 +70,15 @@ function PaginatedListingSection({
   slug,
   listingItems,
 }) {
-  // number of tiles desktop/desktop-tablet/tablet/tablet-mobile/mobile: '6/4/4/2/1' -> {xl: 2, lg: 3, md: 3, sm: 6, xs: 12}
+  // number of tiles desktop/tablet/tablet-mobile/mobile: '6/4/2/1' -> {lg: 2, md: 3, sm: 6, xs: 12}
   const colCalculate = (value) => {
     const valueArrStr = value.split('/');
     const valueArrNum = valueArrStr.map((el) => parseInt(el, 10));
     const colObj = {
-      xl: 12 / valueArrNum[0],
-      lg: 12 / valueArrNum[1],
-      md: 12 / valueArrNum[2],
-      sm: 12 / valueArrNum[3],
-      xs: 12 / valueArrNum[4],
+      lg: 12 / valueArrNum[0],
+      md: 12 / valueArrNum[1],
+      sm: 12 / valueArrNum[2],
+      xs: 12 / valueArrNum[3],
     };
     return colObj;
   };
@@ -95,11 +95,14 @@ function PaginatedListingSection({
   const subtitleColor = determineColor(designSettings?.subtitle?.color) || 'inherit';
   const footerColor = determineColor(designSettings?.footer?.color) || 'inherit';
   const paginationColor = designSettings?.foreground?.color;
-  const desktopPadding = designSettings?.innerPadding?.desktopPadding;
-  const desktopTabletPadding = designSettings?.innerPadding?.desktopTabletPadding;
-  const tabletPadding = designSettings?.innerPadding?.tabletPadding;
-  const tabletMobilePadding = designSettings?.innerPadding?.tabletMobilePadding;
-  const mobilePadding = designSettings?.innerPadding?.mobilePadding;
+  const desktopOuterPadding = designSettings?.outerPadding?.desktopPadding;
+  const tabletOuterPadding = designSettings?.outerPadding?.tabletPadding;
+  const tabletMobileOuterPadding = designSettings?.outerPadding?.tabletMobilePadding;
+  const mobileOuterPadding = designSettings?.outerPadding?.mobilePadding;
+  const desktopInnerPadding = designSettings?.innerPadding?.desktopPadding;
+  const tabletInnerPadding = designSettings?.innerPadding?.tabletPadding;
+  const tabletMobileInnerPadding = designSettings?.innerPadding?.tabletMobilePadding;
+  const mobileInnerPadding = designSettings?.innerPadding?.mobilePadding;
   const borderRadius = designSettings?.borderRadius || '0px';
 
   const classes = useStyles({
@@ -108,11 +111,14 @@ function PaginatedListingSection({
     bgImage,
     backgroundColor,
     repeat,
-    desktopPadding,
-    desktopTabletPadding,
-    tabletPadding,
-    tabletMobilePadding,
-    mobilePadding,
+    desktopOuterPadding,
+    tabletOuterPadding,
+    tabletMobileOuterPadding,
+    mobileOuterPadding,
+    desktopInnerPadding,
+    tabletInnerPadding,
+    tabletMobileInnerPadding,
+    mobileInnerPadding,
     borderRadius,
   });
 

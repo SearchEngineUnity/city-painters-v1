@@ -10,6 +10,7 @@ export default {
       name: 'listItems',
       title: 'List Items',
       type: 'array',
+      description: 'If the first line of text is a heading, please include the list item #.',
       of: [{ type: 'smartOrderedListItem' }],
       validation: (Rule) => Rule.min(1).error('Must contain at least one item'),
     },

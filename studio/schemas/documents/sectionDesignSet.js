@@ -123,6 +123,24 @@ export default {
       to: [{ type: 'colorOption' }],
     },
     {
+      name: 'outerPadding',
+      title: 'Section Outer Padding',
+      type: 'paddingSet',
+      fieldset: 'spacing',
+      description: (
+        <>
+          Accept string as per padding CSS variable.{' '}
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Resource link
+          </a>
+        </>
+      ),
+    },
+    {
       name: 'innerPadding',
       title: 'Section Inner Padding',
       type: 'paddingSet',

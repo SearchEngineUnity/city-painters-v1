@@ -66,6 +66,30 @@ export default {
       fieldset: 'general',
     },
     {
+      name: 'fbShareMetaPack',
+      title: 'Facebook Open Graph Meta Pack',
+      type: 'fbShareMetaPack',
+      fieldset: 'social',
+    },
+    {
+      name: 'twitterShareMetaPack',
+      title: 'Twitter Open Graph Meta Pack',
+      type: 'twitterShareMetaPack',
+      fieldset: 'social',
+    },
+    {
+      name: 'sections',
+      type: 'array',
+      fieldset: 'sections',
+      title: 'Sections',
+      of: [
+        ...Object.values(sections).map(({ name, title }) => ({
+          type: name,
+          title,
+        })),
+      ],
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -95,30 +119,6 @@ export default {
       type: 'url',
       fieldset: 'indexing',
       description: 'Fill in to replace default self canonical URL.',
-    },
-    {
-      name: 'fbShareMetaPack',
-      title: 'Facebook Open Graph Meta Pack',
-      type: 'fbShareMetaPack',
-      fieldset: 'social',
-    },
-    {
-      name: 'twitterShareMetaPack',
-      title: 'Twitter Open Graph Meta Pack',
-      type: 'twitterShareMetaPack',
-      fieldset: 'social',
-    },
-    {
-      name: 'sections',
-      type: 'array',
-      fieldset: 'sections',
-      title: 'Sections',
-      of: [
-        ...Object.values(sections).map(({ name, title }) => ({
-          type: name,
-          title,
-        })),
-      ],
     },
   ],
   preview: {

@@ -14,16 +14,15 @@ import ClickableImage from '../ClickableImage';
 import { mapMuiBtnToProps } from '../../../../lib/mapToProps';
 
 function SmartGrid({ layout, tiles }) {
-  // number of tiles desktop/desktop-tablet/tablet/tablet-mobile/mobile: '6/4/4/2/1' -> {xl: 2, lg: 3, md: 3, sm: 6, xs: 12}
+  // number of tiles desktop/tablet/tablet-mobile/mobile: '6/4/2/1' -> {lg: 2, md: 3, sm: 6, xs: 12}
   const colCalculate = (value) => {
     const valueArrStr = value.split('/');
     const valueArrNum = valueArrStr.map((el) => parseInt(el, 10));
     const colObj = {
-      xl: 12 / valueArrNum[0],
-      lg: 12 / valueArrNum[1],
-      md: 12 / valueArrNum[2],
-      sm: 12 / valueArrNum[3],
-      xs: 12 / valueArrNum[4],
+      lg: 12 / valueArrNum[0],
+      md: 12 / valueArrNum[1],
+      sm: 12 / valueArrNum[2],
+      xs: 12 / valueArrNum[3],
     };
     return colObj;
   };
