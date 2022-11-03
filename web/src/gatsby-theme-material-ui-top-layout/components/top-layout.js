@@ -12,8 +12,6 @@ const ThemeProvider = ({ children, data }) => {
     sanityCustomSpacing: spacing,
   } = data;
 
-  console.log(typography.h1.fontSize);
-
   const theme = createTheme({
     overrides: {
       // Style sheet name ⚛️

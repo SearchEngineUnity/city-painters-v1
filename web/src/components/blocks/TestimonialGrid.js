@@ -40,12 +40,6 @@ function TestimonialGrid({
 
   const col = colCalculate(layout);
 
-  console.log(
-    testimonialList.length > 0 &&
-      !hasSectionHeading &&
-      !hasSectionSubheading &&
-      (!!heading || !!subheading || !!subtitle),
-  );
   return (
     <>
       <StructuredSectionHeader
