@@ -58,12 +58,12 @@ const Seo = ({
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={metaURL} />
       <meta property="og:title" content={ogTitle} />
-      <meta property="og:description" content={ogDescription} />
+      {ogDescription && <meta property="og:description" content={ogDescription} />}
       {ogImage && <meta property="og:image" content={ogImage} />}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={twitterTitle} />
       <meta name="twitter:description" content={twitterDescription} />
-      {twitterImage && <meta name="twitter:image" content={twitterImage} />}
+      {twitterDescription && <meta name="twitter:description" content={twitterDescription} />}
       {(noindex || nofollow) && <meta name="robots" content={robots} />}
       {canonical ? (
         <link rel="canonical" href={canonical} />

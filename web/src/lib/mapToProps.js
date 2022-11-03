@@ -232,7 +232,7 @@ export function mapPaginatedListingSectionToProps({
   _rawFooter,
   headerAlignment,
   footerAlignment,
-  layout = '1/1/1',
+  layout = '1/1/1/1',
   designSettings,
   header,
   idTag,

@@ -23,7 +23,6 @@ import ButtonInternalLocal from '../../buttons/ButtonInternalLocal';
 import ButtonJumpLink from '../../buttons/ButtonJumpLink';
 import ClickableImage from '../insertable/ClickableImage';
 import InsertableStructuredPageWrapper from '../insertable/InsertableStructuredPageWrapper';
-import InsertableBtnWrapper from '../insertable/InsertableBtnWrapper';
 import { mapMuiBtnToProps } from '../../../lib/mapToProps';
 
 const StyledTypography = styled(Typography)`
@@ -136,33 +135,33 @@ const serializers = {
       switch (node.link[0]._type) {
         case 'jumpLink':
           return (
-            <InsertableBtnWrapper>
+            <InsertableStructuredPageWrapper>
               <ButtonJumpLink {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </InsertableStructuredPageWrapper>
           );
         case 'internalLocal':
           return (
-            <InsertableBtnWrapper>
+            <InsertableStructuredPageWrapper>
               <ButtonInternalLocal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </InsertableStructuredPageWrapper>
           );
         case 'internalGlobal':
           return (
-            <InsertableBtnWrapper>
+            <InsertableStructuredPageWrapper>
               <ButtonInternalGlobal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </InsertableStructuredPageWrapper>
           );
         case 'externalLink':
           return (
-            <InsertableBtnWrapper>
+            <InsertableStructuredPageWrapper>
               <ButtonExternal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </InsertableStructuredPageWrapper>
           );
         case 'affiliateLink':
           return (
-            <InsertableBtnWrapper>
+            <InsertableStructuredPageWrapper>
               <ButtonAffiliate {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </InsertableStructuredPageWrapper>
           );
         default:
           return <p>under development</p>;
@@ -189,11 +188,7 @@ const serializers = {
       );
     },
     smartGrid({ node }) {
-      return (
-        <InsertableStructuredPageWrapper>
-          <SmartGrid {...node} />
-        </InsertableStructuredPageWrapper>
-      );
+      return <SmartGrid {...node} />;
     },
   },
   marks: {

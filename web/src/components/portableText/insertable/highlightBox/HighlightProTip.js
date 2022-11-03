@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 function HighlightProTip({ blockContent, id }) {
   const classes = useStyles();
   return (
-    <Box component={Paper} variant="outlined" key={id} className={classes.root} my={2} p={2}>
+    <Box component={Paper} variant="outlined" key={id} className={classes.root} p={2}>
       <Typography component="p" variant="h4" className={classes.text}>
         <ThumbUpOutlined className={classes.icon} /> Pro Tip
       </Typography>

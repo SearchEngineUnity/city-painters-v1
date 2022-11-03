@@ -19,10 +19,6 @@ import TableContent from '../serializer/TableSerializer';
 import Illustration from './Illustration';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-  },
   table: (props) => ({
     tableLayout: 'fixed',
     minWidth: props.minWidth,
@@ -62,7 +58,7 @@ function SmartTable({ smartTable }) {
   }
 
   return (
-    <TableContainer component={Paper} className={classes.root}>
+    <TableContainer component={Paper}>
       <Table className={classes.table} size="small" aria-label={title} role="table">
         {colgroup && (
           <colgroup>

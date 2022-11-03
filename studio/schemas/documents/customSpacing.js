@@ -12,7 +12,6 @@ export default {
       type: 'paddingSet',
       initialValue: {
         desktopPadding: '32px 0px',
-        desktopTabletPadding: '32px 0px',
         tabletPadding: '24px 0px',
         tabletMobilePadding: '24px 0px',
         mobilePadding: '16px 0px',
@@ -36,7 +35,6 @@ export default {
       type: 'paddingSet',
       initialValue: {
         desktopPadding: '24px',
-        desktopTabletPadding: '24px',
         tabletPadding: '16px',
         tabletMobilePadding: '16px',
         mobilePadding: '16px',

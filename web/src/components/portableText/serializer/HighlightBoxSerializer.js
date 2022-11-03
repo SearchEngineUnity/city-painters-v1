@@ -14,9 +14,8 @@ import ButtonJumpLink from '../../buttons/ButtonJumpLink';
 import Illustration from '../insertable/Illustration';
 import ClickableImage from '../insertable/ClickableImage';
 import { mapMuiBtnToProps } from '../../../lib/mapToProps';
-import InsertableWrapper from '../insertable/InsertableWrapper';
-import InsertableBtnWrapper from '../insertable/InsertableBtnWrapper';
-import InsertableStructuredPageWrapper from '../insertable/InsertableStructuredPageWrapper';
+import IndentHalfWrapper from '../insertable/IndentHalfWrapper';
+import VerticalSpacingWrapper from '../insertable/VerticalSpacingWrapper';
 
 const serializers = {
   // This is to render the whole block of content without the <div> tag as wrapping container (https://github.com/sanity-io/block-content-to-react)
@@ -34,42 +33,44 @@ const serializers = {
     },
     illustration({ node }) {
       return (
-        <InsertableStructuredPageWrapper>
-          <Illustration illustration={node} />
-        </InsertableStructuredPageWrapper>
+        <VerticalSpacingWrapper>
+          <IndentHalfWrapper>
+            <Illustration illustration={node} />
+          </IndentHalfWrapper>
+        </VerticalSpacingWrapper>
       );
     },
     btnBlockMui({ node }) {
       switch (node.link[0]._type) {
         case 'jumpLink':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonJumpLink {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         case 'internalLocal':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonInternalLocal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         case 'internalGlobal':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonInternalGlobal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         case 'externalLink':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonExternal {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         case 'affiliateLink':
           return (
-            <InsertableBtnWrapper>
+            <VerticalSpacingWrapper>
               <ButtonAffiliate {...mapMuiBtnToProps(node)} />
-            </InsertableBtnWrapper>
+            </VerticalSpacingWrapper>
           );
         default:
           return <p>under development</p>;
@@ -77,9 +78,11 @@ const serializers = {
     },
     clickableImage({ node }) {
       return (
-        <InsertableWrapper>
-          <ClickableImage {...node} />
-        </InsertableWrapper>
+        <VerticalSpacingWrapper>
+          <IndentHalfWrapper>
+            <ClickableImage {...node} />
+          </IndentHalfWrapper>
+        </VerticalSpacingWrapper>
       );
     },
   },
