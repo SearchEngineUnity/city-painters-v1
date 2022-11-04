@@ -142,7 +142,7 @@ function CpFooter() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={12} lg={3}>
+            <Grid item xs={12} sm={6} lg={3}>
               <Title>PAINTING SERVICES</Title>
               <List>
                 <li>
@@ -181,7 +181,7 @@ function CpFooter() {
                 </li>
               </List>
             </Grid>
-            <Grid item xs={12} lg={3}>
+            <Grid item xs={12} sm={6} lg={3}>
               <Title>RESOURCE CENTER</Title>
               <List>
                 <li>
