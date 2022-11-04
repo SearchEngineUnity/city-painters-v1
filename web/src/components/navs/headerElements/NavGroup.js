@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import {
   Icon,
   MenuList,
@@ -15,7 +16,33 @@ import {
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import { navigate } from 'gatsby';
 
+const useStyles = makeStyles((theme) => ({
+  primaryOutline: {
+    outlineColor: '#8BC44A',
+    '&:hover': {
+      color: '#8BC44A',
+    },
+  },
+  dropdownMenu: {
+    borderTop: '2px solid #8BC44A',
+    backgroundColor: '#2E2739',
+    minWidth: '200px',
+    fontSize: '1.4rem',
+    color: '#f1f1f1',
+  },
+  hoverItem: {
+    '&:hover': {
+      color: '#8BC44A',
+    },
+    '&.Mui-selected': {
+      color: '#8BC44A',
+      backgroundColor: 'transparent',
+    },
+  },
+}));
+
 const NavGroup = ({ title, subGroup, location, position }) => {
+  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -66,6 +93,7 @@ const NavGroup = ({ title, subGroup, location, position }) => {
         aria-expanded={open}
         aria-haspopup="true"
         underline="none"
+        className={classes.primaryOutline}
       >
         <Box
           fontSize="16px"
@@ -73,6 +101,7 @@ const NavGroup = ({ title, subGroup, location, position }) => {
           fontFamily="'Open Sans', sans-serif"
           fontWeight="700"
           color="black"
+          my={2}
         >
           {title}
           {open ? (
@@ -83,14 +112,14 @@ const NavGroup = ({ title, subGroup, location, position }) => {
         </Box>
       </Link>
       <Popper
-        style={{ zIndex: 1900 }}
         open={open}
         anchorEl={anchorRef.current}
         placement={position}
         role={undefined}
         disablePortal
+        style={{ zIndex: 1900, top: '26px' }}
       >
-        <Paper role="none">
+        <Paper role="none" square elevation={0} className={classes.dropdownMenu}>
           <ClickAwayListener onClickAway={handleClose}>
             <MenuList
               role="menu"
@@ -105,6 +134,7 @@ const NavGroup = ({ title, subGroup, location, position }) => {
                   onClick={() => handleNavigate(nav)}
                   key={_key}
                   selected={`/${nav.slug.current}` === location.pathname}
+                  className={classes.hoverItem}
                 >
                   {icon && (
                     <ListItemIcon>

@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   primaryOutline: {
-    outlineColor: theme.palette.primary.main,
+    outlineColor: '#8BC44A',
   },
 }));
 
