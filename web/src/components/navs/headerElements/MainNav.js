@@ -6,6 +6,7 @@ import NavItem from './NavItem';
 import NavGroup from './NavGroup';
 import NavBrand from './NavBrand';
 import NavPhone from './NavPhone';
+import NavClickableImage from './NavClickableImage';
 import MainNavHamburger from './MainNavHamburger';
 import { mapNavBrandToProps, mapNavItemToProps, mapNavGroupToProps } from '../../../lib/mapToProps';
 
@@ -23,7 +24,12 @@ const MainNav = ({ data, location }) => {
     <>
       {data.sanityNavMenu && (
         <AppBar position="relative" classes={{ colorDefault: classes.appBar }} color="default">
-          <Container maxWidth="lg" component="nav" aria-label="main navigation header">
+          <Container
+            maxWidth="lg"
+            component="nav"
+            aria-label="main navigation header"
+            style={{ paddingLeft: '16px', paddingRight: '16px' }}
+          >
             {data.sanityNavMenu.menuArray.map((menuRow, menuIndex) => {
               // menu group is not a navgroup. it is the top level menu item.
               const { menuGroup, _key } = menuRow;
@@ -41,7 +47,7 @@ const MainNav = ({ data, location }) => {
                   role="none"
                 >
                   <Toolbar
-                    style={{ display: 'flex', justifyContent: 'space-between' }}
+                    style={{ display: 'flex', justifyContent: 'space-between', columnGap: '24px' }}
                     disableGutters
                     role="menubar"
                   >
@@ -59,47 +65,45 @@ const MainNav = ({ data, location }) => {
                       }
 
                       switch (_type) {
+                        case 'navClickableImage':
+                          return (
+                            <Box py={2}>
+                              <NavClickableImage
+                                image={group.image}
+                                link={group.link}
+                                key={groupKey}
+                              />
+                            </Box>
+                          );
                         case 'navBrand':
                           return (
-                            <NavBrand
-                              {...mapNavBrandToProps(group)}
-                              url={data.sanityContactInfo.homePage}
-                              key={groupKey}
-                            />
+                            <Box py={2}>
+                              <NavBrand
+                                {...mapNavBrandToProps(group)}
+                                url={data.sanityContactInfo.homePage}
+                                key={groupKey}
+                              />
+                            </Box>
                           );
                         case 'navPhone':
                           return (
-                            <NavPhone text={group.text} key={groupKey} number={group.phoneNumber} />
+                            <Box py={2}>
+                              <NavPhone
+                                text={group.text}
+                                key={groupKey}
+                                number={group.phoneNumber}
+                              />
+                            </Box>
                           );
                         case 'navItem':
                           return (
-                            <Box
-                              display={{
-                                xs: 'none',
-                                sm: 'block',
-                                md: 'block',
-                                lg: 'block',
-                                xl: 'block',
-                              }}
-                              key={groupKey}
-                              role="none"
-                            >
+                            <Box key={groupKey} role="none">
                               <NavItem {...mapNavItemToProps(group)} location={location} />
                             </Box>
                           );
                         case 'navGroup':
                           return (
-                            <Box
-                              display={{
-                                xs: 'none',
-                                sm: 'block',
-                                md: 'block',
-                                lg: 'block',
-                                xl: 'block',
-                              }}
-                              key={groupKey}
-                              role="none"
-                            >
+                            <Box display={{}} key={groupKey} role="none">
                               <NavGroup
                                 {...mapNavGroupToProps(group)}
                                 location={location}
@@ -141,6 +145,63 @@ export default function MainNavigation(props) {
             menuArray {
               _key
               menuGroup {
+                ... on SanityNavClickableImage {
+                  _key
+                  _type
+                  image: _rawImage(resolveReferences: { maxDepth: 10 })
+                  link {
+                    ... on SanityJumpLink {
+                      _key
+                      _type
+                      hashId
+                    }
+                    ... on SanityAffiliateLink {
+                      _key
+                      _type
+                      href
+                    }
+                    ... on SanityExternalLink {
+                      _key
+                      _type
+                      href
+                      newTab
+                      noreferrer
+                    }
+                    ... on SanityInternalGlobal {
+                      _key
+                      _type
+                      href
+                      newTab
+                    }
+                    ... on SanityInternalLocal {
+                      _key
+                      _type
+                      newTab
+                      hashId
+                      parameter
+                      reference {
+                        ... on SanityFlexListingPage {
+                          id
+                          slug {
+                            current
+                          }
+                        }
+                        ... on SanityPage {
+                          id
+                          slug {
+                            current
+                          }
+                        }
+                        ... on SanitySoloGuidePage {
+                          id
+                          slug {
+                            current
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
                 ... on SanityNavBrand {
                   _key
                   _type

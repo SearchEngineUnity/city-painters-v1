@@ -17,6 +17,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import NavItem from './NavItem';
 import NavPhone from './NavPhone';
 import NavGroup from './NavGroupHamburger';
+import NavClickableImage from './NavClickableImage';
 import { mapNavItemToProps } from '../../../lib/mapToProps';
 
 const useStyles = makeStyles((theme) => ({
@@ -67,7 +68,13 @@ function MainNavHamburger({ topMenu, bottomMenu, brandUrl, location }) {
 
   return (
     <Box display={{ xs: 'block', sm: 'block', md: 'none', lg: 'none', xl: 'none' }}>
-      <IconButton edge="end" color="inherit" aria-label="menu" onClick={handleClickOpen}>
+      <IconButton
+        edge="end"
+        color="inherit"
+        aria-label="menu"
+        onClick={handleClickOpen}
+        style={{ margin: '0px', padding: '0px' }}
+      >
         <Menu />
       </IconButton>
       <Dialog
@@ -78,7 +85,10 @@ function MainNavHamburger({ topMenu, bottomMenu, brandUrl, location }) {
         PaperProps={{ className: classes.list }}
       >
         <AppBar className={classes.appBar} component="nav">
-          <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }} role="menubar">
+          <Toolbar
+            style={{ display: 'flex', justifyContent: 'space-between', columnGap: '24px' }}
+            role="menubar"
+          >
             {topMenu.map((group) => {
               const { _type, _key: groupKey } = group;
               const mobileBrand =
@@ -87,11 +97,22 @@ function MainNavHamburger({ topMenu, bottomMenu, brandUrl, location }) {
                   : null;
 
               switch (_type) {
+                case 'navClickableImage':
+                  return (
+                    <Box
+                      display={{ xs: 'block', sm: 'block', md: 'none', lg: 'none', xl: 'none' }}
+                      my={1}
+                      key={groupKey}
+                    >
+                      <NavClickableImage image={group.image} link={group.link} />
+                    </Box>
+                  );
                 case 'navBrand':
                   return (
                     <Box
                       display={{ xs: 'block', sm: 'block', md: 'none', lg: 'none', xl: 'none' }}
                       key={groupKey}
+                      my={1}
                     >
                       <a href={brandUrl} className={classes.primaryOutline}>
                         <img
@@ -103,17 +124,19 @@ function MainNavHamburger({ topMenu, bottomMenu, brandUrl, location }) {
                     </Box>
                   );
                 case 'navPhone':
-                  return <NavPhone text={group.text} key={groupKey} number={group.phoneNumber} />;
+                  return (
+                    <Box
+                      display={{ xs: 'block', sm: 'block', md: 'none', lg: 'none', xl: 'none' }}
+                      key={groupKey}
+                      my={1}
+                    >
+                      <NavPhone text={group.text} key={groupKey} number={group.phoneNumber} />
+                    </Box>
+                  );
                 case 'navItem':
                   return (
                     <Box
-                      display={{
-                        xs: 'none',
-                        sm: 'block',
-                        md: 'block',
-                        lg: 'block',
-                        xl: 'block',
-                      }}
+                      display={{ xs: 'block', sm: 'block', md: 'none', lg: 'none', xl: 'none' }}
                       key={groupKey}
                     >
                       <NavItem {...mapNavItemToProps(group)} location={location} />
