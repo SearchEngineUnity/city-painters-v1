@@ -55,6 +55,8 @@ function Toc({ toc }) {
       // lazily-loaded content increases offsets as user scrolls down.
       const offsets = nodes.map((el) => accumulateOffsetTop(el));
       const activeIndex = offsets.findIndex((offset) => offset > window.scrollY + 45);
+      // activeIndex could be greater than the number of titles and this is why it is failing.
+      // if activeIndex > headings.titles.length then the index should be max titles.length
       setActive(activeIndex === -1 ? titles.length - 1 : activeIndex - 1);
     };
     window.addEventListener(`scroll`, scrollHandler);
@@ -64,6 +66,7 @@ function Toc({ toc }) {
   useEffect(() => {
     const { origin, pathname } = window.location;
     let { hash } = window.location;
+    console.log(active);
     if (active === -1 || active === null) {
       if (active === -1) {
         hash = '';

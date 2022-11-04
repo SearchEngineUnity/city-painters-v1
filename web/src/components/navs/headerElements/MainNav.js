@@ -15,6 +15,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.common.white,
     color: theme.palette.common.black,
   },
+  items: {
+    padding: '0px 10px',
+    borderLeft: '1px solid rgba(0, 0, 0, 0.1)',
+    '&:first-child': {
+      padding: '0px 10px 0px 0px',
+      border: 'none',
+    },
+    '&:last-child': {
+      padding: '0px 0px 0px 10px',
+    },
+  },
 }));
 
 const MainNav = ({ data, location }) => {
@@ -23,7 +34,12 @@ const MainNav = ({ data, location }) => {
   return (
     <>
       {data.sanityNavMenu && (
-        <AppBar position="relative" classes={{ colorDefault: classes.appBar }} color="default">
+        <AppBar
+          position="relative"
+          classes={{ colorDefault: classes.appBar }}
+          color="default"
+          elevation={0}
+        >
           <Container
             maxWidth="lg"
             component="nav"
@@ -47,7 +63,11 @@ const MainNav = ({ data, location }) => {
                   role="none"
                 >
                   <Toolbar
-                    style={{ display: 'flex', justifyContent: 'space-between', columnGap: '24px' }}
+                    style={{
+                      display: 'flex',
+                      justifyContent: menuIndex === 0 ? 'space-between' : 'flex-start',
+                      columnGap: menuIndex === 0 ? '24px' : '0px',
+                    }}
                     disableGutters
                     role="menubar"
                   >
@@ -67,7 +87,7 @@ const MainNav = ({ data, location }) => {
                       switch (_type) {
                         case 'navClickableImage':
                           return (
-                            <Box py={2}>
+                            <Box py={1}>
                               <NavClickableImage
                                 image={group.image}
                                 link={group.link}
@@ -77,7 +97,7 @@ const MainNav = ({ data, location }) => {
                           );
                         case 'navBrand':
                           return (
-                            <Box py={2}>
+                            <Box py={1}>
                               <NavBrand
                                 {...mapNavBrandToProps(group)}
                                 url={data.sanityContactInfo.homePage}
@@ -87,7 +107,7 @@ const MainNav = ({ data, location }) => {
                           );
                         case 'navPhone':
                           return (
-                            <Box py={2}>
+                            <Box py={1}>
                               <NavPhone
                                 text={group.text}
                                 key={groupKey}
@@ -97,13 +117,13 @@ const MainNav = ({ data, location }) => {
                           );
                         case 'navItem':
                           return (
-                            <Box key={groupKey} role="none">
+                            <Box key={groupKey} role="none" className={classes.items}>
                               <NavItem {...mapNavItemToProps(group)} location={location} />
                             </Box>
                           );
                         case 'navGroup':
                           return (
-                            <Box display={{}} key={groupKey} role="none">
+                            <Box key={groupKey} role="none" className={classes.items}>
                               <NavGroup
                                 {...mapNavGroupToProps(group)}
                                 location={location}
