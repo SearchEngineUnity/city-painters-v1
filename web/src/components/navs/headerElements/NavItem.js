@@ -5,7 +5,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   primaryOutline: {
-    outlineColor: theme.palette.primary.main,
+    outlineColor: '#8BC44A',
+    '&:hover': {
+      color: '#8BC44A',
+    },
   },
 }));
 
@@ -21,11 +24,20 @@ function NavItem({ url, title, isButton, location }) {
         </Button>
       ) : (
         <Box
-          fontSize="h4.fontSize"
-          fontWeight={`/${url}` === location.pathname ? 'fontWeightBold' : 'fontWeightRegular'}
+          fontSize="16px"
+          lineHeight="26px"
+          fontFamily="'Open Sans', sans-serif"
+          fontWeight="700"
+          color={`/${url}` === location.pathname ? '#8BC44A' : 'black'}
           role="none"
         >
-          <Link to={`/${url}`} role="menuitem" color="primary" className={classes.primaryOutline}>
+          <Link
+            to={`/${url}`}
+            role="menuitem"
+            color="inherit"
+            className={classes.primaryOutline}
+            underline="none"
+          >
             {title}
           </Link>
         </Box>

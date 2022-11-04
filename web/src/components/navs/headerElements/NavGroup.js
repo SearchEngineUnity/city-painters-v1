@@ -65,8 +65,15 @@ const NavGroup = ({ title, subGroup, location, position }) => {
         aria-controls={open ? title.replace(' ', '-') : undefined}
         aria-expanded={open}
         aria-haspopup="true"
+        underline="none"
       >
-        <Box fontSize="h4.fontSize">
+        <Box
+          fontSize="16px"
+          lineHeight="26px"
+          fontFamily="'Open Sans', sans-serif"
+          fontWeight="700"
+          color="black"
+        >
           {title}
           {open ? (
             <ExpandLess style={{ verticalAlign: 'middle' }} />
