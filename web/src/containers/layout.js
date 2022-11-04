@@ -9,14 +9,14 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import MainNav from '../components/navs/headerElements/MainNav';
-import MainFooter from '../components/navs/footerElements/MainFooter';
+import CpFooter from '../components/navs/footerElements/CpFooter';
 
 const MyLayout = ({ data, children, location }) => (
   <>
     <Helmet />
     {data.mainNav && <MainNav location={location} />}
     <>{children}</>
-    {data.footer && <MainFooter />}
+    <CpFooter />
   </>
 );
 
