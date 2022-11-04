@@ -43,17 +43,7 @@ export default {
   fields: [
     {
       name: 'seuID',
-      title: 'seuID',
-      type: 'string',
-      fieldset: 'general',
-      validation: (Rule) => [
-        Rule.required().error('Field is required'),
-        // add a custom rule for isUnique
-      ],
-    },
-    {
-      name: 'shortLabel',
-      title: 'Short Label',
+      title: 'ID',
       type: 'string',
       fieldset: 'general',
       validation: (Rule) => [
@@ -74,7 +64,6 @@ export default {
       type: 'text',
       rows: 3,
       fieldset: 'general',
-      validation: (Rule) => [Rule.required().error('Field is required.')],
     },
     {
       name: 'fbShareMetaPack',
@@ -134,7 +123,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'shortLabel',
+      title: 'seuID',
       slug: 'slug.current',
       fbImg: 'facebookShareMetaPack.image',
       twitterImg: 'twitterShareMetaPack.image',
