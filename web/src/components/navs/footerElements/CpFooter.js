@@ -50,6 +50,17 @@ const EmailItem = styled.a`
     color: #8bc44a;
   }
 `;
+const Social = styled.a`
+  &:link,
+  &:visited {
+    color: #f1f1f1;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    color: #8bc44a;
+  }
+`;
 const NavItem = styled.a`
   text-decoration: none;
   &:link,
@@ -127,18 +138,43 @@ function CpFooter() {
                   </IconItem>
                 </li>
               </List>
+              <br />
               <Grid container spacing={3}>
                 <Grid item>
-                  <img src={fb} alt="facebook" width="48" height="48" />
+                  <Social
+                    href="https://www.facebook.com/thecitypainters"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={fb} alt="facebook" width="48" height="48" />
+                  </Social>
                 </Grid>
                 <Grid item>
-                  <img src={insta} alt="instagram" width="48" height="48" />
+                  <Social
+                    href="https://www.instagram.com/citypainters"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={insta} alt="instagram" width="48" height="48" />
+                  </Social>
                 </Grid>
                 <Grid item>
-                  <img src={homeStars} alt="homestars" width="48" height="48" />
+                  <Social
+                    href="https://homestars.com/companies/2795419-the-city-painters?service_area=1857483"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={homeStars} alt="homestars" width="48" height="48" />
+                  </Social>
                 </Grid>
                 <Grid item>
-                  <img src={linkedIn} alt="linkedin" width="48" height="48" />
+                  <Social
+                    href="https://www.linkedin.com/company/the-city-painters"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={linkedIn} alt="linkedin" width="48" height="48" />
+                  </Social>
                 </Grid>
               </Grid>
             </Grid>
@@ -226,7 +262,7 @@ function CpFooter() {
                   </NavItem>
                 </li>
                 <li>
-                  <NavItem href="" target="_blank" rel="noopener noreferrer">
+                  <NavItem href="/resources" target="_blank" rel="noopener noreferrer">
                     All Resources
                   </NavItem>
                 </li>
