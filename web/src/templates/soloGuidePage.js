@@ -73,18 +73,13 @@ const SoloGuidePage = ({ data, location }) => {
         <GuideHero {...mapGuideHeroToProps(data.guide)} />
         <Box my={3}>
           <Container maxWidth="lg">
-            <Grid
-              container
-              spacing={3}
-              direction={data.guide.toc.length > 0 ? 'row-reverse' : 'row'}
-            >
-              {data.guide.toc.length > 0 && (
-                <Hidden smDown>
-                  <Grid item md={3} component="nav">
-                    <ToC toc={data.guide.toc} />
-                  </Grid>
-                </Hidden>
-              )}
+            <Grid container spacing={3}>
+              <Hidden smDown>
+                <Grid item md={3} component="nav">
+                  {data.guide.toc.length > 0 && <ToC toc={data.guide.toc} />}
+                </Grid>
+              </Hidden>
+
               <Grid item md={9} xs={12} component="article">
                 <GuideBody blocks={data.guide._rawGuideBody} />
               </Grid>
