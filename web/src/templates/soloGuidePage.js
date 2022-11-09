@@ -6,6 +6,7 @@ import GuideHero from '../components/sections/GuideHero';
 import GuideBody from '../components/portableText/serializer/GuideSerializer';
 import ToC from '../components/TableOfContent';
 import Seo from '../components/Seo';
+import { useUpdateUrl } from '../hooks/useUpdateUrl';
 
 import { mapGuideHeroToProps, mapSeoToProps } from '../lib/mapToProps';
 
@@ -65,6 +66,7 @@ export const query = graphql`
 
 const SoloGuidePage = ({ data, location }) => {
   const type = 'guide';
+  useUpdateUrl();
 
   return (
     <Layout location={location}>
@@ -73,13 +75,18 @@ const SoloGuidePage = ({ data, location }) => {
         <GuideHero {...mapGuideHeroToProps(data.guide)} />
         <Box my={3}>
           <Container maxWidth="lg">
-            <Grid container spacing={3}>
-              <Hidden smDown>
-                <Grid item md={3} component="nav">
-                  {data.guide.toc.length > 0 && <ToC toc={data.guide.toc} />}
-                </Grid>
-              </Hidden>
-
+            <Grid
+              container
+              spacing={3}
+              direction={data.guide.toc.length > 0 ? 'row-reverse' : 'row'}
+            >
+              {data.guide.toc.length > 0 && (
+                <Hidden smDown>
+                  <Grid item md={3}>
+                    <ToC toc={data.guide.toc} content={data.guide._rawGuideBody} />
+                  </Grid>
+                </Hidden>
+              )}
               <Grid item md={9} xs={12} component="article">
                 <GuideBody blocks={data.guide._rawGuideBody} />
               </Grid>
