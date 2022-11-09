@@ -29,6 +29,7 @@ import { mapMuiBtnToProps } from '../../../lib/mapToProps';
 
 const StyledTypography = styled(Typography)`
   margin-top: 1.35em;
+  scroll-margin: 45px;
 `;
 
 const useStyles = makeStyles((theme) => ({
