@@ -68,6 +68,8 @@ const SoloGuidePage = ({ data, location }) => {
   const type = 'guide';
   useUpdateUrl();
 
+  const direction = data.guide.toc.length > 0 ? 'row-reverse' : 'row';
+
   return (
     <Layout location={location}>
       <Seo {...mapSeoToProps(data.guide, type)} heroImage={data.guide.heroImage.asset.url} />
@@ -75,11 +77,7 @@ const SoloGuidePage = ({ data, location }) => {
         <GuideHero {...mapGuideHeroToProps(data.guide)} />
         <Box my={3}>
           <Container maxWidth="lg">
-            <Grid
-              container
-              spacing={3}
-              direction={data.guide.toc.length > 0 ? 'row-reverse' : 'row'}
-            >
+            <Grid container spacing={3} direction={direction}>
               {data.guide.toc.length > 0 && (
                 <Hidden smDown>
                   <Grid item md={3}>
