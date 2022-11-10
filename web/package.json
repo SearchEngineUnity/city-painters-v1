@@ -36,6 +36,7 @@
     "gatsby-plugin-html-attributes": "^1.0.5",
     "gatsby-plugin-image": "^1.1.2",
     "gatsby-plugin-manifest": "^3.1.0",
+    "gatsby-plugin-netlify": "^5.0.1",
     "gatsby-plugin-react-helmet": "^4.1.0",
     "gatsby-plugin-robots-txt": "^1.6.13",
     "gatsby-plugin-sanity-image": "^0.6.0",
