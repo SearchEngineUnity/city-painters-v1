@@ -23,8 +23,11 @@ function StructuredSectionHeader({
         <Box component={heading ? 'header' : 'div'} textAlign={align}>
           {!hasSectionHeading && heading && (
             <Box
-              component={Typography}
-              variant="h2"
+              component="h2"
+              fontSize="18px"
+              lineHeight={1.1}
+              fontWeight={800}
+              letterSpacing="normal"
               color={headingColor}
               borderBottom="2px solid #8BC44A"
               pb="10px"

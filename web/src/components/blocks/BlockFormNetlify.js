@@ -13,7 +13,6 @@ import {
   FormHelperText,
   Checkbox,
   Box,
-  Typography,
 } from '@material-ui/core';
 import ButtonSubmit from '../buttons/ButtonSubmit';
 import { mapMuiBtnSubmitToProps } from '../../lib/mapToProps';
@@ -28,6 +27,10 @@ function encode(data) {
 const useStyles = makeStyles((theme) => ({
   control: {
     marginBottom: theme.spacing(4),
+    fontSize: '18px',
+    lineHeight: 1.1,
+    letterSpacing: 'normal',
+    fontWeight: 800,
   },
   label: {
     marginBottom: theme.spacing(1),
@@ -242,9 +245,9 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
     <ThemeProvider theme={theme}>
       <Box boxShadow={5} p={4} bgcolor="background.paper">
         <Box textAlign={titleAlignment} color={determineColor(labelColor.color)}>
-          <Typography variant={headingLevel} className={classes.control}>
+          <Box component={headingLevel} className={classes.control}>
             {heading}
-          </Typography>
+          </Box>
         </Box>
 
         <form

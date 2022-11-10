@@ -37,8 +37,16 @@ function StructuredSectionHeader({
               {heading}
             </Box>
           ) : (
-            <Box color={headingColor} mt="26px" mb="13px">
-              <Typography variant="h1">{heading}</Typography>
+            <Box
+              color={headingColor}
+              mt="26px"
+              mb="13px"
+              fontSize="42px"
+              lineHeight={1.619}
+              fontWeight={800}
+              letterSpacing="normal"
+            >
+              {heading}
             </Box>
           )}
           {!hasSectionSubheading && subheading && (

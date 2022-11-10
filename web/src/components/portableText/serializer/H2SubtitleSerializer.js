@@ -14,7 +14,7 @@ const serializers = {
     block(props) {
       const { children } = props;
       return children[0] ? (
-        <Typography component="p" variant="h4" gutterBottom>
+        <Typography variant="h5" component="p" gutterBottom>
           {children}
         </Typography>
       ) : (

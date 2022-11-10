@@ -1,11 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import {
-  createTheme,
-  ThemeProvider,
-  useTheme,
-  responsiveFontSizes,
-} from '@material-ui/core/styles';
+import { createTheme, ThemeProvider, useTheme } from '@material-ui/core/styles';
 import Layout from '../containers/layout';
 import Seo from '../components/Seo';
 import LrHero from '../components/sections/LrFlexHero';

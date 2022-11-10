@@ -12,7 +12,7 @@ const ThemeProvider = ({ children, data }) => {
     sanityCustomSpacing: spacing,
   } = data;
 
-  const theme = createTheme({
+  let theme = createTheme({
     overrides: {
       // Style sheet name ⚛️
       MuiIcon: {
@@ -234,6 +234,8 @@ const ThemeProvider = ({ children, data }) => {
       },
     },
   });
+
+  theme = responsiveFontSizes(theme);
 
   return <ThemeTopLayout theme={theme}>{children}</ThemeTopLayout>;
 };

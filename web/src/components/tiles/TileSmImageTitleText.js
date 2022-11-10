@@ -6,7 +6,6 @@ import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import { getGatsbyImageData } from 'gatsby-source-sanity';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import ConditionalCardActionArea from '../cardActionArea/ConditionalCardActionArea';
