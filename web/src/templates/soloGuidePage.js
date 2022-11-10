@@ -68,7 +68,7 @@ const SoloGuidePage = ({ data, location }) => {
   const type = 'guide';
   useUpdateUrl();
 
-  const direction = data.guide.toc.length > 0 ? 'row-reverse' : 'row';
+  const direction = data.guide.toc.length === 0 ? 'row' : 'row-reverse';
 
   return (
     <Layout location={location}>
