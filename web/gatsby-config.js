@@ -7,7 +7,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const {
   NODE_ENV,
   // update this
-  URL: NETLIFY_SITE_URL = 'https://thecitypainters.com', // update to new netlify URL
+  URL: NETLIFY_SITE_URL = 'https://www.thecitypainters.com', // update to new netlify URL
   DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
   CONTEXT: NETLIFY_ENV = NODE_ENV,
 } = process.env;
