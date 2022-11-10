@@ -64,6 +64,7 @@ const Seo = ({
       <meta name="twitter:title" content={twitterTitle} />
       <meta name="twitter:description" content={twitterDescription} />
       {twitterDescription && <meta name="twitter:description" content={twitterDescription} />}
+      {twitterImage && <meta property="twitter:image" content={twitterImage} />}
       {(noindex || nofollow) && <meta name="robots" content={robots} />}
       {canonical ? (
         <link rel="canonical" href={canonical} />

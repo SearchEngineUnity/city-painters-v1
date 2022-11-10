@@ -14,7 +14,14 @@ const serializers = {
     block(props) {
       const { children } = props;
       return children[0] ? (
-        <Box component="p" fontSize="30px" lineHeight="40px" fontWeight="600" margin="20px 0">
+        <Box
+          component="p"
+          fontSize="30px"
+          lineHeight={1.333}
+          fontWeight="600"
+          margin="20px 0"
+          letterSpacking="normal"
+        >
           {children}
         </Box>
       ) : (
