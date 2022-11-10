@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { createTheme, ThemeProvider, useTheme } from '@material-ui/core/styles';
 import Layout from '../containers/layout';
 import Seo from '../components/Seo';
 import LrHero from '../components/sections/LrFlexHero';
@@ -1975,41 +1976,58 @@ const FlexListingPage = ({ data, location, pageContext }) => {
 
   const listingItems = allListItems.slice((currentpage - 1) * limit, currentpage * limit);
 
+  const prevTheme = useTheme();
+
+  const theme = createTheme({
+    ...prevTheme,
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 768,
+        md: 992,
+        lg: 1200,
+        xl: 1201,
+      },
+    },
+  });
+
   return (
-    <Layout location={location}>
-      <Seo {...mapSeoToProps(data.page, type)} />
-      <main>
-        {data.page.sections.map((section) => {
-          const { _type } = section;
-          switch (_type) {
-            case 'lrHero':
-              return <LrHero key={section._key} {...mapLrHeroToProps(section)} />;
+    <ThemeProvider theme={theme}>
+      <Layout location={location}>
+        <Seo {...mapSeoToProps(data.page, type)} />
+        <main>
+          {data.page.sections.map((section) => {
+            const { _type } = section;
+            switch (_type) {
+              case 'lrHero':
+                return <LrHero key={section._key} {...mapLrHeroToProps(section)} />;
 
-            case 'lrFlex':
-              return <LrFlex key={section._key} {...mapLrFlexToProps(section)} />;
+              case 'lrFlex':
+                return <LrFlex key={section._key} {...mapLrFlexToProps(section)} />;
 
-            case 'stackFlex':
-              return <StackFlex key={section._key} {...mapStackSectionToProps(section)} />;
+              case 'stackFlex':
+                return <StackFlex key={section._key} {...mapStackSectionToProps(section)} />;
 
-            case 'stackHero':
-              return <StackHero key={section._key} {...mapStackSectionToProps(section)} />;
+              case 'stackHero':
+                return <StackHero key={section._key} {...mapStackSectionToProps(section)} />;
 
-            case 'paginatedListingSection':
-              return (
-                <PaginatedListingSection
-                  key={section._key}
-                  {...mapPaginatedListingSectionToProps(section)}
-                  {...pageContext}
-                  listingItems={listingItems}
-                />
-              );
+              case 'paginatedListingSection':
+                return (
+                  <PaginatedListingSection
+                    key={section._key}
+                    {...mapPaginatedListingSectionToProps(section)}
+                    {...pageContext}
+                    listingItems={listingItems}
+                  />
+                );
 
-            default:
-              return <div>Still under development</div>;
-          }
-        })}
-      </main>
-    </Layout>
+              default:
+                return <div>Still under development</div>;
+            }
+          })}
+        </main>
+      </Layout>
+    </ThemeProvider>
   );
 };
 

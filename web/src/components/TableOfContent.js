@@ -26,7 +26,7 @@ function TableOfContent({ toc }) {
 
   return (
     <Box p={3} className={classes.root}>
-      <Typography component="p" variant="h3" gutterBottom>
+      <Typography component="p" variant="h4" gutterBottom>
         Table of Contents
       </Typography>
       <nav>

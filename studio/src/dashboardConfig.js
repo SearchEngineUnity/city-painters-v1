@@ -1,20 +1,19 @@
 export default {
   widgets: [
-    // update this
-    // {
-    //   name: 'netlify',
-    //   options: {
-    //     title: 'My Netlify deploys',
-    //     sites: [
-    //       {
-    //         title: 'Site Builder V1',
-    //         apiId: '4fe5d933-672d-47d0-828b-dd08600061ac',
-    //         buildHookId: '62b5dac769fb4e19a2875009',
-    //         name: 'sitebuilderv1',
-    //       },
-    //     ],
-    //   },
-    // },
+    {
+      name: 'netlify',
+      options: {
+        title: 'My Netlify deploys',
+        sites: [
+          {
+            title: 'The City Painters',
+            apiId: '8187e348-aa87-46f3-bb9b-0900868c0bce',
+            buildHookId: '636d3d532450d70f15c404df',
+            name: 'the-city-painters',
+          },
+        ],
+      },
+    },
     {
       name: 'gatsby',
       options: {
