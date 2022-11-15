@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid } from '@material-ui/core';
+import { Link } from 'gatsby-theme-material-ui';
 import styled from 'styled-components';
 
 const Outer = styled.div`
@@ -28,7 +28,7 @@ const Inner = styled.div`
   border-radius: 3px;
   transform: rotate(270deg);
 `;
-const Tag = styled.a`
+const Tag = styled(Link)`
   background-color: 'transparent';
   &:link,
   &:visited {
@@ -45,11 +45,7 @@ function ContactUsTag() {
   return (
     <>
       <Outer>
-        <Tag
-          href="https://www.thecitypainters.com/contact-us"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Tag to="/contact-us" target="_blank" rel="noopener noreferrer">
           <Inner>Contact Us</Inner>
         </Tag>
       </Outer>
