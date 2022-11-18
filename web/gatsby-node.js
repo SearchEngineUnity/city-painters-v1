@@ -22,7 +22,7 @@ async function createStructuredPages(actions, graphql) {
     if (page?.node?.slug?.current) {
       actions.createPage({
         path: page.node.slug.current === '/' ? '/' : `/${page.node.slug.current}`,
-        // ownerNodeId: page.node.id,
+        ownerNodeId: page.node.id,
         component: path.resolve(`./src/templates/structuredPage.js`),
         context: {
           slug: page.node.slug.current,
@@ -83,6 +83,7 @@ async function createFlexListingPages(actions, graphql) {
         actions.createPage({
           path: i === 0 ? `/${page.node.slug.current}` : `${page.node.slug.current}/${i + 1}`,
           component: path.resolve(`./src/templates/flexListingPage.js`),
+          ownerNodeId: page.node.id,
           context: {
             listItemType,
             limit: numPerPage,
@@ -119,7 +120,7 @@ async function createSoloGuidePages(actions, graphql) {
     if (guide?.node?.slug?.current) {
       actions.createPage({
         path: `/${guide.node.slug.current}`,
-        // ownerNodeId: guide.node.id,
+        ownerNodeId: guide.node.id,
         component: path.resolve(`./src/templates/soloGuidePage.js`),
         context: {
           slug: guide.node.slug.current,
