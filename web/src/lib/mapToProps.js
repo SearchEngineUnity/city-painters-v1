@@ -24,44 +24,6 @@ export function mapSeoToProps(
   };
 }
 
-export function mapCtaFormToProps({ idTag, title, subtitle, form, _rawDisclaimer }) {
-  return {
-    id: idTag,
-    title,
-    subtitle,
-    form,
-    disclaimer: _rawDisclaimer,
-  };
-}
-
-export function mapMainNavToProps({ menu }) {
-  return {
-    menu,
-  };
-}
-
-export function mapGuideSegmentToProps({ idTag, title, subtitle, col, cards }) {
-  return {
-    id: idTag,
-    title,
-    subtitle,
-    col,
-    cards,
-  };
-}
-
-export function mapGuideCardToProps({ h1, slug, excerpt, cardImage, displayDate }) {
-  return {
-    title: h1,
-    date: displayDate,
-    excerpt,
-    image: cardImage?.mainImage?._rawAsset,
-    imageAlt: cardImage?.mainImage?.alt,
-    imageFilename: cardImage?.mainImage?._rawAsset?.originalFilename,
-    url: `/${slug.current}`,
-  };
-}
-
 export function mapFluidImgBlockToProps({ _rawAsset, alt, _rawCaption, maxHeight, maxWidth }) {
   return {
     image: _rawAsset,
@@ -114,19 +76,6 @@ export function mapLrHeroToProps({
     footerAlignment,
     reverseOrder,
     designSettings,
-  };
-}
-
-export function mapHeroBlockToProps({ title, _rawSubtitle }) {
-  return {
-    h1: title,
-    subtitle: _rawSubtitle,
-  };
-}
-
-export function mapLearningSegmentToProps({ idTag }) {
-  return {
-    idTag,
   };
 }
 
