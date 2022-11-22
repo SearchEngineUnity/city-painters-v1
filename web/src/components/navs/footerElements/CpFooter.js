@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Grid } from '@material-ui/core';
+import { Link } from 'gatsby-theme-material-ui';
 import RoomIcon from '@material-ui/icons/Room';
 import PhoneIcon from '@material-ui/icons/Phone';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
@@ -61,7 +62,7 @@ const Social = styled.a`
     color: #8bc44a;
   }
 `;
-const NavItem = styled.a`
+const NavItem = styled(Link)`
   text-decoration: none;
   &:link,
   &:visited {
@@ -87,7 +88,7 @@ const Footer = styled.footer`
   padding-bottom: 20px;
   border-bottom: 2px solid #8bc44a;
 `;
-const Hyperlink = styled.a`
+const Hyperlink = styled(Link)`
   text-decoration: none;
   &:link,
   &:visited {
@@ -144,7 +145,7 @@ function CpFooter() {
                   <Social
                     href="https://www.facebook.com/thecitypainters"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                   >
                     <img src={fb} alt="facebook" width="48" height="48" />
                   </Social>
@@ -153,7 +154,7 @@ function CpFooter() {
                   <Social
                     href="https://www.instagram.com/citypainters"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                   >
                     <img src={insta} alt="instagram" width="48" height="48" />
                   </Social>
@@ -162,7 +163,7 @@ function CpFooter() {
                   <Social
                     href="https://homestars.com/companies/2795419-the-city-painters?service_area=1857483"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                   >
                     <img src={homeStars} alt="homestars" width="48" height="48" />
                   </Social>
@@ -171,7 +172,7 @@ function CpFooter() {
                   <Social
                     href="https://www.linkedin.com/company/the-city-painters"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                   >
                     <img src={linkedIn} alt="linkedin" width="48" height="48" />
                   </Social>
@@ -182,36 +183,32 @@ function CpFooter() {
               <Title>PAINTING SERVICES</Title>
               <List>
                 <li>
-                  <NavItem href="/interior-painting" target="_blank" rel="noopener noreferrer">
+                  <NavItem to="/interior-painting" target="_blank" rel="noopener">
                     Home Interior Painting
                   </NavItem>
                 </li>
                 <li>
-                  <NavItem href="/exterior-painting" target="_blank" rel="noopener noreferrer">
+                  <NavItem to="/exterior-painting" target="_blank" rel="noopener">
                     Home Exterior Painting
                   </NavItem>
                 </li>
                 <li>
-                  <NavItem href="/condo-painters-toronto" target="_blank" rel="noopener noreferrer">
+                  <NavItem to="/condo-painters-toronto" target="_blank" rel="noopener">
                     Condo Painting
                   </NavItem>
                 </li>
                 <li>
-                  <NavItem href="/apartment-painters" target="_blank" rel="noopener noreferrer">
+                  <NavItem to="/apartment-painters" target="_blank" rel="noopener">
                     Apartment Painting
                   </NavItem>
                 </li>
                 <li>
-                  <NavItem
-                    href="/commercial-painting-services"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <NavItem href="/commercial-painting-services" target="_blank" rel="noopener">
                     Commercial Painting
                   </NavItem>
                 </li>
                 <li>
-                  <NavItem href="/epoxy-flooring" target="_blank" rel="noopener noreferrer">
+                  <NavItem to="/epoxy-flooring" target="_blank" rel="noopener">
                     Epoxy Flooring Solutions
                   </NavItem>
                 </li>
@@ -221,48 +218,32 @@ function CpFooter() {
               <Title>RESOURCE CENTER</Title>
               <List>
                 <li>
-                  <NavItem href="/best-primer-cabinets" target="_blank" rel="noopener noreferrer">
+                  <NavItem to="/best-primer-cabinets" target="_blank" rel="noopener">
                     Best Primer for Cabinets
                   </NavItem>
                 </li>
                 <li>
-                  <NavItem
-                    href="/best-paint-sprayer-ceiling"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <NavItem href="/best-paint-sprayer-ceiling" target="_blank" rel="noopener">
                     Best Ceiling Paint Sprayer
                   </NavItem>
                 </li>
                 <li>
-                  <NavItem
-                    href="/best-paint-brush-for-trim"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <NavItem href="/best-paint-brush-for-trim" target="_blank" rel="noopener">
                     Best Trim Paint Brush
                   </NavItem>
                 </li>
                 <li>
-                  <NavItem
-                    href="/best-paint-brush-for-cabinets"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <NavItem href="/best-paint-brush-for-cabinets" target="_blank" rel="noopener">
                     Best Cabinets Paint Brush
                   </NavItem>
                 </li>
                 <li>
-                  <NavItem
-                    href="/cost-to-paint-kitchen-cabinets"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <NavItem href="/cost-to-paint-kitchen-cabinets" target="_blank" rel="noopener">
                     Cost to Paint Cabinets
                   </NavItem>
                 </li>
                 <li>
-                  <NavItem href="/resources" target="_blank" rel="noopener noreferrer">
+                  <NavItem to="/resources" target="_blank" rel="noopener">
                     All Resources
                   </NavItem>
                 </li>
@@ -279,11 +260,7 @@ function CpFooter() {
           style={{ paddingLeft: '16px', paddingRight: '16px' }}
         >
           <p>
-            <Hyperlink
-              href="https://www.thecitypainters.com/privacy-policy"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Hyperlink to="/privacy-policy" target="_blank" rel="noopener">
               Privacy Policy
             </Hyperlink>
             &nbsp; - Copyright {new Date().getFullYear()} The City Painters
