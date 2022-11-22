@@ -131,7 +131,7 @@ function CpFooter() {
                 </li>
                 <li>
                   <IconItem>
-                    <MailOutlineIcon color="primary" display />
+                    <MailOutlineIcon color="primary" />
                     &nbsp;&nbsp;
                     <EmailItem href="mailto:info@thecitypainters.com">
                       info@thecitypainters.com

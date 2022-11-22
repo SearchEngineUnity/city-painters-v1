@@ -20,7 +20,7 @@ const serializers = {
           lineHeight={1.333}
           fontWeight="600"
           margin="20px 0"
-          letterSpacking="normal"
+          letterSpacing="normal"
         >
           {children}
         </Box>

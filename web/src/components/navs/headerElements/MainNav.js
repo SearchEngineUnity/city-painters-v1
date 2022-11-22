@@ -49,7 +49,6 @@ const MainNav = ({ data, location }) => {
             {data.sanityNavMenu.menuArray.map((menuRow, menuIndex) => {
               // menu group is not a navgroup. it is the top level menu item.
               const { menuGroup, _key } = menuRow;
-
               return (
                 <Box
                   display={{
@@ -87,32 +86,23 @@ const MainNav = ({ data, location }) => {
                       switch (_type) {
                         case 'navClickableImage':
                           return (
-                            <Box py={1}>
-                              <NavClickableImage
-                                image={group.image}
-                                link={group.link}
-                                key={groupKey}
-                              />
+                            <Box py={1} key={groupKey}>
+                              <NavClickableImage image={group.image} link={group.link} />
                             </Box>
                           );
                         case 'navBrand':
                           return (
-                            <Box py={1}>
+                            <Box py={1} key={groupKey}>
                               <NavBrand
                                 {...mapNavBrandToProps(group)}
                                 url={data.sanityContactInfo.homePage}
-                                key={groupKey}
                               />
                             </Box>
                           );
                         case 'navPhone':
                           return (
-                            <Box py={1}>
-                              <NavPhone
-                                text={group.text}
-                                key={groupKey}
-                                number={group.phoneNumber}
-                              />
+                            <Box py={1} key={groupKey}>
+                              <NavPhone text={group.text} number={group.phoneNumber} />
                             </Box>
                           );
                         case 'navItem':
@@ -235,6 +225,13 @@ export default function MainNavigation(props) {
                       logo {
                         asset {
                           url
+                          metadata {
+                            dimensions {
+                              aspectRatio
+                              width
+                              height
+                            }
+                          }
                         }
                       }
                     }
