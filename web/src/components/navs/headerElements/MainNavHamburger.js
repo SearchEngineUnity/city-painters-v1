@@ -173,7 +173,7 @@ function MainNavHamburger({ topMenu, bottomMenu, brandUrl, location }) {
                           primaryTypographyProps={
                             location.pathname === `/${groupNav.slug.current}`
                               ? { className: classes.bold }
-                              : false
+                              : {}
                           }
                         />
                       </ListItem>

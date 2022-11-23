@@ -127,6 +127,13 @@ export default function Footer(props) {
                       logo {
                         asset {
                           url
+                          metadata {
+                            dimensions {
+                              aspectRatio
+                              width
+                              height
+                            }
+                          }
                         }
                       }
                     }

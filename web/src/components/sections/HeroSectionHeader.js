@@ -39,6 +39,7 @@ function StructuredSectionHeader({
           ) : (
             <Box
               color={headingColor}
+              component="h1"
               mt="26px"
               mb="13px"
               fontSize="42px"

@@ -13,12 +13,7 @@ function NavClickableImage({ image, link }) {
   return (
     <Card elevation={0}>
       <ConditionalCardActionArea condition={linkType} link={link[0]}>
-        <GatsbyImage
-          image={imageData}
-          loading="eager"
-          // eslint-disable-next-line no-unneeded-ternary
-          alt={image.alt ? image.alt : ''}
-        />
+        <GatsbyImage image={imageData} loading="eager" alt={image.alt || ''} />
       </ConditionalCardActionArea>
     </Card>
   );

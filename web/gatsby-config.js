@@ -92,7 +92,12 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-no-sourcemaps',
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        excludes: ['/privacy-policy', '/resources/*'],
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

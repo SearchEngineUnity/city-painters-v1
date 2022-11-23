@@ -407,7 +407,7 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
                       required={input.required}
                       variant={variant}
                       multiline
-                      rows={input.rows}
+                      minRows={input.rows}
                       placeholder={input.placeholderText}
                       onBlur={(e) => fieldValidation(e.currentTarget)}
                     />
