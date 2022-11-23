@@ -92,6 +92,7 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-no-sourcemaps',
+    'gatsby-plugin-remove-trailing-slashes',
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
