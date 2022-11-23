@@ -107,7 +107,9 @@ function MainNavHamburger({ topMenu, bottomMenu, brandUrl, location }) {
                       <NavClickableImage image={group.image} link={group.link} />
                     </Box>
                   );
-                case 'navBrand':
+                case 'navBrand': {
+                  const { aspectRatio } = mobileBrand.brand.logo.asset.metadata.dimensions;
+
                   return (
                     <Box
                       display={{ xs: 'block', sm: 'block', md: 'none', lg: 'none', xl: 'none' }}
@@ -119,10 +121,12 @@ function MainNavHamburger({ topMenu, bottomMenu, brandUrl, location }) {
                           src={mobileBrand.brand.logo.asset.url}
                           alt={mobileBrand.brand.title}
                           height={mobileBrand.height}
+                          width={mobileBrand.height * aspectRatio}
                         />
                       </a>
                     </Box>
                   );
+                }
                 case 'navPhone':
                   return (
                     <Box
