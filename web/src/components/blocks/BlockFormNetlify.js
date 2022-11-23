@@ -54,7 +54,7 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
     selectorColor,
   } = style;
 
-  const { formFields, name, thankYou, submitBtn } = form;
+  const { formFields, name, subject, thankYou, submitBtn } = form;
 
   const prevTheme = useTheme();
 
@@ -272,6 +272,7 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
           {success && <p>{thankYou}</p>}
 
           <input type="hidden" name="form-name" value={name} />
+          {subject && <input type="hidden" name="subject" value={subject} />}
           {formFields.map((input) => {
             const { _type, _key } = input;
 

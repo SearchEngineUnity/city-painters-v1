@@ -228,8 +228,6 @@ export default function MainNavigation(props) {
                           metadata {
                             dimensions {
                               aspectRatio
-                              width
-                              height
                             }
                           }
                         }
