@@ -220,6 +220,8 @@ function FormNetlify({ titleAlignment, heading, headingLevel, form, style }) {
         body: encode({
           'form-name': thisForm.getAttribute('name'),
           'bot-field': thisForm.elements['bot-field'].value,
+          // eslint-disable-next-line dot-notation
+          subject: thisForm.elements['subject'].value,
           ...state,
         }),
       })
