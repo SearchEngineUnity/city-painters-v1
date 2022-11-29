@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 import { BsArrowLeftRight } from 'react-icons/bs';
 
 export default {
@@ -31,6 +30,7 @@ export default {
             if (source.length === 0) {
               emptyPaths.push(index);
             }
+            return null;
           });
 
           if (emptyPaths.length > 0) {
@@ -48,6 +48,7 @@ export default {
             if (!source.match(/^(http:\/\/|https:\/\/|\/)/g)) {
               wrongPaths.push(index);
             }
+            return null;
           });
 
           if (wrongPaths.length > 0) {

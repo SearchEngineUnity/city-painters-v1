@@ -130,8 +130,6 @@ export default function Footer(props) {
                           metadata {
                             dimensions {
                               aspectRatio
-                              width
-                              height
                             }
                           }
                         }
