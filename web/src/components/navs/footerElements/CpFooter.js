@@ -243,7 +243,7 @@ function CpFooter() {
                   </NavItem>
                 </li>
                 <li>
-                  <NavItem to="/resources" target="_blank" rel="noopener">
+                  <NavItem to="/blog" target="_blank" rel="noopener">
                     All Resources
                   </NavItem>
                 </li>
