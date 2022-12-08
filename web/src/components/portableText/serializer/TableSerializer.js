@@ -66,7 +66,7 @@ const serializers = {
       return (
         <VerticalSpacingWrapper>
           <IndentHalfWrapper>
-            <ClickableImage {...node} />;
+            <ClickableImage {...node} />
           </IndentHalfWrapper>
         </VerticalSpacingWrapper>
       );
