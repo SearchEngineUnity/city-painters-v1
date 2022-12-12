@@ -156,6 +156,7 @@ async function createPageRedirects(actions, graphql) {
         toPath,
         isPermanent: true,
         force: true,
+        statusCode: 301,
       });
     });
   });
