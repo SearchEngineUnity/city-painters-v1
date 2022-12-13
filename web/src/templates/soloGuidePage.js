@@ -86,7 +86,7 @@ const SoloGuidePage = ({ data, location }) => {
                 </Grid>
               </Hidden>
               <Grid item md={9} xs={12} style={{ order: 1 }}>
-                <Typography variant="body1" component="nav">
+                <Typography variant="body1" component="nav" aria-label="Breadcrumb">
                   <Link to="/resources">All Resources</Link> &gt; {data.guide.tileTitle}
                 </Typography>
                 <br />
