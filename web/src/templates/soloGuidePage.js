@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Container, Grid, Box, Hidden, Typography } from '@material-ui/core';
+import { Container, Grid, Box, Hidden, Typography, Breadcrumbs } from '@material-ui/core';
 import { Link } from 'gatsby-theme-material-ui';
 import Layout from '../containers/layout';
 import GuideHero from '../components/sections/GuideHero';
@@ -86,9 +86,12 @@ const SoloGuidePage = ({ data, location }) => {
                 </Grid>
               </Hidden>
               <Grid item md={9} xs={12} style={{ order: 1 }}>
-                <Typography variant="body1" component="nav" aria-label="Breadcrumb">
-                  <Link to="/resources">All Resources</Link> &gt; {data.guide.tileTitle}
-                </Typography>
+                <Breadcrumbs separator="›" aria-label="breadcrumb">
+                  <Typography variant="body1" component={Link} to="/resources">
+                    All Resources
+                  </Typography>
+                  <Typography variant="body1">{data.guide.tileTitle}</Typography>
+                </Breadcrumbs>
                 <br />
                 <br />
                 <GuideBody blocks={data.guide._rawGuideBody} />
