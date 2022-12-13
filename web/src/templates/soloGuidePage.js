@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Container, Grid, Box, Hidden } from '@material-ui/core';
+import { Container, Grid, Box, Hidden, Typography } from '@material-ui/core';
+import { Link } from 'gatsby-theme-material-ui';
 import Layout from '../containers/layout';
 import GuideHero from '../components/sections/GuideHero';
 import GuideBody from '../components/portableText/serializer/GuideSerializer';
@@ -60,6 +61,7 @@ export const query = graphql`
         _rawCaption(resolveReferences: { maxDepth: 4 })
       }
       _rawHeroSubtitle(resolveReferences: { maxDepth: 4 })
+      tileTitle
     }
   }
 `;
@@ -83,7 +85,12 @@ const SoloGuidePage = ({ data, location }) => {
                   )}
                 </Grid>
               </Hidden>
-              <Grid item md={9} xs={12} component="article" style={{ order: 1 }}>
+              <Grid item md={9} xs={12} style={{ order: 1 }}>
+                <Typography variant="body1" component="nav" aria-label="Breadcrumb">
+                  <Link to="/resources">All Resources</Link> &gt; {data.guide.tileTitle}
+                </Typography>
+                <br />
+                <br />
                 <GuideBody blocks={data.guide._rawGuideBody} />
               </Grid>
             </Grid>
