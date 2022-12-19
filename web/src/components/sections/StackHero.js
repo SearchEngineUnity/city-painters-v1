@@ -219,6 +219,8 @@ function StructuredLrFlex({
       className={classes.section}
       mb="10px"
     >
+      {/* eslint-disable-next-line react/no-unknown-property */}
+      {bgImage && <img src={bgImage} alt="" fetchpriority="high" style={{ display: 'none' }} />}
       <div className={classes.column}>
         <HeroSectionHeader
           heading={heading}
@@ -230,6 +232,7 @@ function StructuredLrFlex({
           align={headerAlignment}
           id={idTag}
         />
+
         {(!!heading || !!subheading) && blocks.length > 0 ? <Box mt="16px" /> : null}
         {blocks.map((block) => {
           const { _type, _key } = block;
