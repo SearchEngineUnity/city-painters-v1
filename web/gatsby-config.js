@@ -96,7 +96,33 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        excludes: ['/privacy-policy', '/resources/*'],
+        excludes: ['/resources/**'],
+        query: `{
+          allSanityPage(filter: {noindex: {ne: true}}) {
+            nodes {
+              slug {
+                current
+              }
+              noindex
+            }
+          }
+            allSanitySoloGuidePage(filter: {noindex: {ne: true}}) {
+            nodes {
+              slug {
+                current
+              }
+              noindex
+            }
+          }
+            allSanityFlexListingPage(filter: {noindex: {ne: true}}) {
+            nodes {
+              slug {
+                current
+              }
+              noindex
+            }
+          }
+        }`,
       },
     },
     {
