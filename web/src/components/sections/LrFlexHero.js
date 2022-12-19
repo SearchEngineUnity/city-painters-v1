@@ -215,6 +215,7 @@ function LrFlexHero({
       className={classes.section}
       mb="10px"
     >
+      {bgImage && <img src={bgImage} alt="" style={{ display: 'none' }} />}
       <div className={classes.column}>
         <HeroSectionHeader
           heading={heading}

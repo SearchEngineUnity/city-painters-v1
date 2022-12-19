@@ -211,6 +211,8 @@ function StructuredLrFlex({
     borderRadius,
   });
 
+  console.log(bgImage);
+
   return (
     <Box
       id={idTag}
@@ -219,6 +221,7 @@ function StructuredLrFlex({
       className={classes.section}
       mb="10px"
     >
+      {bgImage && <img src={bgImage} alt="" style={{ display: 'none' }} />}
       <div className={classes.column}>
         <HeroSectionHeader
           heading={heading}
@@ -230,6 +233,7 @@ function StructuredLrFlex({
           align={headerAlignment}
           id={idTag}
         />
+
         {(!!heading || !!subheading) && blocks.length > 0 ? <Box mt="16px" /> : null}
         {blocks.map((block) => {
           const { _type, _key } = block;
