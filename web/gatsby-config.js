@@ -103,28 +103,12 @@ module.exports = {
               siteUrl
             }
           }
-          allSanityPage(filter: {noindex: {ne: true}}) {
+          allSitePage(filter: {context: {noindex: {eq: false}}}) {
             nodes {
-              slug {
-                current
+              path
+              context {
+                noindex
               }
-              noindex
-            }
-          }
-            allSanitySoloGuidePage(filter: {noindex: {ne: true}}) {
-            nodes {
-              slug {
-                current
-              }
-              noindex
-            }
-          }
-            allSanityFlexListingPage(filter: {noindex: {ne: true}}) {
-            nodes {
-              slug {
-                current
-              }
-              noindex
             }
           }
         }`,

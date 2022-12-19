@@ -11,6 +11,7 @@ async function createStructuredPages(actions, graphql) {
               current
             }
             id
+            noindex
           }
         }
       }
@@ -26,6 +27,7 @@ async function createStructuredPages(actions, graphql) {
         component: path.resolve(`./src/templates/structuredPage.js`),
         context: {
           slug: page.node.slug.current,
+          noindex: page.node.noindex,
         },
       });
     }
@@ -51,6 +53,7 @@ async function createFlexListingPages(actions, graphql) {
                 listItemType
               }
             }
+            noindex
           }
         }
       }
@@ -91,6 +94,7 @@ async function createFlexListingPages(actions, graphql) {
             numPages,
             currentpage: i + 1,
             slug: page.node.slug.current,
+            noindex: page.node.noindex,
           },
         });
       }
@@ -109,6 +113,7 @@ async function createSoloGuidePages(actions, graphql) {
               current
             }
             id
+            noindex
           }
         }
       }
@@ -124,6 +129,7 @@ async function createSoloGuidePages(actions, graphql) {
         component: path.resolve(`./src/templates/soloGuidePage.js`),
         context: {
           slug: guide.node.slug.current,
+          noindex: guide.node.noindex,
         },
       });
     }
