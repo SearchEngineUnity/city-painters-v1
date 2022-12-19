@@ -98,6 +98,11 @@ module.exports = {
       options: {
         excludes: ['/resources/**'],
         query: `{
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
           allSanityPage(filter: {noindex: {ne: true}}) {
             nodes {
               slug {
