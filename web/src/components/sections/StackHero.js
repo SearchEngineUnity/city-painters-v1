@@ -219,8 +219,6 @@ function StructuredLrFlex({
       className={classes.section}
       mb="10px"
     >
-      {/* eslint-disable-next-line react/no-unknown-property */}
-      {bgImage && <img src={bgImage} alt="" fetchpriority="high" style={{ display: 'none' }} />}
       <div className={classes.column}>
         <HeroSectionHeader
           heading={heading}
