@@ -211,8 +211,6 @@ function StructuredLrFlex({
     borderRadius,
   });
 
-  console.log(bgImage);
-
   return (
     <Box
       id={idTag}
