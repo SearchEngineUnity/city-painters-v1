@@ -96,22 +96,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        excludes: ['/resources/**'],
-        query: `{
-          site {
-            siteMetadata {
-              siteUrl
-            }
-          }
-          allSitePage(filter: {context: {noindex: {eq: false}}}) {
-            nodes {
-              path
-              context {
-                noindex
-              }
-            }
-          }
-        }`,
+        excludes: ['/privacy-policy', '/fence-staining-company', '/resources/**'],
       },
     },
     {
