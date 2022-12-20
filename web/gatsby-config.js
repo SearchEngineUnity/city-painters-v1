@@ -96,7 +96,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        excludes: ['/privacy-policy', '/resources/*'],
+        exclude: ['/privacy-policy', '/fence-staining-company', '/resources/*'],
       },
     },
     {

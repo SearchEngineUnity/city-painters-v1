@@ -230,6 +230,7 @@ function StructuredLrFlex({
           align={headerAlignment}
           id={idTag}
         />
+
         {(!!heading || !!subheading) && blocks.length > 0 ? <Box mt="16px" /> : null}
         {blocks.map((block) => {
           const { _type, _key } = block;

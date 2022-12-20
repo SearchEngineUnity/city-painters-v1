@@ -492,6 +492,7 @@ export const query = graphql`
               _rawFooter(resolveReferences: { maxDepth: 4 })
               layout
               headerAlignment
+              footerAlignment
             }
             ... on SanityTestimonialGrid {
               _key
@@ -938,6 +939,7 @@ export const query = graphql`
               _rawFooter(resolveReferences: { maxDepth: 4 })
               layout
               headerAlignment
+              footerAlignment
             }
             ... on SanityTestimonialGrid {
               _key
@@ -1381,6 +1383,7 @@ export const query = graphql`
               _rawFooter(resolveReferences: { maxDepth: 4 })
               layout
               headerAlignment
+              footerAlignment
             }
             ... on SanityTestimonialGrid {
               _key
