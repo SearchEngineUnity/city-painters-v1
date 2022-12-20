@@ -59,6 +59,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       padding: (props) =>
         props.mobileOuterPadding || theme.customSpacing.sectionOuter.padding.mobile,
+      backgroundImage: (props) =>
+        props.bleed && props.bgImage && props.repeat ? `url(${props.bgImage})` : 'none',
     },
     '& .pt-link': {
       color: (props) => props.linkColor,
@@ -77,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center center',
     backgroundRepeat: (props) => (props.repeat ? 'repeat' : 'no-repeat'),
     width: '100%',
-    maxWidth: '1200px',
+    maxWidth: '1180px', // CP specific
     marginLeft: 'auto',
     marginRight: 'auto',
     padding: (props) =>
@@ -93,6 +95,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       padding: (props) =>
         props.mobileInnerPadding || theme.customSpacing.sectionInner.padding.mobile,
+      backgroundImage: (props) =>
+        !props.bleed && props.bgImage && props.repeat ? `url(${props.bgImage})` : 'none',
     },
   },
   block: {
