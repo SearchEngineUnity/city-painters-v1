@@ -43,17 +43,15 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '1180px', // CP specific
     marginLeft: 'auto',
     marginRight: 'auto',
-    padding: (props) => props.desktopPadding || theme.customSpacing.sectionInner.padding.desktop,
-    [theme.breakpoints.down('lg')]: {
-      padding: (props) =>
-        props.desktopTabletPadding || theme.customSpacing.sectionInner.padding.desktopTablet,
-    },
+    padding: (props) =>
+      props.desktopInnerPadding || theme.customSpacing.sectionInner.padding.desktop,
     [theme.breakpoints.down('md')]: {
-      padding: (props) => props.tabletPadding || theme.customSpacing.sectionInner.padding.tablet,
+      padding: (props) =>
+        props.tabletInnerPadding || theme.customSpacing.sectionInner.padding.tablet,
     },
     [theme.breakpoints.down('sm')]: {
       padding: (props) =>
-        props.tabletMobilePadding || theme.customSpacing.sectionInner.padding.tabletMobile,
+        props.tabletMobileInnerPadding || theme.customSpacing.sectionInner.padding.tabletMobile,
     },
     [theme.breakpoints.down('xs')]: {
       padding: (props) =>
