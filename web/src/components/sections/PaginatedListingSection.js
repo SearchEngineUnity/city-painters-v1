@@ -56,7 +56,8 @@ const useStyles = makeStyles((theme) => ({
         props.tabletMobilePadding || theme.customSpacing.sectionInner.padding.tabletMobile,
     },
     [theme.breakpoints.down('xs')]: {
-      padding: (props) => props.mobilePadding || theme.customSpacing.sectionInner.padding.mobile,
+      padding: (props) =>
+        props.mobileInnerPadding || theme.customSpacing.sectionInner.padding.mobile,
       backgroundImage: (props) =>
         !props.bleed && props.bgImage && props.repeat ? `url(${props.bgImage})` : 'none',
     },
