@@ -5,20 +5,7 @@ import { Partytown } from '@builder.io/partytown/react';
 
 export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
   setHeadComponents([
-    <Partytown
-      key="partytown"
-      debug
-      forward={['dataLayer.push']}
-      resolveUrl={(url) => {
-        // https://partytown.builder.io/proxying-requests
-        const proxyDomains = ['www.googletagmanager.com'];
-        if (proxyDomains.includes(url.hostname)) {
-          const proxyUrl = new URL('https://cdn.builder.io/api/v1/proxy-api');
-          proxyUrl.searchParams.append('url', url);
-          return proxyUrl;
-        }
-      }}
-    />,
+    <Partytown key="partytown" debug forward={['dataLayer.push']} />,
     // <script key="analytics" src="https://example.com/analytics.js" type="text/partytown" />,
   ]);
 
