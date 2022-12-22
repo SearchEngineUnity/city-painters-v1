@@ -167,6 +167,22 @@ async function createPageRedirects(actions, graphql) {
   });
 }
 
+// // trying to add proxy for party town
+// createRedirect({
+//   fromPath: `/docs/*`,
+//   toPath: `https://www.awesomesite.com/docs/*`,
+//   statusCode: 200,
+// })
+
+// async function createPartyTownProxies(actions, graphql) {
+
+//   actions.createRedirect({
+//     fromPath: `/partytown/*`,
+//     toPath: `https://www.awesomesite.com/docs/*`,
+//     statusCode: 200,
+//   })
+// }
+
 exports.createPages = async ({ actions, graphql }) => {
   await createStructuredPages(actions, graphql);
   await createFlexListingPages(actions, graphql);

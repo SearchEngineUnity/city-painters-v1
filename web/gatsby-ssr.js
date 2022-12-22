@@ -9,15 +9,15 @@ export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
       key="partytown"
       debug
       forward={['dataLayer.push']}
-      resolveUrl={(url) => {
-        // https://partytown.builder.io/proxying-requests
-        const proxyDomains = ['www.googletagmanager.com'];
-        if (proxyDomains.includes(url.hostname)) {
-          const proxyUrl = new URL('https://wwww.thecitypanters.com/~partytown');
-          proxyUrl.searchParams.append('url', url);
-          return proxyUrl;
-        }
-      }}
+      // resolveUrl={(url) => {
+      //   // https://partytown.builder.io/proxying-requests
+      //   const proxyDomains = ['www.googletagmanager.com'];
+      //   if (proxyDomains.includes(url.hostname)) {
+      //     const proxyUrl = new URL('https://wwww.thecitypanters.com/~partytown');
+      //     proxyUrl.searchParams.append('url', url);
+      //     return proxyUrl;
+      //   }
+      // }}
     />,
     <script
       type="text/partytown"
