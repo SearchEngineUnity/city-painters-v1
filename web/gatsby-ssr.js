@@ -13,7 +13,7 @@ export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
         // https://partytown.builder.io/proxying-requests
         const proxyDomains = ['www.googletagmanager.com'];
         if (proxyDomains.includes(url.hostname)) {
-          const proxyUrl = new URL('https://wwww.thecitypanters.com/partytown');
+          const proxyUrl = new URL('https://wwww.thecitypanters.com/');
           proxyUrl.searchParams.append('url', url);
           return proxyUrl;
         }
