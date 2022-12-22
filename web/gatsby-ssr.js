@@ -6,7 +6,11 @@ import { Partytown } from '@builder.io/partytown/react';
 export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
   setHeadComponents([
     <Partytown key="partytown" debug forward={['dataLayer.push']} />,
-    // <script key="analytics" src="https://example.com/analytics.js" type="text/partytown" />,
+    <script
+      key="analytics"
+      src="https://www.google-analytics.com/analytics.js"
+      type="text/partytown"
+    />,
   ]);
 
   // For GTM, we will need to add this noscript tag to the body of the HTML
