@@ -190,7 +190,7 @@ exports.createPages = async ({ actions, graphql }) => {
   await createPageRedirects(actions, graphql);
 };
 
-// for party town
+// partytown
 const { copyLibFiles } = require('@builder.io/partytown/utils');
 
 exports.onPreBuild = async () => {

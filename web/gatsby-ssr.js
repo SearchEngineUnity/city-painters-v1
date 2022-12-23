@@ -1,35 +1,32 @@
 /* eslint-disable consistent-return */
 /* eslint-disable import/prefer-default-export */
+// gatsby-ssr.js
+
 import React from 'react';
 import { Partytown } from '@builder.io/partytown/react';
 
-export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
-  setHeadComponents([
-    <Partytown
-      key="partytown"
-      debug
-      forward={['dataLayer.push']}
-      resolveUrl={(url) => {
-        // https://partytown.builder.io/proxying-requests
-        const proxyDomains = ['www.googletagmanager.com'];
-        if (proxyDomains.includes(url.hostname)) {
-          const proxyUrl = new URL('https://wwww.thecitypanters.com/');
-          proxyUrl.searchParams.append('url', url);
-          return proxyUrl;
-        }
-      }}
-    />,
-  ]);
+// You might prefer to add these as an env vars
+const ORIGIN = 'https://www.googletagmanager.com';
+const GATSBY_GA_MEASUREMENT_ID = 'G-YLXCPHPTEX';
 
-  // For GTM, we will need to add this noscript tag to the body of the HTML
-  setPreBodyComponents([
-    <noscript
-      key="gtm"
+export const onRenderBody = ({ setHeadComponents }) => {
+  if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') return null;
+
+  setHeadComponents([
+    <Partytown key="partytown" forward={['gtag']} />,
+    <script
+      key="google-analytics"
+      type="text/partytown"
+      src={`${ORIGIN}/gtag/js?id=${GATSBY_GA_MEASUREMENT_ID}`}
+    />,
+    <script
+      key="google-analytics-config"
+      type="text/partytown"
       dangerouslySetInnerHTML={{
-        __html: `
-                  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P68M4K4" height="0" width="0"
-                      style="display:none;visibility:hidden"></iframe>
-                `,
+        __html: `window.dataLayer = window.dataLayer || [];
+        window.gtag = function gtag(){ window.dataLayer.push(arguments);}
+        gtag('js', new Date()); 
+        gtag('config', '${GATSBY_GA_MEASUREMENT_ID}', { send_page_view: false })`,
       }}
     />,
   ]);
