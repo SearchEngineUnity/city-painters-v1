@@ -27,7 +27,7 @@ function ClickableImage({ image, alignment, link, borderRadius }) {
     <Box display="flex" justifyContent={alignment}>
       <Card className={classes.card} elevation={2}>
         <ConditionalCardActionArea condition={linkType} link={link[0]}>
-          <GatsbyImage image={imageData} alt={image.alt || ''} />
+          <GatsbyImage image={imageData} alt={image.alt || ''} loading="eager" />
         </ConditionalCardActionArea>
       </Card>
     </Box>
