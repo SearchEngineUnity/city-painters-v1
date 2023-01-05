@@ -13,7 +13,7 @@ export const onRenderBody = ({ setHeadComponents }) => {
   if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') return null;
 
   setHeadComponents([
-    <Partytown key="partytown" forward={['gtag']} />,
+    <Partytown key="partytown" forward={['dataLayer.push', 'gtag']} />,
     <script
       key="google-analytics"
       type="text/partytown"
