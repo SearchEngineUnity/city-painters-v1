@@ -43,7 +43,7 @@ function StructuredSectionHeader({
               mt="26px"
               mb="13px"
               fontSize="42px"
-              lineHeight={1.619}
+              lineHeight={1.2}
               fontWeight={800}
               letterSpacing="normal"
             >
