@@ -14,7 +14,7 @@ import {
   ClickAwayListener,
 } from '@material-ui/core';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
-import { navigate } from 'gatsby';
+import { navigate, Link as GLink } from 'gatsby';
 
 const useStyles = makeStyles((theme) => ({
   primaryOutline: {
@@ -135,6 +135,8 @@ const NavGroup = ({ title, subGroup, location, position }) => {
                   key={_key}
                   selected={`/${nav.slug.current}` === location.pathname}
                   className={classes.hoverItem}
+                  component={GLink}
+                  to={`/${nav.slug.current}`}
                 >
                   {icon && (
                     <ListItemIcon>
