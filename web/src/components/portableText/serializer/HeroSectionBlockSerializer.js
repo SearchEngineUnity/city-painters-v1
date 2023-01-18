@@ -108,7 +108,7 @@ const serializers = {
     illustration({ node }) {
       return (
         <InsertableStructuredPageWrapper>
-          <Illustration illustration={node} />
+          <Illustration illustration={node} loading="eager" />
         </InsertableStructuredPageWrapper>
       );
     },
