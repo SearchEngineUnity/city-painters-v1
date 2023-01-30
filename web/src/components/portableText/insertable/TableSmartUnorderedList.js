@@ -7,12 +7,12 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import ListContent from '../serializer/ListSerializer';
+import ListContent from '../serializer/TableListSerializer';
 
 const useStyles = makeStyles({
   removeStyle: (props) => ({
     listStyle: props.image ? 'none' : 'initial',
-    paddingInlineStart: '0px',
+    paddingInlineStart: props.image ? 'calc(20px - 1.5em)' : '20px',
     marginBlockStart: '0px',
     marginBlockEnd: '0px',
   }),

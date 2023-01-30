@@ -14,15 +14,19 @@ import ButtonAffiliate from '../../buttons/ButtonAffiliate';
 import ButtonExternal from '../../buttons/ButtonExternal';
 import ButtonInternalGlobal from '../../buttons/ButtonInternalGlobal';
 import ButtonInternalLocal from '../../buttons/ButtonInternalLocal';
-import IndentHalfWrapper from '../insertable/IndentHalfWrapper';
 import VerticalSpacingWrapper from '../insertable/VerticalSpacingWrapper';
 import { mapMuiBtnToProps } from '../../../lib/mapToProps';
+
+const TableTypography = styled(Typography)`
+  font-size: 14px;
+`;
 
 const NoIndentUl = styled.ul`
   list-style-type: disc;
   margin-left: 1.4rem;
   padding-left: 0;
-  margin-top: 0;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
 
   & > li {
     position: relative;
@@ -33,7 +37,8 @@ const NoIndentOl = styled.ol`
   list-style-type: decimal;
   margin-left: 1.4rem;
   padding-left: 0;
-  margin-top: 0;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
 
   & > li {
     position: relative;
@@ -46,9 +51,9 @@ const serializers = {
   types: {
     block(props) {
       return props.children[0] ? (
-        <Typography gutterBottom variant="body1">
+        <TableTypography gutterBottom variant="body1">
           {props.children}
-        </Typography>
+        </TableTypography>
       ) : (
         <br />
       );
@@ -56,18 +61,14 @@ const serializers = {
     illustration({ node }) {
       return (
         <VerticalSpacingWrapper>
-          <IndentHalfWrapper>
-            <Illustration illustration={node} />
-          </IndentHalfWrapper>
+          <Illustration illustration={node} />
         </VerticalSpacingWrapper>
       );
     },
     clickableImage({ node }) {
       return (
         <VerticalSpacingWrapper>
-          <IndentHalfWrapper>
-            <ClickableImage {...node} />
-          </IndentHalfWrapper>
+          <ClickableImage {...node} />
         </VerticalSpacingWrapper>
       );
     },
@@ -162,9 +163,9 @@ const serializers = {
     }
   },
   listItem: ({ children }) => (
-    <Typography variant="body1" component="li">
+    <TableTypography variant="body1" component="li">
       {children}
-    </Typography>
+    </TableTypography>
   ),
 };
 

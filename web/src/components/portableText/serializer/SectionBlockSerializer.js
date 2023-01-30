@@ -3,7 +3,6 @@ import React from 'react';
 import { Typography, Box } from '@material-ui/core';
 import styled from 'styled-components';
 import VideoEmbed from '../insertable/VideoEmbed';
-import BasicTable from '../insertable/BasicTable';
 import Illustration from '../insertable/Illustration';
 import HighlightBox from '../insertable/highlightBox/HighlightBox';
 import SmartTable from '../insertable/SmartTable';
@@ -100,13 +99,6 @@ const serializers = {
       return (
         <InsertableStructuredPageWrapper>
           <Illustration illustration={node} />
-        </InsertableStructuredPageWrapper>
-      );
-    },
-    basicTable({ node }) {
-      return (
-        <InsertableStructuredPageWrapper>
-          <BasicTable basicTable={node} />
         </InsertableStructuredPageWrapper>
       );
     },
