@@ -3,7 +3,6 @@ import BaseBlockContent from '@sanity/block-content-to-react';
 import React from 'react';
 import { Box } from '@material-ui/core';
 import VideoEmbed from '../insertable/VideoEmbed';
-import BasicTable from '../insertable/BasicTable';
 import Illustration from '../insertable/Illustration';
 import HighlightBox from '../insertable/highlightBox/HighlightBox';
 import SmartTable from '../insertable/SmartTable';
@@ -45,13 +44,6 @@ const serializers = {
       return (
         <InsertableStructuredPageWrapper>
           <Illustration illustration={node} />
-        </InsertableStructuredPageWrapper>
-      );
-    },
-    basicTable({ node }) {
-      return (
-        <InsertableStructuredPageWrapper>
-          <BasicTable basicTable={node} />
         </InsertableStructuredPageWrapper>
       );
     },
