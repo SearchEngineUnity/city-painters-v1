@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import BaseBlockContent from '@sanity/block-content-to-react';
 import React from 'react';
 import { Typography, Box } from '@material-ui/core';
@@ -6,6 +5,7 @@ import styled from 'styled-components';
 import VideoEmbed from '../insertable/VideoEmbed';
 import Illustration from '../insertable/Illustration';
 import HighlightBox from '../insertable/highlightBox/HighlightBox';
+/* eslint-disable import/no-cycle */
 import SmartTable from '../insertable/SmartTable';
 import JumpLink from '../../link/JumpLink';
 import AffiliateLink from '../../link/LinkAffiliate';
@@ -22,8 +22,22 @@ import IndentFullWrapper from '../insertable/IndentFullWrapper';
 import VerticalSpacingWrapper from '../insertable/VerticalSpacingWrapper';
 import { mapMuiBtnToProps } from '../../../lib/mapToProps';
 
+const StyledH2 = styled(Typography)`
+  font-size: 28px;
+  margin-top: -12px;
+  line-height: 1;
+`;
+const StyledH3 = styled(Typography)`
+  font-size: 24.5px;
+`;
+const StyledH4 = styled(Typography)`
+  font-size: 21px;
+`;
+const StyledH5 = styled(Typography)`
+  font-size: 17.5px;
+`;
 const StyledTypography = styled(Typography)`
-  margin-top: 1.35em;
+  font-size: 14px;
 `;
 
 const serializers = {
@@ -34,7 +48,7 @@ const serializers = {
       switch (props.node.style) {
         case 'h2':
           return props.children[0] ? (
-            <StyledTypography
+            <StyledH2
               gutterBottom
               variant="h2"
               id={
@@ -44,14 +58,14 @@ const serializers = {
               }
             >
               {props.children}
-            </StyledTypography>
+            </StyledH2>
           ) : (
             <br />
           );
 
         case 'h3':
           return props.children[0] ? (
-            <StyledTypography
+            <StyledH3
               gutterBottom
               variant="h3"
               id={
@@ -61,14 +75,14 @@ const serializers = {
               }
             >
               {props.children}
-            </StyledTypography>
+            </StyledH3>
           ) : (
             <br />
           );
 
         case 'h4':
           return props.children[0] ? (
-            <StyledTypography
+            <StyledH4
               gutterBottom
               variant="h4"
               id={
@@ -78,14 +92,14 @@ const serializers = {
               }
             >
               {props.children}
-            </StyledTypography>
+            </StyledH4>
           ) : (
             <br />
           );
 
         case 'h5':
           return props.children[0] ? (
-            <StyledTypography
+            <StyledH5
               gutterBottom
               variant="h5"
               id={
@@ -95,7 +109,7 @@ const serializers = {
               }
             >
               {props.children}
-            </StyledTypography>
+            </StyledH5>
           ) : (
             <br />
           );
@@ -119,9 +133,9 @@ const serializers = {
 
         default:
           return props.children[0] ? (
-            <Typography gutterBottom variant="body1">
+            <StyledTypography gutterBottom variant="body1">
               {props.children}
-            </Typography>
+            </StyledTypography>
           ) : (
             <br />
           );
@@ -141,15 +155,6 @@ const serializers = {
         <VerticalSpacingWrapper>
           <IndentFullWrapper>
             <HighlightBox box={node} />
-          </IndentFullWrapper>
-        </VerticalSpacingWrapper>
-      );
-    },
-    smartTable({ node }) {
-      return (
-        <VerticalSpacingWrapper>
-          <IndentFullWrapper>
-            <SmartTable smartTable={node} />
           </IndentFullWrapper>
         </VerticalSpacingWrapper>
       );

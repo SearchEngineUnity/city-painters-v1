@@ -26,6 +26,9 @@ const ThemeProvider = ({ children, data }) => {
         head: {
           fontWeight: 600,
         },
+        sizeSmall: {
+          padding: '6px 12px 6px 8px',
+        },
       },
       MuiTypography: {
         gutterBottom: {
