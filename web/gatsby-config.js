@@ -135,7 +135,7 @@ module.exports = {
         resolveEnv: () => NETLIFY_ENV,
         env: {
           production: {
-            policy: [{ userAgent: '*', disallow: ['/404'] }],
+            policy: [{ userAgent: '*', disallow: ['/404', '/wp-admin*'] }],
             sitemap: `${siteUrl}/sitemap.xml`,
           },
           'branch-deploy': {
